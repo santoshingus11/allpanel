@@ -1,0 +1,29 @@
+.p1{
+    overflow-y: auto!important;
+    width: 1019px!important;
+}
+.p2{
+    position: absolute;
+}
+
+.p3{
+    background: #ff0000e3;
+    width: 280px;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.p4{
+    opacity: 0!important;
+}
+
+.p5{
+    display: none!important;
+}
+.p6{
+    position: fixed; top: 64px; right: 0;
+    background: green;
+    padding: 10px;
+    color: white;
+}

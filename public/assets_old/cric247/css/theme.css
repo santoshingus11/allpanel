@@ -1,0 +1,91 @@
+a,
+.featured-box-login h4,
+.download-apk a {
+  color: var(--primary);
+}
+
+.login {
+  width: 100%;
+  background-image: linear-gradient(var(--login1),
+      var(--login2)) !important;
+}
+
+.searchM typeahead-container button.dropdown-item.active,
+.searchM typeahead-container button.dropdown-item:hover,
+.searchbar typeahead-container button.dropdown-item.active,
+.searchbar typeahead-container button.dropdown-item:hover,
+.topbar,
+.nav-menu ul li a.active,
+#footer,
+.detail_screen .listing_screen ul li a.active,
+.listing_screen .nav-tabs .nav-item a.active,
+/*.listing_screen .tab-pane ul li a.active,*/
+.listing_screen .mobile-sec ul li a,
+.listing_screen .mobile-sec ul li a.active,
+.listing_screen .odds_matched_tv ul,
+.detail_screen .listing_screen ul li a:hover,
+.modal-lr .modal-header,
+.btn-primary,
+.btn-primary:hover,
+/*.listing_screen .nav-tabs .nav-item a,*/
+
+.btn-submit,
+/* .nav .active .nav-link, */
+/* .mobile-sec, */
+.listing_screen ul.inplayTabs_list li a,
+.listing_screen ul.inplayTabs_list li a.active {
+  background-color: var(--primary) !important;
+  width: 100%;
+}
+
+/* .listing_screen ul li a {
+  background-color: var(--primary) !important;
+} */
+/* Old Start*/
+/* .modal-content .betplace-btn {
+  background-color: var(--primary) !important;
+} */
+/* Old End*/
+/* .btn-submit{
+  background: var(--primary) !important;
+} */
+.header-bottom,
+.rules-page .card-title,
+.detail_screen .event-title,
+.user-title,
+.desktop,
+.ruser-title,
+.user_screen thead th,
+.listing_screen ul li a.active,
+/* .listing_screen .tab-pane ul li a, */
+/* .listing_screen .games-tabsList ul li a,*/
+/* .listing_screen .nav-tabs .nav-item a,*/
+.listing_screen ul li a:hover,
+.betting-table h2.mrkname,
+.detail_screen .listing_screen ul li a,
+.bets-section h2,
+/*.modal-header,*/
+.games-tabsList .nav .nav-list,
+.casino-video-title {
+  background: var(--secondary) !important;
+}
+
+@media (max-width: 767px) {
+  .listing_screen .games-tabsList ul li a {
+    background: var(--secondary) !important;
+  }
+
+  .listing_screen .nav-tabs .nav-item a {
+    background: var(--primary) !important;
+  }
+}
+
+/*.listing_screen .nav-tabs .nav-item a,*/
+.panel-title,
+.casino-lastResult h2 {
+  background: var(--third) !important;
+}
+
+.casinoname {
+  background-image: linear-gradient(var(--primary), var(--fifth));
+}

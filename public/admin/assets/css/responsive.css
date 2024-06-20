@@ -1,0 +1,816 @@
+/*Mobile devices*/
+@media only screen and (min-width: 320px) and (max-width: 479px) {
+    .auth-form-wrapper.px-5.py-5 {
+        padding: 19px !important;
+    }
+    .noble-ui-logo img {
+        height: 70px;
+    }
+    .customfooter {
+        height: 136px !important;
+        line-height: 23px !important;
+    }
+    .logo-responsiblegambling img {
+        margin: 0px !important;
+        height: 50px !important;
+    }
+    .responsiblegambling {
+        background-image: linear-gradient(#333d79ff, #000);
+        width: 100%;
+        height: auto;
+        overflow-y: scroll;
+        margin-bottom: 136px !important;
+    }
+    .rules-regs ul {
+        margin-left: 0px;
+        padding: 0;
+    }
+    .navbar .navbar-content .navbar-nav .nav-item {
+        margin: 0px !important;
+        justify-content: center;
+        width: 100%;
+    }
+    .navbar .navbar-content {
+        width: 100% !important;
+        display: grid;
+        margin: 0px;
+        padding: 0px;
+        height: auto;
+        justify-content: center;
+    }
+    .navbar .navbar-content .navbar-nav {
+        display: grid;
+        justify-content: center;
+    }
+    .navbar {
+        width: 100%;
+        left: 0;
+        height: 50px;
+        position: relative;
+    }
+    .Balance_Down {
+        display: grid !important;
+    }
+    .on-off-toggle {
+        margin-bottom: 10px;
+    }
+    .main-wrapper .page-wrapper .page-content {
+        margin-bottom: 120px;
+    }
+    .mobile_view-code {
+        position: absolute !important;
+        top: 10px !important;
+        right: 8px !important;
+        justify-content: end !important;
+    }
+    li.Logged.mt-4.px-5 {
+        margin: 0px !important;
+    }
+    .mobile_view-code a.text-body.ms-0.text-white {
+        background-color: #f30b0b;
+        color: white !important;
+        padding: 5px 8px;
+        border-radius: 2px;
+    }
+    .mobile_view-code a#notificationDropdown {
+        background-color: #18c432;
+        color: white !important;
+        padding: 5px 8px;
+        z-index: 99;
+        border-radius: 2px;
+    }
+    .navbar-content {
+        margin-top: 10px !important;
+    }
+    .navbar .sidebar-toggler svg {
+        width: 30px;
+        height: 30px;
+        color: #000000;
+        background-color: white;
+        padding: 3px;
+        z-index: 999;
+        border-radius: 5px;
+    }
+    .sidebar .sidebar-body {
+        background: rgb(23 27 54);
+    }
+    table.w-auto.table.table-striped.table-balance {
+        overflow-x: scroll;
+        display: block;
+        width: 100% !important;
+    }
+    .mobile-responsive .d-flex.justify-content-between.align-items-baseline.mb-4.mb-md-3.pb-2.border-bottom {
+        flex-wrap: wrap;
+    }
+    .mobile-responsive .d-inline-flex.align-items-center {
+        flex-wrap: wrap;
+    }
+    .mobile-responsive .d-inline-flex.align-items-center .input-group {
+        margin: 5px 0px !important;
+    }
+    .mobile-responsive .d-inline-flex.mx-4 {
+        flex-wrap: wrap;
+        margin: 0px !important;
+    }
+    .mobile-responsive button.btn.btn-primary.Refresh.btn-icon-text.mb-2.mb-md-0.mx-2 {
+        margin-left: 0px !important;
+    }
+    .mobile-responsive table.table.table-striped {
+        overflow-x: scroll;
+        display: block;
+        width: 100% !important;
+    }
+	.card-body {
+    padding: 10px !important;
+}
+    .mobile_view-change{flex-wrap: wrap !important;}
+    .mobile-responsive .dataTables_length {
+        margin-bottom: 10px;
+    }
+    .BetSettings.mb-2 .table {
+        display: inline-grid !important;
+    }
+    .mobile-responsive .dataTables_info {
+        margin: 8px 0px;
+    }
+    .mobile-responsive .mb-3.d-flex.align-items-center {
+        flex-wrap: wrap !important;
+    }
+    .mobile-responsive .new_member_wrap_sport_list .mb-3.d-flex.align-items-center {
+        display: inline-block !important;
+    }
+    .mobile-responsive input.form-control.event-search {
+        width: 100%;
+    }
+    .mobile-responsive .Search-By_User {
+        color: white;
+        margin: 6px 5px;
+    }
+    .modal-content.perfect-scrollbar-example.ps .extra_pt_item .form-control {
+        width: 135px !important;
+    }
+    .mobile-responsive .form-check-inline {
+        display: block;
+        margin-right: 1rem;
+    }
+    .mobile-responsive .filter-group.statement-fltr {
+        margin: 10px 10px 10px 0px !important;
+        position: relative;
+    }
+    .mobile-responsive .filter-applybtn {
+        margin-bottom: 10px;
+    }
+    .mobile-responsive .d-flex.justify-content-start.align-items-baseline.mb-4.mb-md-3.pb-2 {
+        flex-wrap: wrap;
+    }
+    .mobile-responsive .d-flex.justify-content-start.align-items-baseline.mb-4.mb-md-3.pb-2 {
+        flex-wrap: wrap;
+    }
+    .mobile-responsive .d-inline-flex {
+        flex-wrap: wrap !important;
+    }
+    .mobile-responsive .d-inline-flex.align-items-center .mx-5 {
+        margin: 5px 0px !important;
+    }
+    .mobile-responsive .d-inline-flex.align-items-center {
+        display: inline-block !important;
+    }
+    .card-body_agent-listing-demoag5 .d-flex.mt-2 {display: inline-block !important;
+    }
+    .mobile-responsive .text-nowrap {
+        white-space: nowrap !important;
+        margin: 5px 0px !important;
+    }
+    .mobile-responsive div#dataTableExample_paginate {
+        float: none;
+    }
+    .mobile-responsive thead.access-rights-table__thead.mb-5 th {
+        white-space: normal;
+    }
+    thead.access-rights-table__thead.mb-5 th {
+        white-space: normal !important;
+    }
+    .mobile-responsive .Information{
+        width: 100%;    padding: 0px !important;
+    }
+    input.form-control.event-search.mx-2 {
+        margin: 7px 0px !important;
+    }
+    .mobile-responsive form.forms-sample.d-flex {
+            flex-wrap: wrap;
+    display: block !important;
+    width: 100%;
+    }
+    .My-Bets_Report .d-flex {
+        display: inline-block !important;
+        width: 100%;
+    }
+    .table-responsive {
+        height: auto !important;
+    }
+    .dataTables_length {
+        margin-bottom: 10px;
+    }
+    .mobile_port_change {
+        display: block !important;
+        margin: 0px !important;
+        width: 100% !important;
+    }
+    .mobile_port_change-new {
+        display: block !important;
+        margin: 5px 0px !important;
+        width: 100% !important;
+    }
+	.mobile_port_change-new_code {
+        margin: 5px 0px !important;
+        width: 100% !important;
+    }
+    .mobile_port_change .mb-3.mx-2 {
+        margin: 0px !important;
+    }
+    .height30vh {
+        height: auto;
+    }
+    .mobile_view_m-0{margin: 0px !important;}
+    .mobile-100{width: 100% !important;}
+    .stretch-card>.card {
+            height:auto !important;
+    }
+    thead.table-responsive-new-design {
+        width: 100%;
+    }
+    .casino-image {
+        width: 100% !important;
+    }
+    .new-casino.race .card-content {
+        margin-bottom: 15px;
+    }
+    .new-casino .casino-odds-box-container {
+        width: 100%;
+    }
+	.mobile_mar-10 tr{    padding: 3px 0px !important;
+    display: block;}
+	
+	.flex-wrap{flex-wrap: wrap !important;}
+	.displayunblock{    display: inline-table !important;    width: 100% !important;}
+	.extra_pt_row {
+    padding: 0 8px;
+}
+	.sidebar .sidebar-body {
+    max-height: calc(100% - 60px);
+    position: relative;
+    height: 73%;
+    background: rgba(0, 0, 0, 0.33);
+    overflow-y: auto !important;
+}
+.fix_mobile_view_design_code{    width: 100%;
+    overflow-y: scroll;
+    display: block;
+}
+.function-wrap {
+    position: relative;
+    background: none !important;
+}
+.submit-wrap .submit-payment {
+    margin: 5px 0px !important;
+}
+.submit-wrap input {
+    margin: 8px 0px !important;
+
+}
+.tab-topplay {
+    position: relative!important;
+    top: 0px!important;
+    left: 0px!important;
+    padding: 0px!important;
+    margin: 0px!important;
+    display: flex!important;
+    flex-wrap: wrap!important;
+    justify-content: center!important;
+}
+.top_player-wrap h3 {
+    height: auto !important;
+}
+ul.tab-topplay li {
+    display: block;
+    margin: 4px 0px;
+}
+.padding-left-0 {
+    padding-left: 12px !important;
+}
+.padding-right-0 {
+    padding-right: 12px !important;
+}
+.mmb-10{margin-bottom:10px !important;}
+.toggle-group input[type=checkbox]:checked ~ .onoffswitch .onoffswitch-label .onoffswitch-inner {
+    margin-left: -10px !important;
+}
+.forms-sample.width-50{width: 100% !important;}
+.wid-150{width:150px !important;}
+.global-settings_m{display: block !important;
+        margin: 5px 0px !important;
+        width: 100% !important;}
+.perfect-scrollbar-example {
+    position: relative;
+    max-height: 100%;
+}
+.Information {
+    width: 100% !important;
+}
+.daterangepicker .calendar-table th, .daterangepicker .calendar-table td {
+    line-height: 14px !important;
+}
+
+
+
+}
+
+/*iPads, Tablets*/
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+
+    .noble-ui-logo img {
+        height: 70px;
+    }
+    .customfooter {
+        height: 100px !important;
+        line-height: 23px !important;
+    }
+    .logo-responsiblegambling img {
+        margin: 0px !important;
+        height: 50px !important;
+    }
+    .responsiblegambling {
+        background-image: linear-gradient(#333d79ff, #000);
+        width: 100%;
+        height: auto;
+        overflow-y: scroll;
+        margin-bottom: 136px !important;
+    }
+    .rules-regs ul {
+        margin-left: 0px;
+        padding: 0;
+    }
+    .navbar .navbar-content .navbar-nav .nav-item {
+        margin: 0px !important;
+        justify-content: center;
+        width: 100%;
+    }
+    .navbar .navbar-content {
+        width: 100% !important;
+        display: grid;
+        margin: 0px;
+        padding: 0px;
+        height: auto;
+        justify-content: center;
+    }
+    .navbar .navbar-content .navbar-nav {
+        display: grid;
+        justify-content: center;
+    }
+    .navbar {
+        width: 100%;
+        left: 0;
+        height: 50px;
+        position: relative;
+    }
+    .Balance_Down {
+        display: grid !important;
+    }
+    .on-off-toggle {
+        margin-bottom: 10px;
+    }
+    .main-wrapper .page-wrapper .page-content {
+        margin-bottom: 120px;
+    }
+    .mobile_view-code {
+        position: absolute !important;
+        top: 10px !important;
+        right: 8px !important;
+        justify-content: end !important;
+    }
+    li.Logged.mt-4.px-5 {
+        margin: 0px !important;
+    }
+    .mobile_view-code a.text-body.ms-0.text-white {
+        background-color: #f30b0b;
+        color: white !important;
+        padding: 5px 8px;
+        border-radius: 2px;
+    }
+    .mobile_view-code a#notificationDropdown {
+        background-color: #18c432;
+        color: white !important;
+        padding: 5px 8px;
+        z-index: 99;
+        border-radius: 2px;
+    }
+    .navbar-content {
+        margin-top: 10px !important;
+    }
+    .navbar .sidebar-toggler svg {
+        width: 30px;
+        height: 30px;
+        color: #000000;
+        background-color: white;
+        padding: 3px;
+        z-index: 999;
+        border-radius: 5px;
+    }
+    .sidebar .sidebar-body {
+        background: rgb(23 27 54);
+    }
+    table.w-auto.table.table-striped.table-balance {
+        overflow-x: scroll;
+        display: inline-table;
+        width: 100% !important;
+    }
+    .mobile-responsive .d-flex.justify-content-between.align-items-baseline.mb-4.mb-md-3.pb-2.border-bottom {
+        flex-wrap: wrap;
+    }
+    .mobile-responsive .d-inline-flex.align-items-center {
+        flex-wrap: wrap;
+    }
+    .mobile-responsive .d-inline-flex.align-items-center .input-group {
+        margin: 5px 0px !important;
+    }
+    .mobile-responsive .d-inline-flex.mx-4 {
+        flex-wrap: wrap;
+        margin: 0px !important;
+    }
+    .mobile-responsive button.btn.btn-primary.Refresh.btn-icon-text.mb-2.mb-md-0.mx-2 {
+        margin-left: 0px !important;
+    }
+    .mobile-responsive .new_member_wrap_sport_list .mb-3.d-flex.align-items-center {
+        display: inline-block !important;
+    }
+    .modal-content.perfect-scrollbar-example.ps .extra_pt_item .form-control {
+        width: 135px !important;
+    }
+    .mobile-responsive .form-check-inline {
+        display: block;
+        margin-right: 1rem;
+    }
+    .mobile-responsive .filter-group.statement-fltr {
+        margin: 10px 10px 10px 0px !important;
+        position: relative;
+    }
+    .mobile-responsive .filter-applybtn {
+        margin-bottom: 10px;
+    }
+    .mobile-responsive .d-flex.justify-content-start.align-items-baseline.mb-4.mb-md-3.pb-2 {
+        flex-wrap: wrap;
+    }
+    .mobile-responsive .d-flex.justify-content-start.align-items-baseline.mb-4.mb-md-3.pb-2 {
+        flex-wrap: wrap;
+    }
+    .mobile-responsive .d-inline-flex {
+        flex-wrap: wrap !important;
+    }
+    .mobile-responsive .d-inline-flex.align-items-center .mx-5 {
+        margin: 5px 0px !important;
+    }
+    .mobile-responsive .d-inline-flex.align-items-center {
+        display: inline-block !important;
+    }
+    .card-body_agent-listing-demoag5 .d-flex.mt-2 {display: inline-block !important;
+    }
+    .mobile-responsive .text-nowrap {
+        white-space: nowrap !important;
+        margin: 5px 0px !important;
+    }
+    .mobile-responsive div#dataTableExample_paginate {
+        float: none;
+    }
+    thead.access-rights-table__thead.mb-5 th {
+        white-space: normal !important;
+    }
+    .mobile-responsive .Information{
+        width: 100%;    padding: 0px !important;
+    }
+    .mobile-responsive form.forms-sample.d-flex {
+        flex-wrap: wrap;
+    }
+    .My-Bets_Report .d-flex {
+        display: inline-block !important;
+        width: 100%;
+    }
+    .table-responsive {
+        height: auto !important;
+    }
+    .dataTables_length {
+        margin-bottom: 10px;
+    }
+    .mobile_port_change {
+        flex-wrap: wrap !important;
+        margin: 0px !important;
+        width: 100%;
+    }
+    .mobile_port_change .mb-3.mx-2 {
+        margin: 0px !important;
+    }
+    .height30vh {
+        height: auto;
+    }
+    .mobile_view_m-0{margin: 0px !important;}
+    .mobile-100{width: 100% !important;}
+    .stretch-card>.card {
+            height:auto !important;
+    }
+    thead.table-responsive-new-design {
+        width: 100%;
+    }
+    .casino-image {
+        width: 100% !important;
+    }
+    .new-casino.race .card-content {
+        margin-bottom: 15px;
+    }
+    .new-casino .casino-odds-box-container {
+        width: 48%;
+    }
+	.mobile_mar-10 tr{    padding: 3px 0px !important;
+    display: block;}
+	._Account-Statement_{width: 100% !important;}
+	
+	.sidebar .sidebar-body {
+    max-height: calc(100% - 60px);
+    position: relative;
+    height: 73%;
+    background: rgba(0, 0, 0, 0.33);
+    overflow-y: auto !important;
+}
+.fix_mobile_view_design_code{    width: 100%;
+    overflow-y: scroll;
+    display: block;
+}
+
+.function-wrap {
+    position: relative;
+    background: none !important;
+}
+.submit-wrap .submit-payment {
+    margin: 5px 0px !important;
+}
+.submit-wrap input {
+    margin: 8px 0px !important;
+
+}
+.padding-left-0 {
+    padding-left: 12px !important;
+}
+.padding-right-0 {
+    padding-right: 12px !important;
+}
+.mmb-10{margin-bottom:10px !important;}
+.toggle-group input[type=checkbox]:checked ~ .onoffswitch .onoffswitch-label .onoffswitch-inner {
+    margin-left: -10px !important;
+}
+.wid-150{width:150px !important;}
+  .global-settings_m{display: block !important;}
+.perfect-scrollbar-example {
+    position: relative;
+    max-height: 100%;
+}
+.Information {
+    width: 100% !important;
+}
+.daterangepicker .calendar-table th, .daterangepicker .calendar-table td {
+    line-height: 14px !important;
+}
+	.mobile_port_change-new_code {
+        margin: 5px 0px !important;
+        width: 100% !important;
+    }
+
+}
+
+
+/*Small screens, laptops*/
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+   
+    .noble-ui-logo img {
+        height: 70px;
+    }
+    .customfooter {
+        height:95px !important;
+        line-height: 23px !important;
+    }
+	.global-settings_m{display: block !important;}
+	._Account-Statement_{width: 100% !important;}
+    .mobile-responsive form.forms-sample.d-flex {
+        flex-wrap: wrap;
+    }
+	
+    .logo-responsiblegambling img {
+        margin: 0px !important;
+        height: 50px !important;
+    }
+	.wid-150{width:150px !important;}
+    .responsiblegambling {
+        background-image: linear-gradient(#333d79ff, #000);
+        width: 100%;
+        height: auto;
+        overflow-y: scroll;
+        margin-bottom: 136px !important;
+    }
+    .rules-regs ul {
+        margin-left: 0px;
+        padding: 0;
+    }
+    .navbar .navbar-content .navbar-nav .nav-item {
+        margin: 0px !important;
+        justify-content: center;
+        width: 100%;
+    }
+    .navbar .navbar-content {
+        width: 100% !important;
+        display: grid;
+        margin: 0px;
+        padding: 0px;
+        height: auto;
+        justify-content: center;
+    }
+    .navbar .navbar-content .navbar-nav {
+        display: grid;
+        justify-content: center;
+    }
+    .navbar {
+        width: 100%;
+        left: 0;
+        height: 50px;
+        position: relative;
+    }
+    .Balance_Down {
+        display: grid !important;
+    }
+    .on-off-toggle {
+        margin-bottom: 10px;
+    }
+    .main-wrapper .page-wrapper .page-content {
+        margin-bottom: 120px;
+    }
+    .mobile_view-code {
+        position: absolute !important;
+        top: 10px !important;
+        right: 8px !important;
+        justify-content: end !important;
+    }
+    li.Logged.mt-4.px-5 {
+        margin: 0px !important;
+    }
+    .mobile_view-code a.text-body.ms-0.text-white {
+        background-color: #f30b0b;
+        color: white !important;
+        padding: 5px 8px;
+        border-radius: 2px;
+    }
+    .mobile_view-code a#notificationDropdown {
+        background-color: #18c432;
+        color: white !important;
+        padding: 5px 8px;
+        z-index: 99;
+        border-radius: 2px;
+    }
+    .navbar-content {
+        margin-top: 10px !important;
+    }
+    .navbar .sidebar-toggler svg {
+        width: 30px;
+        height: 30px;
+        color: #000000;
+        background-color: white;
+        padding: 3px;
+        z-index: 999;
+        border-radius: 5px;
+    }
+    .sidebar .sidebar-body {
+        background: rgb(23 27 54);
+    }
+    table.w-auto.table.table-striped.table-balance {
+        overflow-x: scroll;
+        display: inline-table;
+        width: 100% !important;
+    }
+    .mobile-responsive .d-flex.justify-content-between.align-items-baseline.mb-4.mb-md-3.pb-2.border-bottom {
+        flex-wrap: wrap;
+    }
+    .mobile-responsive .d-inline-flex.align-items-center .input-group {
+        margin: 5px 0px !important;
+    }
+    .mobile-responsive .d-inline-flex.mx-4 {
+        flex-wrap: wrap;
+        margin: 0px !important;
+    }
+    /*.mobile-responsive button.btn.btn-primary.Refresh.btn-icon-text.mb-2.mb-md-0.mx-2 {
+        margin-left: 0px !important;
+    }*/
+    .mobile-responsive .new_member_wrap_sport_list .mb-3.d-flex.align-items-center {
+        display: inline-block !important;
+    }
+    .mobile-responsive .Information{
+        width: 100%;    padding: 0px !important;
+    }
+    .table-responsive {
+        height: auto;
+    }
+	.mobile_mar-10 tr{    padding: 3px 0px !important;
+    display: block;}
+	
+	.fix_mobile_view_design_code{    width: 100%;
+    overflow-y: scroll;
+    display: block;
+}
+.function-wrap {
+    position: relative;
+    background: none !important;
+}
+.padding-left-0 {
+    padding-left: 12px !important;
+}
+.padding-right-0 {
+    padding-right: 12px !important;
+}
+.no_change_this_code{width: 100% !important; padding:0px !important; }
+.mmb-10{margin-bottom:10px !important;}
+.toggle-group input[type=checkbox]:checked ~ .onoffswitch .onoffswitch-label .onoffswitch-inner {
+    margin-left: -10px !important;
+}
+.perfect-scrollbar-example {
+    position: relative;
+    max-height: 100%;
+}
+.Information {
+    width: 100% !important;
+}
+    
+}
+
+/*Large screens, laptops*/
+@media only screen and (min-width: 992px) and (max-width: 1024px) {
+    .row.new_member_wrap_sport_list.align-items-center .mb-3.d-flex.align-items-center {
+        display: inline-block !important;
+    }
+    .Information{
+        width: 100%;    padding: 0px !important;
+    }
+    form.forms-sample.d-flex {
+        flex-wrap: wrap;
+    }
+    .change_view-port{ width: 100%; margin-bottom: 10px;}
+	.no_change_this_code{width: 100% !important; padding:0px !important; }
+	.destop_change{width: 50% !important;}
+	.mmb-10{margin-bottom:10px !important;}
+}
+
+
+/*Large screens, laptops*/
+@media only screen and (min-width: 1025px) and (max-width: 1366px) {
+    .row.new_member_wrap_sport_list.align-items-center .mb-3.d-flex.align-items-center {
+        display: inline-block !important;
+    }
+    .Information{
+        width: 100% !important;    padding: 0px !important;
+    }
+    .Balance_Down li {
+        margin: 0px 14px 0px 0px;
+    }
+   form.forms-sample.d-flex {
+        flex-wrap: wrap !important;
+    }
+    li.Logged.mt-4.px-5 {
+        padding: 0px !important;
+    }
+	.sidebar .sidebar-body {
+    max-height: calc(100% - 60px);
+    position: relative;
+    height: 81%;
+    background: rgba(0, 0, 0, 0.33);
+    overflow-y: auto !important;
+}
+    .change_view-port{ width: 100%; margin-bottom: 10px;}
+	.destop_change{width: 50% !important;}
+	.mmb-10{margin-bottom:10px !important;}
+.
+.fix_mobile_view_design_code_desktop
+{
+    width: 100%;
+    overflow-y: scroll;
+    display: block;
+  }
+	
+}
+/*Large screens, laptops*/
+@media only screen and (min-width: 1366px) and (max-width: 1920px) {
+
+	.sidebar .sidebar-body {
+    max-height: calc(100% - 60px);
+    position: relative;
+    height: 82%;
+    background: rgba(0, 0, 0, 0.33);
+}
+
+
+}
+.toggle-group {
+    width: 26px;
+}

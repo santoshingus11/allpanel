@@ -1,0 +1,525 @@
+.img-fluid{
+    border: 0;
+}
+.video-image{
+    position: relative;
+    background-color: #000;
+    min-height: 400px;
+}
+.videoCards {
+    position: absolute;
+    content: "";
+    z-index: 10;
+    padding: 6px;
+    background: rgba(0,0,0,.4);
+    color: #fff;
+    top: 0;
+}
+.rules-img {
+    width: 100%;
+    margin: 0 auto;
+}
+.videoCards img {
+    width: 35px;
+    height: auto;
+    margin-right: 2px;
+    margin-left: 2px;
+    border-radius: 4px;
+}
+.videoCards .poker-up {
+    width: 49%;
+    display: inline-block;
+}
+.winnerCards {
+    right: 5px;
+    position: absolute;
+    content: "";
+    z-index: 10;
+    padding: 6px;
+    background: rgba(0,0,0,.4);
+    color: #fff;
+}
+.clock2digit {
+    max-width: 300px;
+    bottom: -30px;
+    position: absolute !important;
+    right: -40px;
+    width: auto !important;
+    transform: scale(0.5);
+}
+.player-image-container img {
+    max-width: 50px;
+}
+
+.fancy-Book-lader{
+    width:52%;
+    margin-left: 48%;
+}
+
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::after
+{
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    position: absolute;
+    color: #000;
+    font-size: 8px;
+    top: 1px;
+    left: -16px;
+    content: "\f00c";
+}
+.custom-control-input:checked ~ .custom-control-label::before {
+    color: #000;
+    border-color: #000;
+    background-color: transparent;
+    border-radius: 0;
+}
+
+.custom-checkbox .custom-control-label:before {
+    border-radius: 0;
+}
+
+.grecaptcha-badge{
+    display: none;
+}
+
+.master-flash-message{
+    position: fixed !important;
+    top: 20px !important;
+    bottom: unset !important;
+    min-width: 300px !important;
+    right: unset !important;
+    z-index: 10 !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    text-align: center !important;
+}
+.flash__message.error
+{
+    color: #fff;
+    background-color: #a94442;
+    border-color: #a94442;
+}
+.flash__message.success
+{
+    color: #fff;
+    background-color: #3c763d;
+    border-color: #3c763d;
+}
+.flash__message
+{
+    background-color: #ccc;
+}
+
+.login{
+    height: calc(100vh - 98px);
+}
+.login-container{
+    height: calc(100% - 98px);
+}
+
+.modal-dialog footer{
+    background-color: unset;
+}
+
+.suspended-tr::after, .teenpatti-suspended::after, .suspended::after, .sudpended-patern::after, .suspendedtcard::after{
+    content: "\F023" !important;
+    font-family: "Font Awesome 5 Free" !important;
+    font-weight: 900 !important;
+    color: #1f5058 !important;
+}
+
+.cmeter .meter-content img
+{
+    width: 30px;
+    margin-right: 3px;
+    margin-bottom: 5px;
+}
+.cmeter .meter-lh-card-container
+{
+    background-color: #ccc;
+    padding: 5px 0;
+    text-align: center;
+}
+.cmeter .meter-lh-card-container h5
+{
+    vertical-align: middle;
+}
+.cmeter .meter-lh-card img
+{
+    width: 30px;
+    margin-right: 5px;
+}
+.cmeter .cmeter-container .info-icon
+{
+    color: #fff;
+}
+.cmeter .meter-lh-card-container h5
+{
+     border-bottom: 0;
+}
+.cmeter .btn-theme
+{
+    font-size: inherit;
+}
+.cmeter .btn-theme h4
+{
+    color: #fff !important;
+}
+.cmeter .info-icon
+{
+    color: #fff;
+}
+.cmeter .suspended:after
+{
+    width: 100%;
+}
+.cmeter .cmeter-title {
+    height: 50px;
+}
+
+.cc-20 .video-container
+{
+    background-color: #000;
+}
+@font-face {
+    font-family: Digital;
+    src: url(fonts/digital.ttf);
+}
+@font-face {
+    font-family: helvetica,"Segoe UI",Arial,sans-serif;
+    src: url(fonts/helvetica.ttf);
+}
+.cc-20 .cc-banner-container
+{
+    background-color: rgba(0,0,0,0.4);
+    position: absolute;
+    width: 60%;
+    height: 160px;
+    display: flex;
+    justify-content: center;
+    left: 20%;
+    top: 15%;
+    color: #fff;
+}
+.cc-20 .cc-banner-container-inner
+{
+    background-color: rgba(0,0,0,0.4);
+    position: absolute;
+    width: 98%;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    left: 1%;
+    top: 3%;
+    color: #fff;
+    padding: 5px;
+    border: 1px solid #fff;
+}
+.cc-20 .cc-banner-container-inner .c-remark
+{
+    color: #fff;
+}
+.cc-20 .cc-banner-container h4
+{
+   /* font-family: Digital;*/
+   font-family: helvetica,"Segoe UI",Arial,sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #fff !important;
+}
+.cc-20  .cc-banner-container span
+{
+    font-family: Digital;
+    font-weight: bold;
+    font-size: 26px;
+    line-height: 26px;
+}
+.cc-20 .cc-banner-title
+{
+    color: #fff !important;
+    position: absolute;
+    top: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    height: 135px;
+    width: 135px;
+    border-radius: 50%;
+    color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #103D9A;
+    padding: 5px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.cc-20 .cc-banner-title > div
+{
+    line-height: 20px;
+}
+.cc-20 .cc-banner-ball
+{
+    position: absolute;
+    top: 195px;
+    width: 100%;
+    text-align: center;
+}
+.cc-20 .cc-banner-ball img
+{
+    width: 40px;
+    margin-right: 10px;
+}
+.cc-20 .score-box
+{
+    position: relative;
+    height: 70px;
+    margin-bottom: 40px;
+    padding: 0 !important;
+    border-radius: 0 !important;
+}
+.cc-20 .backbox
+{
+    position: absolute;
+    top: 0;
+    left: 70%;
+    width: 15%;
+    height: 50px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 18px;
+    color: #000;
+}
+.cc-20 .laybox
+{
+    position: absolute;
+    top: 0;
+    left: 85%;
+    width: 15%;
+    height: 50px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 18px;
+    color: #000;
+}
+.cc-20 .score-img
+{
+    width: 70%;
+}
+.cc-20 .ball-image
+{
+    width: 50px;
+    position: absolute;
+    z-index: 1000;
+    top: 40px;
+    left: 10px;
+}
+.cc-20 .team-score
+{
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: rgba(0,0,0,0.5);
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    left: 20%;
+    width: 50%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+}
+.cc-20 .min-max
+{
+    font-size: 12px;
+    position: absolute;
+    top: 53px;
+    right: 5px;
+}
+.cc-20 .book
+{
+    position: absolute;
+    top: 5px;
+    left: 5px;   
+}
+.cc-20 .suspended:after
+{
+    width: 30%;
+    height: 50px;
+    top: 0;
+    right: 0;
+    border-radius:0;
+}
+.cc-20 .last-result{
+    margin-left: 4px;
+    width: 35px;
+}
+.cc-20 .last-result .balls{
+    width: 35px;
+}
+.cc-20 .placebet-run{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+}
+
+.bounce-enter-active {
+    animation: bounce-in .5s;
+}
+
+.bounce-leave-active {
+    animation: bounce-in .5s reverse;
+}
+
+@keyframes bounce-in {
+    0% {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1.5);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+.cc-20 .video-tv-popup{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+}
+.cc-20 .cc-banner-img{
+    height:400px;
+    opacity: 0.7;
+}
+.cc-20 .videoCards{
+    top: 0;
+}
+.cc-20 #result-desc {
+    background: rgba(0, 0, 0, 0.4);
+    color: var(--white-color);
+    text-align: right;
+    padding: 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #fff;
+}
+
+.lott-modal .modal-mask {
+    position: fixed;
+    z-index: 9998;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    display: table;
+    transition: opacity .3s ease;
+}
+
+.lott-modal .modal-wrapper {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.lott-modal .modal-dialog{
+    max-width: 90%;
+    width: 90%;
+}
+
+.lott-modal .modal-body{
+    padding: 0;
+}
+
+.team-block img{
+    filter: invert(1);
+}
+
+.security-auth .form-inline {
+    justify-content: center;
+}
+/* Security auth login */
+.container-login-auth{
+	height: 100vh !important;
+}
+.login-auth {
+    width: 650px !important;
+}
+
+.login-auth .featured-box-login {
+    padding: 20px;
+}
+
+
+/* Security auth settings */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.otp-input {
+    width: 70px;
+    height: 70px;
+    padding: 5px;
+    margin: 0 10px;
+    font-size: 30px;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    text-align: center;
+
+    &.error {
+        border: 1px solid red !important;
+    }
+}
+
+.otp-input:focus {
+    border: 2px solid #333;
+    outline: none;
+    box-shadow: none;
+    /*color: var(--theme1-bg);*/
+}
+
+.otp-input::-webkit-inner-spin-button,
+.otp-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.authentication{
+    color: #fff;
+}
+.authentication img{
+    height: 50px;
+}
+.login-auth{
+    margin: 0 auto;
+}
+.auth-container,.auth-container .login-container{
+    height: 100vh;
+}

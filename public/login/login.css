@@ -1,0 +1,177 @@
+@import url("https://use.fontawesome.com/releases/v5.0.10/css/all.css");
+
+body {
+  font-family: 'Roboto Condensed', sans-serif !important;
+  color: #272829;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Roboto Condensed', sans-serif !important;
+}
+.invalid-feedback { display: block;}
+.form-control {
+    border: none;
+    border: 1px solid #ced4da !important;
+    border-radius: 0.25rem !important;
+}
+#load {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    position: fixed !important;
+    align-items: center;
+    z-index: 9999;
+    position: relative;
+    background-image: linear-gradient(#0088cc, #464646);
+}
+#load-inner {
+    position: relative;
+    text-align: center;
+}
+#load-inner img {
+    display: block;
+    height: 65px;
+}
+#load-inner i {
+    font-size: 24px;
+    color: rgb(255, 255, 255);
+    margin-top: 40px;
+}
+.login {
+    width: 100%;
+    background-image: linear-gradient(var(--login1), var(--login2)) !important;
+    display: flex;
+    justify-content: center;
+/*     align-items: center; */
+    height: 100vh;
+}
+.loginInner1 {
+    width: 350px;
+    max-width: 90%;
+    margin: 15% auto;
+    /*margin-top: 0;*/
+}
+.logo-login {
+    max-width: 100%;
+    height: 90px;
+}
+
+.logo-login-1{
+    max-width: 100%;
+    height: 90px;
+}
+
+.loginInner1 form{
+    line-height: normal;
+}
+.featured-box-login {
+    box-sizing: border-box;
+    padding: 20px;
+    border-radius: 4px;
+    background: #fff;
+}
+.featured-box-login h4 {
+    color: var(--primary);
+}
+.login .form-group {
+    position: relative;
+}
+.login .form-group i {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+}
+.login .form-group .btn-submit {
+/*    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0;*/
+}
+.btn-submit {
+    background-color: var(--third);
+    border-color: #0088cc !important;
+    color: #fff !important;
+}
+.btn-login {
+    width: 100%;
+}
+.btn-login:hover{
+  color: #fff;
+}
+.btn-submit .fa-sign-in-alt {
+    font-size: 16px;
+    position: relative;
+    float: right;
+    top: 3px;
+}
+.recaptchaTerms{
+    font-size: 80%;
+    font-weight: 400;
+    line-height: 0.5;
+}
+.m-b-20 {
+    margin-bottom: 20px !important;
+}
+/* .download-apk a:hover {
+    color: #fff;
+} */
+.blinking span i{
+  margin-right: 5px;
+}
+.blinking span {
+    animation: blinkingText 0.8s infinite;
+}
+
+@-webkit-keyframes blinkingText {
+  from {color: #fff;}
+  to {color: yellow;}
+}
+@media (max-width: 767px) {
+    .login{
+        align-items: center;
+    }
+    .featured-box-login{
+        padding: 26px 16px 26px 16px;
+        border-radius: 8px;
+    }
+    .login .form-group {
+        margin-bottom: 1.5rem !important;
+    }
+    .featured-box-login form .form-group.text-center.mb-0{
+        margin-bottom: 0 !important;
+    }
+    .loginInner1 {
+        width: 300px;
+        max-width: 100%;
+        margin: 15% auto;
+        /* margin-top: 0; */
+    }
+    .form-control {
+        border: none;
+        border-radius: 0 !important;
+        border: none !important;
+        border-bottom: 1px solid #000 !important;
+    }
+    .featured-box-login h4,
+    .login .form-group i{
+        /* display: none; */
+    }
+    .btn-login i{
+        display: inline-block !important;
+        position: inherit !important;
+        float: none !important;
+    }
+    .logo-login{
+        max-width: 100%;
+        height: 50px;
+    }
+    .logo-login-1{
+        max-width: 70%;
+    }
+}
+
+.login-demo-btn-section{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
