@@ -18,7 +18,7 @@ use App\Models\GreyhoundRacingPlaceBet;
 use App\Models\CricketPlaceBet;
 use App\Models\FootballPlaceBet;
 
-//git test
+//git test 2
 class ClientController extends Controller
 {
     use AuthenticatesUsers;
