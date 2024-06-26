@@ -5,7 +5,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>All</title>
+  <title>CRICKET247BUZZ</title>
   <!--<base href="/">-->
   <base href=".">
   <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
@@ -14,7 +14,20 @@
   <link rel="icon" type="image/x-icon" href="https://crickekbuz.art/assets/favicon.ico">
   <!-- Favicons -->
   <!-- <link href="assets/img/favicon.png" rel="icon"> -->
+  <style>
+    .liveTvMatch {
+      width: 100%;
+      height: 400px;
+      /* Adjust the height as needed */
+      position: relative;
+    }
 
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
   <!-- Google Fonts -->
   <style type="text/css">
     @font-face {
@@ -745,8 +758,8 @@
   <style></style>
   <style>
     :root {
-      --primary:#08c;
-      --secondary: #2d3e50;
+      --primary: #2d3387;
+      --secondary: #092844;
       --third: #2b329bE6;
       --forth: #092844D9;
       --fifth: #fff;
@@ -1366,7 +1379,7 @@
   @if(Session::has('message'))
   <p class="alert alert-success">{{ Session::get('message') }}</p>
   @endif
-
+<input type="hidden" id="channel_id" name="channel_id" value="{{$game_single['channel_id']}}">
   <app-root _nghost-uhn-c12="" ng-version="12.1.5"><router-outlet _ngcontent-uhn-c12=""></router-outlet><app-layout _nghost-uhn-c75=""><app-topnav _nghost-uhn-c72="">
         <div class="topbar">
           <div class="container-fluid">
@@ -1380,15 +1393,15 @@
                   <li class="dropdown topright_drop">
                     <div class="btn-group"><a href="https://crickekbuz.art/assets/#" data-toggle="dropdown" class="dropdown-toggle">@if(Auth::guard('client')->check()) {{Auth::guard('client')->user()->username}} @endif <i class="fa fa-caret-down"></i><i class="fa fa-chevron-down"></i></a>
                       <div class="dropdown-menu dropdown-menu-right">
-                          <a routerlink="/reports/account-statement" class="dropdown-item" href="{{route('account_settlement')}}"> account statement </a>
-                          <a routerlink="/reports/profit-loss" class="dropdown-item" href="{{route('profit_loss_report')}}"> profit loss report </a>
-                          <a routerlink="/reports/bet-history" class="dropdown-item" href="{{route('bet_history_client')}}"> bet history </a>
-                          <!--<a routerlink="/reports/unsettled-bet" class="dropdown-item" href="{{route('account_settlement')}}"> unsettled bet </a>-->
-                          <!--<a routerlink="/set-button-value" class="dropdown-item" href="https://crickekbuz.art/assets/set-button-value"> set button values </a>-->
-                          <a routerlink="/change-password" class="dropdown-item" href="{{route('change_pass')}}"> change password </a>
-                          <!--<a routerlink="/rules" class="dropdown-item d-sm-none d-block" href="https://crickekbuz.art/assets/rules"> rules </a>-->
+                        <a routerlink="/reports/account-statement" class="dropdown-item" href="{{route('account_settlement')}}"> account statement </a>
+                        <a routerlink="/reports/profit-loss" class="dropdown-item" href="{{route('profit_loss_report')}}"> profit loss report </a>
+                        <a routerlink="/reports/bet-history" class="dropdown-item" href="{{route('bet_history_client')}}"> bet history </a>
+                        <!--<a routerlink="/reports/unsettled-bet" class="dropdown-item" href="{{route('account_settlement')}}"> unsettled bet </a>-->
+                        <!--<a routerlink="/set-button-value" class="dropdown-item" href="https://crickekbuz.art/assets/set-button-value"> set button values </a>-->
+                        <a routerlink="/change-password" class="dropdown-item" href="{{route('change_pass')}}"> change password </a>
+                        <!--<a routerlink="/rules" class="dropdown-item d-sm-none d-block" href="https://crickekbuz.art/assets/rules"> rules </a>-->
                         <div class="dropdown-divider"></div>
-                          <a href="{{route('client-logout')}}" class="dropdown-item"> SignOut </a>
+                        <a href="{{route('client-logout')}}" class="dropdown-item"> SignOut </a>
                       </div>
                     </div>
                   </li>
@@ -1439,9 +1452,9 @@
               @include('client.cricbuz-sidebar-menu')
 
             </app-sidebar>
-            
-            </div>
-        @include('web_layout.more_games')
+
+          </div>
+          @include('web_layout.more_games')
           <div class="d-sm-none" style="display: flex; padding: 0;">
             <div class="mobie-title bg-color" style="width: 100% !important;"> IPL 2024 </div>
             <div class="mobie-title" style="width: 100% !important;"> LOK SABHA 2024 </div>
@@ -1497,380 +1510,93 @@
                       </tabset><!---->
                     </div>
                     <?php
-                      if ($_SERVER['HTTP_USER_AGENT'] && strpos($_SERVER['HTTP_USER_AGENT'], 'Mobile') !== false) {
-                        // If the user agent indicates a mobile device, use mobile styles
-                        echo '<div class="col-md-8 order-2">';
-                        echo ' <a target="_blank" href="https://allinone-tataplay-web-one.vercel.app/player.html?channel=24"> <h2 class="event-title mb-1">Live Match</h2></a>';
-                      } else {
-                        // Otherwise, use desktop styles
-                        echo '<div class="col-md-8">';
-                      }
-                      ?>
-                       
-                         @php 
-                            $dateTime = new DateTime($game_single['datetimeGMT'], new DateTimeZone('GMT'));
-                            $dateTime->setTimezone(new DateTimeZone('Asia/Kolkata'));
-                            $istTime = $dateTime->format('Y-m-d H:i:s');
-                      @endphp
-                      <h2 _ngcontent-uhn-c91="" class="event-title"><span _ngcontent-uhn-c91=""> {{$game_single['game_title']}} </span><!----><!----><span _ngcontent-uhn-c91="">{{$istTime}}
-                        </span><!----><!----></h2>
-                      <div id="scoreCard" class="multi-collapse">
-                        <div class="col-12 px-0"><app-score-card _ngcontent-uhn-c91="" _nghost-uhn-c89="" class="scoreCard_game"><!----></app-score-card></div>
-                      </div><!---->
-                      <div class="row">
-                        <div class="col-md-12">
-                          <div>
-                            <h4 _ngcontent-uhn-c91="" class="panel-title"> Match Odds <!----><!----></h4>
-                            <div class="body-odds th-bl">
-                              <div class="events_odds">&nbsp;&nbsp;</div>
+                    if ($_SERVER['HTTP_USER_AGENT'] && strpos($_SERVER['HTTP_USER_AGENT'], 'Mobile') !== false) {
+                      // If the user agent indicates a mobile device, use mobile styles
+                      echo '<div class="col-md-8 order-2">';
+                    } else {
+                      // Otherwise, use desktop styles
+                      echo '<div class="col-md-8">';
+                    }
+                    ?>
+
+                    @php
+
+                    $dateTime = new DateTime($game_single['datetimeGMT'] , new DateTimeZone('GMT'));
+                    $dateTime->setTimezone(new DateTimeZone('Asia/Kolkata'));
+                    $istTime = $dateTime->format('Y-m-d H:i:s');
+                    @endphp
+                    <?php if ($_SERVER['HTTP_USER_AGENT'] && strpos($_SERVER['HTTP_USER_AGENT'], 'Mobile') !== false) { ?>
+                      <!--<h2 class="event-title text-center"><a href="https://allinone-tataplay-web-one.vercel.app/player.html?channel={{$game_single['channel_id']}}" target="_blank"> Live Match </a></h2>-->
+                      <div class="betting-table lay-bt" style="position: relative;">
+                        <h2 _ngcontent-uhn-c87="" class="mrkname" id="liveMatchLink"> Live Match </h2>
+                      </div>
+                      <div id="liveTvMatch"> </div>
+                    <?php } ?>
+                    <h2 _ngcontent-uhn-c91="" class="event-title"><span _ngcontent-uhn-c91=""> {{$game_single['game_title']}} </span><!----><!----><span _ngcontent-uhn-c91="">{{$istTime}}
+                      </span><!----><!----></h2>
+
+                    <div id="scoreCard" class="multi-collapse">
+                      <div class="col-12 px-0"><app-score-card _ngcontent-uhn-c91="" _nghost-uhn-c89="" class="scoreCard_game"><!----></app-score-card></div>
+                    </div><!---->
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div>
+                          <h4 _ngcontent-uhn-c91="" class="panel-title"> Match Odds <!----><!----></h4>
+                          <div class="body-odds th-bl">
+                            <div class="events_odds">&nbsp;&nbsp;</div>
+                            <div class="odds_bhav">
+                              <div class="back_oddsbox bhav_box">Back</div>
+                              <div class="Lay_oddsbox bhav_box">Lay</div>
+                            </div>
+                          </div>
+
+
+
+                          @foreach($response['match_odds'] as $r)
+                          <div class="randerScore mainScore">
+                            <div class="odds_rows">
+                              <div class="events_odds"><!---->
+                                <div class="event-names">
+                                  <div class="horse-event">
+                                    <div class="slogen-horce"><span class="team-horce team_name">{{$r['team_name']}}</span></div>
+                                  </div>
+                                  <div><!----><!----></div>
+                                </div><!---->
+                              </div>
                               <div class="odds_bhav">
-                                <div class="back_oddsbox bhav_box">Back</div>
-                                <div class="Lay_oddsbox bhav_box">Lay</div>
-                              </div>
-                            </div>
-
-
-
-                            @foreach($response['match_odds'] as $r)
-                            <div class="randerScore mainScore">
-                              <div class="odds_rows">
-                                <div class="events_odds"><!---->
-                                  <div class="event-names">
-                                    <div class="horse-event">
-                                      <div class="slogen-horce"><span class="team-horce team_name">{{$r['team_name']}}</span></div>
-                                    </div>
-                                    <div><!----><!----></div>
-                                  </div><!---->
+                                @if($r['back_status']==1)
+                                <div class="back_oddsbox bhav_box">
+                                  <strong _ngcontent-uhn-c91="" class="odds ng-binding bet_text" data-back-lay="back" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['back_value']}}</strong>
+                                  <div class="size"><span _ngcontent-uhn-c91="" class="ng-binding" id="back-value-{{$r['id']}}"> 244.82 </span></div>
                                 </div>
-                                <div class="odds_bhav">
-                                  @if($r['back_status']==1)
-                                  <div class="back_oddsbox bhav_box">
-                                    <strong _ngcontent-uhn-c91="" class="odds ng-binding bet_text" data-back-lay="back" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['back_value']}}</strong>
-                                    <div class="size"><span _ngcontent-uhn-c91="" class="ng-binding" id="back-value-{{$r['id']}}"> 244.82 </span></div>
-                                  </div>
-                                  @else
-                                  <div style="background:white !important;" class="back_oddsbox bhav_box">
+                                @else
+                                <div style="background:white !important;" class="back_oddsbox bhav_box">
 
-                                  </div>
-                                  @endif
-
-                                  @if($r['lay_status']==1)
-                                  <div class="Lay_oddsbox bhav_box">
-                                    <strong _ngcontent-uhn-c91="" class="odds ng- bet_text" data-back-lay="lay" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['lay_value']}}</strong>
-                                    <div class="size"><span _ngcontent-uhn-c91="" class="ng-binding" id="lay-value-{{$r['id']}}"> 8145.17 </span></div>
-                                  </div><!----><!---->
-                                  @else
-                                  <div style="background:white !important;" class="Lay_oddsbox bhav_box">
-
-                                  </div><!----><!---->
-                                  @endif
                                 </div>
-                              </div><!---->
-                            </div>
-                            @endforeach
+                                @endif
 
-                            <!---->
-                          </div><!----><!----><!----><!---->
-                        </div>
-                        <div><!---->
-                          <div class="row only_bm ctm_bm_mbm">
-                            <div class="col-md-8">
-                              <h4 _ngcontent-uhn-c91="" class="panel-title"> BOOKMAKER <!----><!----></h4>
-                              <div class="body-odds th-bl">
-                                <div class="events_odds">&nbsp;&nbsp;</div>
-                                <div class="odds_bhav">
-                                  <div class="back_oddsbox bhav_box">Back</div>
-                                  <div class="Lay_oddsbox bhav_box">Lay</div>
-                                </div>
+                                @if($r['lay_status']==1)
+                                <div class="Lay_oddsbox bhav_box">
+                                  <strong _ngcontent-uhn-c91="" class="odds ng- bet_text" data-back-lay="lay" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['lay_value']}}</strong>
+                                  <div class="size"><span _ngcontent-uhn-c91="" class="ng-binding" id="lay-value-{{$r['id']}}"> 8145.17 </span></div>
+                                </div><!----><!---->
+                                @else
+                                <div style="background:white !important;" class="Lay_oddsbox bhav_box">
+
+                                </div><!----><!---->
+                                @endif
                               </div>
-
-                              @foreach($response['bookmaker'] as $r)
-                              <div class="randerScore mainScore">
-                                <div class="odds_rows">
-                                  <div class="events_odds"><!---->
-                                    <div class="event-names">
-                                      <div class="horse-event">
-                                        <div class="slogen-horce"><span _ngcontent-uhn-c91="" class="team-horce team_name">{{$r['team_name']}}</span></div>
-                                      </div>
-                                      <div><!----><!----></div>
-                                    </div><!---->
-                                  </div>
-                                  <div class="odds_bhav">
-                                    @if($r['back_status']==1)
-                                    <div class="back_oddsbox bhav_box"><strong _ngcontent-uhn-c91="" class="odds ng-binding bet_text" data-back-lay="back" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['back_value']}}</strong>
-                                      <div class="size"><span _ngcontent-uhn-c91="" class="ng-binding" id="back-value-{{$r['id']}}"> </span></div>
-                                    </div>
-                                    @else
-                                    <div style="background:white !important;" class="back_oddsbox bhav_box">
-                                    </div>
-                                    @endif
-
-                                    @if($r['lay_status']==1)
-                                    <div class="Lay_oddsbox bhav_box"><strong _ngcontent-uhn-c91="" class="odds ng-binding bet_text" data-back-lay="lay" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}"> {{$r['lay_value']}} </strong>
-                                      <div class="size"><span _ngcontent-uhn-c91="" class="ng-binding" id="lay-value-{{$r['id']}}"> </span></div>
-                                    </div><!----><!---->
-                                    @else
-                                    <div style="background:white !important;" class="Lay_oddsbox bhav_box">
-                                    </div><!----><!---->
-                                    @endif
-                                  </div>
-                                </div><!---->
-                              </div>
-                              @endforeach
-                            </div>
-
-                            <div class="col-md-4">
-                              <h4 _ngcontent-uhn-c91="" class="panel-title"> To Win The Toss <!----><!----></h4>
-                              <div class="body-odds th-bl">
-                                <div class="events_odds">&nbsp;&nbsp;</div>
-                                <div class="odds_bhav">
-                                  <div class="back_oddsbox bhav_box">Back</div>
-                                  <div class="Lay_oddsbox bhav_box">Lay</div>
-                                </div>
-                              </div>
-
-
-                              @foreach($response['to_win_the_toss'] as $r)
-                              <div class="randerScore mainScore">
-                                <div class="odds_rows">
-                                  <div class="events_odds"><!---->
-                                    <div class="event-names">
-                                      <div class="horse-event">
-                                        <div class="slogen-horce"><span _ngcontent-uhn-c91="" class="team-horce team_name">{{$r['team_name']}}</span></div>
-                                      </div>
-                                      <div><!----><!----></div>
-                                    </div><!---->
-                                  </div>
-                                  <div class="odds_bhav">
-                                    @if($r['back_status']==1)
-                                    <div class="back_oddsbox bhav_box"><strong _ngcontent-uhn-c91="" class="odds ng-binding bet_text" data-back-lay="back" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}"> {{$r['back_value']}} </strong>
-                                      <div class="size"><span _ngcontent-uhn-c91="" class="ng-binding" id="back-value-{{$r['id']}}"> </span></div>
-                                    </div>
-                                    @else
-                                    <div style="background:white !important;" class="back_oddsbox bhav_box">
-                                    </div>
-                                    @endif
-
-                                    @if($r['lay_status']==1)
-                                    <div class="Lay_oddsbox bhav_box"><strong _ngcontent-uhn-c91="" class="odds ng-binding bet_text" data-back-lay="lay" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['lay_value']}}</strong>
-                                      <div class="size"><span _ngcontent-uhn-c91="" class="ng-binding" id="lay-value-{{$r['id']}}"> 0.0 </span></div>
-                                    </div><!----><!---->
-                                    @else
-                                    <div style="background:white !important;" class="Lay_oddsbox bhav_box">
-                                    </div><!----><!---->
-                                    @endif
-                                  </div>
-                                </div><!---->
-                              </div>
-                              @endforeach
-
                             </div><!---->
-                          </div><!----><!----><!---->
-                        </div>
-                        <div class="col-md-6"><!----><!---->
-                          <div>
-                            <h4 _ngcontent-uhn-c91="" class="panel-title"> Fancy </h4>
-                            <div class="body-odds th-bl">
-                              <div class="events_odds">&nbsp;&nbsp;</div>
-                              <div class="odds_bhav twoSectionBhavRow">
-                                <div class="Lay_oddsbox bhav_box">No</div>
-                                <div class="back_oddsbox bhav_box">Yes</div>
-                              </div>
-                            </div>
-                            <div>
+                          </div>
+                          @endforeach
 
-                              @foreach($response['fancy'] as $r)
-                              <div class="randerScore mainScore">
-                                <div class="odds_rows">
-                                  <div class="events_odds">
-                                    <div class="event-names">
-                                      <div class="horse-event">
-                                        <div class="slogen-horce"><span _ngcontent-uhn-c91="" class="team-horce hyper-text team_name">{{$r['team_name']}}</span></div>
-                                      </div>
-                                      <div><!----></div>
-                                    </div><!----><!---->
-                                  </div>
-                                  <div class="odds_bhav twoSectionBhavRow">
-                                    @if($r['lay_status']==1)
-                                    <div class="Lay_oddsbox bhav_box"><strong _ngcontent-uhn-c91="" class="odds ng-binding bet_text" data-back-lay="lay" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['lay_value']}}</strong>
-                                      <div class="size"><span _ngcontent-uhn-c91="" class="ng-binding" id="lay-value-{{$r['id']}}"> 44 </span></div>
-                                    </div>
-                                    @else
-                                    <div style="background:white !important;" class="Lay_oddsbox bhav_box">
-                                    </div>
-                                    @endif
-
-                                    @if($r['back_status']==1)
-                                    <div class="back_oddsbox bhav_box"><strong _ngcontent-uhn-c91="" class="odds ng-binding bet_text" data-back-lay="back" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['back_value']}}</strong>
-                                      <div class="size"><span _ngcontent-uhn-c91="" class="ng-binding" id="back-value-{{$r['id']}}">41 </span></div>
-                                    </div><!----><!---->
-                                    @else
-                                    <div style="background:white !important;" class="back_oddsbox bhav_box">
-                                    </div><!----><!---->
-                                    @endif
-                                  </div>
-                                </div>
-                              </div>
-                              @endforeach
-
-                            </div>
-                          </div><!----><!---->
-                        </div>
-                        <div class="col-md-6"><!----><!---->
-                          <div>
-                            <h4 _ngcontent-uhn-c91="" class="panel-title"> Run Bhav </h4>
-                            <div class="body-odds th-bl">
-                              <div class="events_odds">&nbsp;&nbsp;</div>
-                              <div class="odds_bhav twoSectionBhavRow">
-                                <div class="Lay_oddsbox bhav_box">No</div>
-                                <div class="back_oddsbox bhav_box">Yes</div>
-                              </div>
-                            </div>
-                            <div>
-
-                              @foreach($response['run_bhav'] as $r)
-                              <div class="randerScore mainScore">
-                                <div class="odds_rows">
-                                  <div class="events_odds">
-                                    <div class="event-names">
-                                      <div class="horse-event">
-                                        <div class="slogen-horce"><span _ngcontent-uhn-c91="" class="team-horce hyper-text team_name">{{$r['team_name']}}</span></div>
-                                      </div>
-                                      <div><!----></div>
-                                    </div><!----><!---->
-                                  </div>
-                                  <div class="odds_bhav twoSectionBhavRow">
-                                    @if($r['lay_status']==1)
-                                    <div class="Lay_oddsbox bhav_box"><strong _ngcontent-uhn-c91="" class="odds ng-binding bet_text" data-back-lay="lay" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['lay_value']}}</strong>
-                                      <div class="size"><span _ngcontent-uhn-c91="" class="ng-binding" id="lay-value-{{$r['id']}}"> 103 </span></div>
-                                    </div>
-                                    @else
-                                    <div style="background:white !important;" class="Lay_oddsbox bhav_box">
-                                    </div>
-                                    @endif
-
-                                    @if($r['back_status']==1)
-                                    <div class="back_oddsbox bhav_box"><strong _ngcontent-uhn-c91="" class="odds ng-binding bet_text" data-back-lay="back" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['back_value']}}</strong>
-                                      <div class="size"><span _ngcontent-uhn-c91="" class="ng-binding" id="back-value-{{$r['id']}}">97 </span></div>
-                                    </div><!----><!---->
-                                    @else
-                                    <div style="background:white !important;" class="back_oddsbox bhav_box">
-                                    </div><!----><!---->
-                                    @endif
-
-                                  </div>
-                                </div>
-                              </div>
-                              @endforeach
-
-                            </div>
-                          </div><!----><!---->
-                        </div>
-                        <div class="col-md-6"><!----><!---->
-                          <div>
-                            <h4 _ngcontent-uhn-c91="" class="panel-title"> Over by Over Session Market </h4>
-                            <div class="body-odds th-bl">
-                              <div class="events_odds">&nbsp;&nbsp;</div>
-                              <div class="odds_bhav twoSectionBhavRow">
-                                <div class="Lay_oddsbox bhav_box">No</div>
-                                <div class="back_oddsbox bhav_box">Yes</div>
-                              </div>
-                            </div>
-                            <div>
-
-                              @foreach($response['over_by_over_session_market'] as $r)
-                              <div class="randerScore mainScore">
-                                <div class="odds_rows">
-                                  <div class="events_odds">
-                                    <div class="event-names">
-                                      <div class="horse-event">
-                                        <div class="slogen-horce"><span _ngcontent-uhn-c91="" class="team-horce hyper-text team_name">{{$r['team_name']}}</span></div>
-                                      </div>
-                                      <div><!----></div>
-                                    </div><!----><!---->
-                                  </div>
-                                  <div class="odds_bhav twoSectionBhavRow">
-                                    @if($r['lay_status']==1)
-                                    <div class="Lay_oddsbox bhav_box"><strong _ngcontent-uhn-c91="" class="odds ng-binding bet_text" data-back-lay="lay" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['lay_value']}}</strong>
-                                      <div class="size"><span _ngcontent-uhn-c91="" class="ng-binding" id="lay-value-{{$r['id']}}"> 100 </span></div>
-                                    </div>
-                                    @else
-                                    <div style="background:white !important;" class="Lay_oddsbox bhav_box">
-                                    </div>
-                                    @endif
-
-                                    @if($r['back_status']==1)
-                                    <div class="back_oddsbox bhav_box"><strong _ngcontent-uhn-c91="" class="odds ng-binding bet_text" data-back-lay="back" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['back_value']}}</strong>
-                                      <div class="size"><span _ngcontent-uhn-c91="" class="ng-binding" id="back-value-{{$r['id']}}">100 </span></div>
-                                    </div><!----><!---->
-                                    @else
-                                    <div style="background:white !important;" class="back_oddsbox bhav_box">
-                                    </div><!----><!---->
-                                    @endif
-
-                                  </div>
-                                </div>
-                              </div>
-                              @endforeach
-
-                            </div>
-                          </div><!----><!---->
-                        </div>
-                        <div class="col-md-6"><!----><!---->
-                          <div>
-                            <h4 _ngcontent-uhn-c91="" class="panel-title"> Ball by Ball Session Market </h4>
-                            <div class="body-odds th-bl">
-                              <div class="events_odds">&nbsp;&nbsp;</div>
-                              <div class="odds_bhav twoSectionBhavRow">
-                                <div class="Lay_oddsbox bhav_box">No</div>
-                                <div class="back_oddsbox bhav_box">Yes</div>
-                              </div>
-                            </div>
-                            <div>
-
-                              @foreach($response['ball_by_ball_session_market'] as $r)
-                              <div class="randerScore mainScore">
-                                <div class="odds_rows">
-                                  <div class="events_odds">
-                                    <div class="event-names">
-                                      <div class="horse-event">
-                                        <div class="slogen-horce"><span _ngcontent-uhn-c91="" class="team-horce hyper-text team_name">{{$r['team_name']}}</span></div>
-                                      </div>
-                                      <div><!----></div>
-                                    </div><!----><!---->
-                                  </div>
-                                  <div class="odds_bhav twoSectionBhavRow">
-                                    @if($r['lay_status']==1)
-                                    <div class="Lay_oddsbox bhav_box"><strong _ngcontent-uhn-c91="" class="odds ng-binding bet_text" data-back-lay="lay" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['lay_value']}}</strong>
-                                      <div class="size"><span _ngcontent-uhn-c91="" class="ng-binding" id="lay-value-{{$r['id']}}"> 200 </span></div>
-                                    </div>
-                                    @else
-                                    <div style="background:white !important;" class="Lay_oddsbox bhav_box">
-                                    </div>
-                                    @endif
-
-                                    @if($r['back_status']==1)
-                                    <div class="back_oddsbox bhav_box"><strong _ngcontent-uhn-c91="" class="odds ng-binding bet_text" data-back-lay="back" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['back_value']}}</strong>
-                                      <div class="size"><span _ngcontent-uhn-c91="" class="ng-binding" id="back-value-{{$r['id']}}">130 </span></div>
-                                    </div><!----><!---->
-                                    @else
-                                    <div style="background:white !important;" class="back_oddsbox bhav_box">
-                                    </div><!----><!---->
-                                    @endif
-
-                                  </div>
-                                </div>
-                              </div><!---->
-                              @endforeach
-
-                            </div>
-                          </div><!----><!---->
-                        </div>
-                        <div class="col-md-12"><!----><!----><!----><!----></div>
-                        <div class="col-md-12"><!----><!----><!----><!----></div>
-                        <div class="col-md-12">
-                          <div>
-                            <h4 _ngcontent-uhn-c91="" class="panel-title"> Tied Match <!----><span _ngcontent-uhn-c91=""> Maximum Bet 1 &nbsp; <i _ngcontent-uhn-c91="" class="fa fa-info-circle"></i></span><!----></h4>
+                          <!---->
+                        </div><!----><!----><!----><!---->
+                      </div>
+                      <div><!---->
+                        <div class="row only_bm ctm_bm_mbm">
+                          <div class="col-md-8">
+                            <h4 _ngcontent-uhn-c91="" class="panel-title"> BOOKMAKER <!----><!----></h4>
                             <div class="body-odds th-bl">
                               <div class="events_odds">&nbsp;&nbsp;</div>
                               <div class="odds_bhav">
@@ -1879,7 +1605,7 @@
                               </div>
                             </div>
 
-                            @foreach($response['tied_match'] as $r)
+                            @foreach($response['bookmaker'] as $r)
                             <div class="randerScore mainScore">
                               <div class="odds_rows">
                                 <div class="events_odds"><!---->
@@ -1893,7 +1619,53 @@
                                 <div class="odds_bhav">
                                   @if($r['back_status']==1)
                                   <div class="back_oddsbox bhav_box"><strong _ngcontent-uhn-c91="" class="odds ng-binding bet_text" data-back-lay="back" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['back_value']}}</strong>
-                                    <div class="size"><span _ngcontent-uhn-c91="" class="ng-binding" id="back-value-{{$r['id']}}"> 407.96 </span></div>
+                                    <div class="size"><span _ngcontent-uhn-c91="" class="ng-binding" id="back-value-{{$r['id']}}"> </span></div>
+                                  </div>
+                                  @else
+                                  <div style="background:white !important;" class="back_oddsbox bhav_box">
+                                  </div>
+                                  @endif
+
+                                  @if($r['lay_status']==1)
+                                  <div class="Lay_oddsbox bhav_box"><strong _ngcontent-uhn-c91="" class="odds ng-binding bet_text" data-back-lay="lay" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}"> {{$r['lay_value']}} </strong>
+                                    <div class="size"><span _ngcontent-uhn-c91="" class="ng-binding" id="lay-value-{{$r['id']}}"> </span></div>
+                                  </div><!----><!---->
+                                  @else
+                                  <div style="background:white !important;" class="Lay_oddsbox bhav_box">
+                                  </div><!----><!---->
+                                  @endif
+                                </div>
+                              </div><!---->
+                            </div>
+                            @endforeach
+                          </div>
+
+                          <div class="col-md-4">
+                            <h4 _ngcontent-uhn-c91="" class="panel-title"> To Win The Toss <!----><!----></h4>
+                            <div class="body-odds th-bl">
+                              <div class="events_odds">&nbsp;&nbsp;</div>
+                              <div class="odds_bhav">
+                                <div class="back_oddsbox bhav_box">Back</div>
+                                <div class="Lay_oddsbox bhav_box">Lay</div>
+                              </div>
+                            </div>
+
+
+                            @foreach($response['to_win_the_toss'] as $r)
+                            <div class="randerScore mainScore">
+                              <div class="odds_rows">
+                                <div class="events_odds"><!---->
+                                  <div class="event-names">
+                                    <div class="horse-event">
+                                      <div class="slogen-horce"><span _ngcontent-uhn-c91="" class="team-horce team_name">{{$r['team_name']}}</span></div>
+                                    </div>
+                                    <div><!----><!----></div>
+                                  </div><!---->
+                                </div>
+                                <div class="odds_bhav">
+                                  @if($r['back_status']==1)
+                                  <div class="back_oddsbox bhav_box"><strong _ngcontent-uhn-c91="" class="odds ng-binding bet_text" data-back-lay="back" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}"> {{$r['back_value']}} </strong>
+                                    <div class="size"><span _ngcontent-uhn-c91="" class="ng-binding" id="back-value-{{$r['id']}}"> </span></div>
                                   </div>
                                   @else
                                   <div style="background:white !important;" class="back_oddsbox bhav_box">
@@ -1902,280 +1674,448 @@
 
                                   @if($r['lay_status']==1)
                                   <div class="Lay_oddsbox bhav_box"><strong _ngcontent-uhn-c91="" class="odds ng-binding bet_text" data-back-lay="lay" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['lay_value']}}</strong>
-                                    <div class="size"><span _ngcontent-uhn-c91="" class="ng-binding" id="lay-value-{{$r['id']}}"> 252.62 </span></div>
+                                    <div class="size"><span _ngcontent-uhn-c91="" class="ng-binding" id="lay-value-{{$r['id']}}"> 0.0 </span></div>
                                   </div><!----><!---->
                                   @else
                                   <div style="background:white !important;" class="Lay_oddsbox bhav_box">
                                   </div><!----><!---->
                                   @endif
-
                                 </div>
                               </div><!---->
                             </div>
                             @endforeach
 
-                          </div><!----><!----><!----><!---->
-                        </div>
-                        <div><!----><!----><!---->
-                          <div class="listing_screen">
-                            <tabset _nghost-uhn-c35="" class="tab-container">
-                              <ul role="tablist" class="nav nav-tabs" aria-label="Tabs">
-                                <li class="active nav-item"><a _ngcontent-uhn-c35="" href="javascript:void(0);" role="tab" class="nav-link active" aria-controls="" aria-selected="true" id=""><span _ngcontent-uhn-c35="">Fancy
-                                      1</span><!----><!----></a></li>
-                                <li class="nav-item"><a _ngcontent-uhn-c35="" href="javascript:void(0);" role="tab" class="nav-link" aria-controls="" aria-selected="false" id=""><span _ngcontent-uhn-c35="">Meter</span><!----><!----></a></li>
-                                <li class="nav-item"><a _ngcontent-uhn-c35="" href="javascript:void(0);" role="tab" class="nav-link" aria-controls="" aria-selected="false" id=""><span _ngcontent-uhn-c35="">Khado</span><!----><!----></a></li>
-                                <li class="nav-item"><a _ngcontent-uhn-c35="" href="javascript:void(0);" role="tab" class="nav-link" aria-controls="" aria-selected="false" id=""><span _ngcontent-uhn-c35="">Odd
-                                      Even</span><!----><!----></a></li>
-                                <li class="nav-item"><a _ngcontent-uhn-c35="" href="javascript:void(0);" role="tab" class="nav-link" aria-controls="" aria-selected="false" id=""><span _ngcontent-uhn-c35="">Wicket</span><!----><!----></a></li>
-                                <li class="nav-item"><a _ngcontent-uhn-c35="" href="javascript:void(0);" role="tab" class="nav-link" aria-controls="" aria-selected="false" id=""><span _ngcontent-uhn-c35="">Four</span><!----><!----></a></li>
-                                <li class="nav-item"><a _ngcontent-uhn-c35="" href="javascript:void(0);" role="tab" class="nav-link" aria-controls="" aria-selected="false" id=""><span _ngcontent-uhn-c35="">Six</span><!----><!----></a>
-                                </li>
-                                <li class="nav-item"><a _ngcontent-uhn-c35="" href="javascript:void(0);" role="tab" class="nav-link" aria-controls="" aria-selected="false" id=""><span _ngcontent-uhn-c35="">Cricket
-                                      Casino</span><!----><!----></a></li><!---->
-                              </ul>
-                              <div _ngcontent-uhn-c35="" class="tab-content">
-                                <tab role="tabpanel" aria-labelledby="" class="tab-pane active">
-                                  <div class="row"><!----><!---->
-                                    <div class="col-md-12">
-                                      <div class="randerScore mainScore">
-                                        <div class="no-dt">
-                                          <p _ngcontent-uhn-c91="">No real-time records found</p>
-                                        </div>
-                                      </div>
-                                    </div><!---->
-                                  </div>
-                                </tab>
-                                <tab role="tabpanel" aria-labelledby="" class="tab-pane">
-                                  <div class="row"><!----><!---->
-                                    <div class="col-md-12">
-                                      <div class="randerScore mainScore">
-                                        <div class="no-dt">
-                                          <p _ngcontent-uhn-c91="">No real-time records found</p>
-                                        </div>
-                                      </div>
-                                    </div><!---->
-                                  </div>
-                                </tab>
-                                <tab role="tabpanel" aria-labelledby="" class="tab-pane">
-                                  <div class="row"><!----><!---->
-                                    <div class="col-md-12">
-                                      <div class="randerScore mainScore">
-                                        <div class="no-dt">
-                                          <p _ngcontent-uhn-c91="">No real-time records found</p>
-                                        </div>
-                                      </div>
-                                    </div><!---->
-                                  </div>
-                                </tab>
-                                <tab role="tabpanel" aria-labelledby="" class="tab-pane">
-                                  <div class="row"><!----><!---->
-                                    <div class="col-md-12">
-                                      <div class="randerScore mainScore">
-                                        <div class="no-dt">
-                                          <p _ngcontent-uhn-c91="">No real-time records found</p>
-                                        </div>
-                                      </div>
-                                    </div><!---->
-                                  </div>
-                                </tab>
-                                <tab role="tabpanel" aria-labelledby="" class="tab-pane">
-                                  <div class="row"><!----><!---->
-                                    <div class="col-md-12">
-                                      <div class="randerScore mainScore">
-                                        <div class="no-dt">
-                                          <p _ngcontent-uhn-c91="">No real-time records found</p>
-                                        </div>
-                                      </div>
-                                    </div><!---->
-                                  </div>
-                                </tab>
-                                <tab role="tabpanel" aria-labelledby="" class="tab-pane">
-                                  <div class="row"><!----><!---->
-                                    <div class="col-md-12">
-                                      <div class="randerScore mainScore">
-                                        <div class="no-dt">
-                                          <p _ngcontent-uhn-c91="">No real-time records found</p>
-                                        </div>
-                                      </div>
-                                    </div><!---->
-                                  </div>
-                                </tab>
-                                <tab role="tabpanel" aria-labelledby="" class="tab-pane">
-                                  <div class="row"><!----><!---->
-                                    <div class="col-md-12">
-                                      <div class="randerScore mainScore">
-                                        <div class="no-dt">
-                                          <p _ngcontent-uhn-c91="">No real-time records found</p>
-                                        </div>
-                                      </div>
-                                    </div><!---->
-                                  </div>
-                                </tab>
-                                <tab role="tabpanel" aria-labelledby="" class="tab-pane">
-                                  <div class="row"><!----><!---->
-                                    <div class="col-md-12">
-                                      <div class="randerScore mainScore">
-                                        <div class="no-dt">
-                                          <p _ngcontent-uhn-c91="">No real-time records found</p>
-                                        </div>
-                                      </div>
-                                    </div><!---->
-                                  </div>
-                                </tab><!---->
-                              </div>
-                            </tabset>
                           </div><!---->
+                        </div><!----><!----><!---->
+                      </div>
+                      <div class="col-md-6"><!----><!---->
+                        <div>
+                          <h4 _ngcontent-uhn-c91="" class="panel-title"> Fancy </h4>
+                          <div class="body-odds th-bl">
+                            <div class="events_odds">&nbsp;&nbsp;</div>
+                            <div class="odds_bhav twoSectionBhavRow">
+                              <div class="Lay_oddsbox bhav_box">No</div>
+                              <div class="back_oddsbox bhav_box">Yes</div>
+                            </div>
+                          </div>
+                          <div>
+
+                            @foreach($response['fancy'] as $r)
+                            <div class="randerScore mainScore">
+                              <div class="odds_rows">
+                                <div class="events_odds">
+                                  <div class="event-names">
+                                    <div class="horse-event">
+                                      <div class="slogen-horce"><span _ngcontent-uhn-c91="" class="team-horce hyper-text team_name">{{$r['team_name']}}</span></div>
+                                    </div>
+                                    <div><!----></div>
+                                  </div><!----><!---->
+                                </div>
+                                <div class="odds_bhav twoSectionBhavRow">
+                                  @if($r['lay_status']==1)
+                                  <div class="Lay_oddsbox bhav_box"><strong _ngcontent-uhn-c91="" class="odds ng-binding bet_text" data-back-lay="lay" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['lay_value']}}</strong>
+                                    <div class="size"><span _ngcontent-uhn-c91="" class="ng-binding" id="lay-value-{{$r['id']}}"> 44 </span></div>
+                                  </div>
+                                  @else
+                                  <div style="background:white !important;" class="Lay_oddsbox bhav_box">
+                                  </div>
+                                  @endif
+
+                                  @if($r['back_status']==1)
+                                  <div class="back_oddsbox bhav_box"><strong _ngcontent-uhn-c91="" class="odds ng-binding bet_text" data-back-lay="back" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['back_value']}}</strong>
+                                    <div class="size"><span _ngcontent-uhn-c91="" class="ng-binding" id="back-value-{{$r['id']}}">41 </span></div>
+                                  </div><!----><!---->
+                                  @else
+                                  <div style="background:white !important;" class="back_oddsbox bhav_box">
+                                  </div><!----><!---->
+                                  @endif
+                                </div>
+                              </div>
+                            </div>
+                            @endforeach
+
+                          </div>
                         </div><!----><!---->
                       </div>
-                    </div>
-                    <?php
-                      if ($_SERVER['HTTP_USER_AGENT'] && strpos($_SERVER['HTTP_USER_AGENT'], 'Mobile') !== false) {
-                        // If the user agent indicates a mobile device, use mobile styles
-                        echo '<div class="col-md-4 order-1">';
-                      } else {
-                        // Otherwise, use desktop styles
-                        echo '<div class="col-md-4">';
-                      }
-                      ?>
-                      <div id="rightBarDiv" class="bets_box-main"><!----><!---->
-                      <app-bet-slip _nghost-uhn-c87="">
-                          <div class="betting-table lay-bt" style="position: relative;">
-                            <a target="_blank" href="https://allinone-tataplay-web-one.vercel.app/player.html?channel=24"><h2 class="mrkname"> Live Match </h2></a>
+                      <div class="col-md-6"><!----><!---->
+                        <div>
+                          <h4 _ngcontent-uhn-c91="" class="panel-title"> Run Bhav </h4>
+                          <div class="body-odds th-bl">
+                            <div class="events_odds">&nbsp;&nbsp;</div>
+                            <div class="odds_bhav twoSectionBhavRow">
+                              <div class="Lay_oddsbox bhav_box">No</div>
+                              <div class="back_oddsbox bhav_box">Yes</div>
+                            </div>
                           </div>
-                        </app-bet-slip>
-                        @if(Session::has('message'))
-                            <p class="alert alert-success"><strong>{{Session::get('message')}}</strong></p>
-                        @endif
-                        @if(Session::has('error'))
-                            <p class="alert alert-danger"><strong>{{Session::get('error')}}</strong></p>
-                        @endif
-                      
-                        <app-bet-slip _nghost-uhn-c87="">
-                          <div class="betting-table lay-bt" style="position: relative;">
-                            <h2 _ngcontent-uhn-c87="" class="mrkname"> place bet </h2>
-                          </div>
-                        </app-bet-slip>
-                      </div>
-                      <?php
-                      if ($_SERVER['HTTP_USER_AGENT'] && strpos($_SERVER['HTTP_USER_AGENT'], 'Mobile') !== false) {
-                        // If the user agent indicates a mobile device, use mobile styles
-                        echo '<div id="rightBarDiv" class="bets_box-main show_bet" style="display:contents;">';
-                      } else {
-                        // Otherwise, use desktop styles
-                        echo '<div id="rightBarDiv" class="bets_box-main show_bet">';
-                      }
-                      ?>
+                          <div>
 
-
-                      <app-bet-slip _nghost-uhn-c87="">
-                        <form action="{{route('cricket-bet-place')}}" method="POST">
-                          @csrf
-                          <div class="betting-table lay-bt" style="position: relative;">
-                            <h2 class="mrkname d-flex justify-content-between align-items-center">
-                          place bet
-                          <span class="text-right remove_bet">X</span>
-                        </h2>
-                            <div class="back">
-                              <div class="row align-items-center">
-                                <div class="col col-md-4"> (Bet for) </div>
-                                <div class="col"> Odds </div>
-                                <div class="col"> Stake </div>
-                                <div class="col"> Profit </div>
-                              </div><!---->
-                              <div class="row border-bottom align-items-center">
-                                <div class="col col-md-4 text-left bat_team_place"><a><i _ngcontent-uhn-c87="" class="fa fa-close text-danger"></i></a> Sunrisers
-                                  Hyderabad </div>
-                                <div class="col">
-                                    <input type="text" name="bet_odds" id="bet_input" readonly="true" min="1.01" max="999.99" class="form-control ng-untouched ng-pristine ng-valid">
-                                    <input type="hidden" name="bet_input_stake" id="bet_input_stake">
-                                    </div><!----><!---->
-                                <div class="col"><input type="number" name="bet_stake" id="add_input" placeholder="Amount" class="form-control ng-untouched ng-pristine ng-valid"></div>
-                                <div class="col profit_div"> 0 </div>
-                                <input type="hidden" name="back_lay" id="back_lay">
-                                <input type="hidden" name="match_id" id="match_id">
-                                <input type="hidden" name="bet_profit" id="bet_profit">
-                                <input type="hidden" name="bet_team_name" id="bet_team_name">
-
-                              </div><!----><!----><!---->
-                              <div class="stakes" style="width: 100%;">
-                                <div class="btn-group">
-                                  <button type="button" class="add_bet">100</button>
-                                  <button type="button" class="add_bet">500</button><button type="button" class="add_bet">1000</button><button type="button" class="add_bet">5000</button><button type="button" class="add_bet">10000</button><button type="button" class="add_bet">25000</button><!---->
+                            @foreach($response['run_bhav'] as $r)
+                            <div class="randerScore mainScore">
+                              <div class="odds_rows">
+                                <div class="events_odds">
+                                  <div class="event-names">
+                                    <div class="horse-event">
+                                      <div class="slogen-horce"><span _ngcontent-uhn-c91="" class="team-horce hyper-text team_name">{{$r['team_name']}}</span></div>
+                                    </div>
+                                    <div><!----></div>
+                                  </div><!----><!---->
                                 </div>
-                              </div><!---->
-                              <div class="row align-items-center">
-                                <div class="col"><button type="button" class="btn cancel-btn" id="reset_btn">reset</button></div>
-                                <div class="col"><button class="btn betplace-btn" disabled="">submit</button></div><!---->
-                              </div><!---->
-                            </div><!----><!---->
+                                <div class="odds_bhav twoSectionBhavRow">
+                                  @if($r['lay_status']==1)
+                                  <div class="Lay_oddsbox bhav_box"><strong _ngcontent-uhn-c91="" class="odds ng-binding bet_text" data-back-lay="lay" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['lay_value']}}</strong>
+                                    <div class="size"><span _ngcontent-uhn-c91="" class="ng-binding" id="lay-value-{{$r['id']}}"> 103 </span></div>
+                                  </div>
+                                  @else
+                                  <div style="background:white !important;" class="Lay_oddsbox bhav_box">
+                                  </div>
+                                  @endif
+
+                                  @if($r['back_status']==1)
+                                  <div class="back_oddsbox bhav_box"><strong _ngcontent-uhn-c91="" class="odds ng-binding bet_text" data-back-lay="back" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['back_value']}}</strong>
+                                    <div class="size"><span _ngcontent-uhn-c91="" class="ng-binding" id="back-value-{{$r['id']}}">97 </span></div>
+                                  </div><!----><!---->
+                                  @else
+                                  <div style="background:white !important;" class="back_oddsbox bhav_box">
+                                  </div><!----><!---->
+                                  @endif
+
+                                </div>
+                              </div>
+                            </div>
+                            @endforeach
+
                           </div>
-                        </form>
-                      </app-bet-slip>
+                        </div><!----><!---->
+                      </div>
+                      <div class="col-md-6"><!----><!---->
+                        <div>
+                          <h4 _ngcontent-uhn-c91="" class="panel-title"> Over by Over Session Market </h4>
+                          <div class="body-odds th-bl">
+                            <div class="events_odds">&nbsp;&nbsp;</div>
+                            <div class="odds_bhav twoSectionBhavRow">
+                              <div class="Lay_oddsbox bhav_box">No</div>
+                              <div class="back_oddsbox bhav_box">Yes</div>
+                            </div>
+                          </div>
+                          <div>
 
+                            @foreach($response['over_by_over_session_market'] as $r)
+                            <div class="randerScore mainScore">
+                              <div class="odds_rows">
+                                <div class="events_odds">
+                                  <div class="event-names">
+                                    <div class="horse-event">
+                                      <div class="slogen-horce"><span _ngcontent-uhn-c91="" class="team-horce hyper-text team_name">{{$r['team_name']}}</span></div>
+                                    </div>
+                                    <div><!----></div>
+                                  </div><!----><!---->
+                                </div>
+                                <div class="odds_bhav twoSectionBhavRow">
+                                  @if($r['lay_status']==1)
+                                  <div class="Lay_oddsbox bhav_box"><strong _ngcontent-uhn-c91="" class="odds ng-binding bet_text" data-back-lay="lay" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['lay_value']}}</strong>
+                                    <div class="size"><span _ngcontent-uhn-c91="" class="ng-binding" id="lay-value-{{$r['id']}}"> 100 </span></div>
+                                  </div>
+                                  @else
+                                  <div style="background:white !important;" class="Lay_oddsbox bhav_box">
+                                  </div>
+                                  @endif
 
-                      <app-my-bets _nghost-uhn-c88="">
-                        <div class="bets-section">
-                          <h2 class="ds-none-mobile">My Bet</h2>
-                          <div style="height: 200px !important; overflow: scroll; ">
-                            <table class="table">
-                              <thead>
-                                <tr>
-                                  <td>Matched Bet </td>
-                                  <td>Odds</td>
-                                  <td>Stake</td>
-                                </tr>
-                              </thead><!---->
-                              <tbody class="my-bet-table">
-                                @if(!empty(Session::get('myBets')))
-                                @foreach(Session::get('myBets') as $m)
-                                <tr>
-                                  <td class="text-left">{{$m->team_name}};
-                                  <td class="text-left">{{$m->bet_odds}};
-                                  <td colspan="3" class="text-left">{{$m->bet_stake}};
-                                </tr>
-                                @endforeach
+                                  @if($r['back_status']==1)
+                                  <div class="back_oddsbox bhav_box"><strong _ngcontent-uhn-c91="" class="odds ng-binding bet_text" data-back-lay="back" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['back_value']}}</strong>
+                                    <div class="size"><span _ngcontent-uhn-c91="" class="ng-binding" id="back-value-{{$r['id']}}">100 </span></div>
+                                  </div><!----><!---->
+                                  @else
+                                  <div style="background:white !important;" class="back_oddsbox bhav_box">
+                                  </div><!----><!---->
+                                  @endif
+
+                                </div>
+                              </div>
+                            </div>
+                            @endforeach
+
+                          </div>
+                        </div><!----><!---->
+                      </div>
+                      <div class="col-md-6"><!----><!---->
+                        <div>
+                          <h4 _ngcontent-uhn-c91="" class="panel-title"> Ball by Ball Session Market </h4>
+                          <div class="body-odds th-bl">
+                            <div class="events_odds">&nbsp;&nbsp;</div>
+                            <div class="odds_bhav twoSectionBhavRow">
+                              <div class="Lay_oddsbox bhav_box">No</div>
+                              <div class="back_oddsbox bhav_box">Yes</div>
+                            </div>
+                          </div>
+                          <div>
+
+                            @foreach($response['ball_by_ball_session_market'] as $r)
+                            <div class="randerScore mainScore">
+                              <div class="odds_rows">
+                                <div class="events_odds">
+                                  <div class="event-names">
+                                    <div class="horse-event">
+                                      <div class="slogen-horce"><span _ngcontent-uhn-c91="" class="team-horce hyper-text team_name">{{$r['team_name']}}</span></div>
+                                    </div>
+                                    <div><!----></div>
+                                  </div><!----><!---->
+                                </div>
+                                <div class="odds_bhav twoSectionBhavRow">
+                                  @if($r['lay_status']==1)
+                                  <div class="Lay_oddsbox bhav_box"><strong _ngcontent-uhn-c91="" class="odds ng-binding bet_text" data-back-lay="lay" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['lay_value']}}</strong>
+                                    <div class="size"><span _ngcontent-uhn-c91="" class="ng-binding" id="lay-value-{{$r['id']}}"> 200 </span></div>
+                                  </div>
+                                  @else
+                                  <div style="background:white !important;" class="Lay_oddsbox bhav_box">
+                                  </div>
+                                  @endif
+
+                                  @if($r['back_status']==1)
+                                  <div class="back_oddsbox bhav_box"><strong _ngcontent-uhn-c91="" class="odds ng-binding bet_text" data-back-lay="back" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['back_value']}}</strong>
+                                    <div class="size"><span _ngcontent-uhn-c91="" class="ng-binding" id="back-value-{{$r['id']}}">130 </span></div>
+                                  </div><!----><!---->
+                                  @else
+                                  <div style="background:white !important;" class="back_oddsbox bhav_box">
+                                  </div><!----><!---->
+                                  @endif
+
+                                </div>
+                              </div>
+                            </div><!---->
+                            @endforeach
+
+                          </div>
+                        </div><!----><!---->
+                      </div>
+                      <div class="col-md-12"><!----><!----><!----><!----></div>
+                      <div class="col-md-12"><!----><!----><!----><!----></div>
+                      <div class="col-md-12">
+                        <div>
+                          <h4 _ngcontent-uhn-c91="" class="panel-title"> Tied Match <!----><span _ngcontent-uhn-c91=""> Maximum Bet 1 &nbsp; <i _ngcontent-uhn-c91="" class="fa fa-info-circle"></i></span><!----></h4>
+                          <div class="body-odds th-bl">
+                            <div class="events_odds">&nbsp;&nbsp;</div>
+                            <div class="odds_bhav">
+                              <div class="back_oddsbox bhav_box">Back</div>
+                              <div class="Lay_oddsbox bhav_box">Lay</div>
+                            </div>
+                          </div>
+
+                          @foreach($response['tied_match'] as $r)
+                          <div class="randerScore mainScore">
+                            <div class="odds_rows">
+                              <div class="events_odds"><!---->
+                                <div class="event-names">
+                                  <div class="horse-event">
+                                    <div class="slogen-horce"><span _ngcontent-uhn-c91="" class="team-horce team_name">{{$r['team_name']}}</span></div>
+                                  </div>
+                                  <div><!----><!----></div>
+                                </div><!---->
+                              </div>
+                              <div class="odds_bhav">
+                                @if($r['back_status']==1)
+                                <div class="back_oddsbox bhav_box"><strong _ngcontent-uhn-c91="" class="odds ng-binding bet_text" data-back-lay="back" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['back_value']}}</strong>
+                                  <div class="size"><span _ngcontent-uhn-c91="" class="ng-binding" id="back-value-{{$r['id']}}"> 407.96 </span></div>
+                                </div>
                                 @else
-                                <tr>
-                                  <td colspan="3" class="text-left text-center">No data Found</td>
-                                </tr>
+                                <div style="background:white !important;" class="back_oddsbox bhav_box">
+                                </div>
                                 @endif
-                              </tbody><!---->
-                            </table>
+
+                                @if($r['lay_status']==1)
+                                <div class="Lay_oddsbox bhav_box"><strong _ngcontent-uhn-c91="" class="odds ng-binding bet_text" data-back-lay="lay" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['lay_value']}}</strong>
+                                  <div class="size"><span _ngcontent-uhn-c91="" class="ng-binding" id="lay-value-{{$r['id']}}"> 252.62 </span></div>
+                                </div><!----><!---->
+                                @else
+                                <div style="background:white !important;" class="Lay_oddsbox bhav_box">
+                                </div><!----><!---->
+                                @endif
+
+                              </div>
+                            </div><!---->
                           </div>
-                        </div>
-                      </app-my-bets>
+                          @endforeach
+
+                        </div><!----><!----><!----><!---->
+                      </div>
+                      <div><!----><!----><!---->
+                        <div class="listing_screen">
+                          <tabset _nghost-uhn-c35="" class="tab-container">
+                            <ul role="tablist" class="nav nav-tabs" aria-label="Tabs">
+                              <li class="active nav-item"><a _ngcontent-uhn-c35="" href="javascript:void(0);" role="tab" class="nav-link active" aria-controls="" aria-selected="true" id=""><span _ngcontent-uhn-c35="">Fancy
+                                    1</span><!----><!----></a></li>
+                              <li class="nav-item"><a _ngcontent-uhn-c35="" href="javascript:void(0);" role="tab" class="nav-link" aria-controls="" aria-selected="false" id=""><span _ngcontent-uhn-c35="">Meter</span><!----><!----></a></li>
+                              <li class="nav-item"><a _ngcontent-uhn-c35="" href="javascript:void(0);" role="tab" class="nav-link" aria-controls="" aria-selected="false" id=""><span _ngcontent-uhn-c35="">Khado</span><!----><!----></a></li>
+                              <li class="nav-item"><a _ngcontent-uhn-c35="" href="javascript:void(0);" role="tab" class="nav-link" aria-controls="" aria-selected="false" id=""><span _ngcontent-uhn-c35="">Odd
+                                    Even</span><!----><!----></a></li>
+                              <li class="nav-item"><a _ngcontent-uhn-c35="" href="javascript:void(0);" role="tab" class="nav-link" aria-controls="" aria-selected="false" id=""><span _ngcontent-uhn-c35="">Wicket</span><!----><!----></a></li>
+                              <li class="nav-item"><a _ngcontent-uhn-c35="" href="javascript:void(0);" role="tab" class="nav-link" aria-controls="" aria-selected="false" id=""><span _ngcontent-uhn-c35="">Four</span><!----><!----></a></li>
+                              <li class="nav-item"><a _ngcontent-uhn-c35="" href="javascript:void(0);" role="tab" class="nav-link" aria-controls="" aria-selected="false" id=""><span _ngcontent-uhn-c35="">Six</span><!----><!----></a>
+                              </li>
+                              <li class="nav-item"><a _ngcontent-uhn-c35="" href="javascript:void(0);" role="tab" class="nav-link" aria-controls="" aria-selected="false" id=""><span _ngcontent-uhn-c35="">Cricket
+                                    Casino</span><!----><!----></a></li><!---->
+                            </ul>
+                            <div _ngcontent-uhn-c35="" class="tab-content">
+                              <tab role="tabpanel" aria-labelledby="" class="tab-pane active">
+                                <div class="row"><!----><!---->
+                                  <div class="col-md-12">
+                                    <div class="randerScore mainScore">
+                                      <div class="no-dt">
+                                        <p _ngcontent-uhn-c91="">No real-time records found</p>
+                                      </div>
+                                    </div>
+                                  </div><!---->
+                                </div>
+                              </tab>
+                              <tab role="tabpanel" aria-labelledby="" class="tab-pane">
+                                <div class="row"><!----><!---->
+                                  <div class="col-md-12">
+                                    <div class="randerScore mainScore">
+                                      <div class="no-dt">
+                                        <p _ngcontent-uhn-c91="">No real-time records found</p>
+                                      </div>
+                                    </div>
+                                  </div><!---->
+                                </div>
+                              </tab>
+                              <tab role="tabpanel" aria-labelledby="" class="tab-pane">
+                                <div class="row"><!----><!---->
+                                  <div class="col-md-12">
+                                    <div class="randerScore mainScore">
+                                      <div class="no-dt">
+                                        <p _ngcontent-uhn-c91="">No real-time records found</p>
+                                      </div>
+                                    </div>
+                                  </div><!---->
+                                </div>
+                              </tab>
+                              <tab role="tabpanel" aria-labelledby="" class="tab-pane">
+                                <div class="row"><!----><!---->
+                                  <div class="col-md-12">
+                                    <div class="randerScore mainScore">
+                                      <div class="no-dt">
+                                        <p _ngcontent-uhn-c91="">No real-time records found</p>
+                                      </div>
+                                    </div>
+                                  </div><!---->
+                                </div>
+                              </tab>
+                              <tab role="tabpanel" aria-labelledby="" class="tab-pane">
+                                <div class="row"><!----><!---->
+                                  <div class="col-md-12">
+                                    <div class="randerScore mainScore">
+                                      <div class="no-dt">
+                                        <p _ngcontent-uhn-c91="">No real-time records found</p>
+                                      </div>
+                                    </div>
+                                  </div><!---->
+                                </div>
+                              </tab>
+                              <tab role="tabpanel" aria-labelledby="" class="tab-pane">
+                                <div class="row"><!----><!---->
+                                  <div class="col-md-12">
+                                    <div class="randerScore mainScore">
+                                      <div class="no-dt">
+                                        <p _ngcontent-uhn-c91="">No real-time records found</p>
+                                      </div>
+                                    </div>
+                                  </div><!---->
+                                </div>
+                              </tab>
+                              <tab role="tabpanel" aria-labelledby="" class="tab-pane">
+                                <div class="row"><!----><!---->
+                                  <div class="col-md-12">
+                                    <div class="randerScore mainScore">
+                                      <div class="no-dt">
+                                        <p _ngcontent-uhn-c91="">No real-time records found</p>
+                                      </div>
+                                    </div>
+                                  </div><!---->
+                                </div>
+                              </tab>
+                              <tab role="tabpanel" aria-labelledby="" class="tab-pane">
+                                <div class="row"><!----><!---->
+                                  <div class="col-md-12">
+                                    <div class="randerScore mainScore">
+                                      <div class="no-dt">
+                                        <p _ngcontent-uhn-c91="">No real-time records found</p>
+                                      </div>
+                                    </div>
+                                  </div><!---->
+                                </div>
+                              </tab><!---->
+                            </div>
+                          </tabset>
+                        </div><!---->
+                      </div><!----><!---->
                     </div>
                   </div>
+                  <?php
+                  if ($_SERVER['HTTP_USER_AGENT'] && strpos($_SERVER['HTTP_USER_AGENT'], 'Mobile') !== false) {
+                    // If the user agent indicates a mobile device, use mobile styles
+                    echo '<div class="col-md-4 order-1">';
+                  } else {
+                    // Otherwise, use desktop styles
+                    echo '<div class="col-md-4">';
+                  }
+                  ?>
+                  <div id="rightBarDiv" class="bets_box-main"><!----><!---->
 
-                </div>
-              </div><!---->
-          </div>
-          <div bsmodal="" tabindex="-1" role="dialog" aria-labelledby="dialog-static-name" class="modal fade">
-            <div class="modal-dialog modal-sm">
-              <div class="modal-content">
-                <div class="modal-header py-1 mobileBetplaceHeader">
-                  <h4 _ngcontent-uhn-c91="" id="dialog-static-name" class="modal-title pull-left">Place Bet</h4>
-                  <button _ngcontent-uhn-c91="" type="button" data-dismiss="modal" aria-label="Close" class="close"><i _ngcontent-uhn-c91="" class="fa fa-close"></i></button>
-                </div>
-                <div class="modal-body p-0"><app-bet-slip _ngcontent-uhn-c91="" _nghost-uhn-c87="">
+                    @if(Session::has('message'))
+                    <p class="alert alert-success"><strong>{{Session::get('message')}}</strong></p>
+                    @endif
+                    @if(Session::has('error'))
+                    <p class="alert alert-danger"><strong>{{Session::get('error')}}</strong></p>
+                    @endif
+
+                    <app-bet-slip _nghost-uhn-c87="">
+                      <div class="betting-table lay-bt" style="position: relative;">
+                        <h2 _ngcontent-uhn-c87="" class="mrkname" id="liveMatchLink"> Live Match </h2>
+                        <div id="liveTvMatch">
+
+                        </div>
+                      </div>
+
+                    </app-bet-slip>
+
+                    <app-bet-slip _nghost-uhn-c87="">
+                      <div class="betting-table lay-bt" style="position: relative;">
+                        <h2 _ngcontent-uhn-c87="" class="mrkname"> place bet </h2>
+                      </div>
+                    </app-bet-slip>
+                  </div>
+                  <?php
+                  if ($_SERVER['HTTP_USER_AGENT'] && strpos($_SERVER['HTTP_USER_AGENT'], 'Mobile') !== false) {
+                    // If the user agent indicates a mobile device, use mobile styles
+                    echo '<div id="rightBarDiv" class="bets_box-main show_bet" style="display:contents;">';
+                  } else {
+                    // Otherwise, use desktop styles
+                    echo '<div id="rightBarDiv" class="bets_box-main show_bet">';
+                  }
+                  ?>
+
+
+                  <app-bet-slip _nghost-uhn-c87="">
                     <form action="{{route('cricket-bet-place')}}" method="POST">
                       @csrf
                       <div class="betting-table lay-bt" style="position: relative;">
-                        <h2 _ngcontent-uhn-c87="" class="mrkname"> place bet </h2>
+                        <h2 class="mrkname d-flex justify-content-between align-items-center">
+                          place bet
+                          <span class="text-right remove_bet">X</span>
+                        </h2>
                         <div class="back">
                           <div class="row align-items-center">
                             <div class="col col-md-4"> (Bet for) </div>
                             <div class="col"> Odds </div>
                             <div class="col"> Stake </div>
                             <div class="col"> Profit </div>
-                          </div>
+                          </div><!---->
                           <div class="row border-bottom align-items-center">
                             <div class="col col-md-4 text-left bat_team_place"><a><i _ngcontent-uhn-c87="" class="fa fa-close text-danger"></i></a> Sunrisers
                               Hyderabad </div>
                             <div class="col">
-                                <input type="text" name="bet_odds" id="bet_input" readonly="true" min="1.01" max="999.99" class="form-control ng-untouched ng-pristine ng-valid">
-                                <input type="hidden" name="bet_input_stake" id="bet_input_stake">
-                                </div>
+                              <input type="text" name="bet_odds" id="bet_input" readonly="true" min="1.01" max="999.99" class="form-control ng-untouched ng-pristine ng-valid">
+                              <input type="hidden" name="bet_input_stake" id="bet_input_stake">
+                            </div><!----><!---->
                             <div class="col"><input type="number" name="bet_stake" id="add_input" placeholder="Amount" class="form-control ng-untouched ng-pristine ng-valid"></div>
                             <div class="col profit_div"> 0 </div>
                             <input type="hidden" name="back_lay" id="back_lay">
@@ -2183,24 +2123,111 @@
                             <input type="hidden" name="bet_profit" id="bet_profit">
                             <input type="hidden" name="bet_team_name" id="bet_team_name">
 
-                          </div>
+                          </div><!----><!----><!---->
                           <div class="stakes" style="width: 100%;">
                             <div class="btn-group">
                               <button type="button" class="add_bet">100</button>
-                              <button type="button" class="add_bet">500</button><button type="button" class="add_bet">1000</button><button type="button" class="add_bet">5000</button><button type="button" class="add_bet">10000</button><button type="button" class="add_bet">25000</button>
+                              <button type="button" class="add_bet">500</button><button type="button" class="add_bet">1000</button><button type="button" class="add_bet">5000</button><button type="button" class="add_bet">10000</button><button type="button" class="add_bet">25000</button><!---->
                             </div>
-                          </div>
+                          </div><!---->
                           <div class="row align-items-center">
                             <div class="col"><button type="button" class="btn cancel-btn" id="reset_btn">reset</button></div>
-                            <div class="col"><button class="btn betplace-btn" disabled="">submit</button></div>
-                          </div>
-                        </div>
+                            <div class="col"><button class="btn betplace-btn" disabled="">submit</button></div><!---->
+                          </div><!---->
+                        </div><!----><!---->
                       </div>
                     </form>
-                  </app-bet-slip></div>
+                  </app-bet-slip>
+
+
+                  <app-my-bets _nghost-uhn-c88="">
+                    <div class="bets-section">
+                      <h2 class="ds-none-mobile">My Bet</h2>
+                      <div style="height: 200px !important; overflow: scroll; ">
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <td>Matched Bet </td>
+                              <td>Odds</td>
+                              <td>Stake</td>
+                            </tr>
+                          </thead><!---->
+                          <tbody class="my-bet-table">
+                            @if(!empty(Session::get('myBets')))
+                            @foreach(Session::get('myBets') as $m)
+                            <tr>
+                              <td class="text-left">{{$m->team_name}};
+                              <td class="text-left">{{$m->bet_odds}};
+                              <td colspan="3" class="text-left">{{$m->bet_stake}};
+                            </tr>
+                            @endforeach
+                            @else
+                            <tr>
+                              <td colspan="3" class="text-left text-center">No data Found</td>
+                            </tr>
+                            @endif
+                          </tbody><!---->
+                        </table>
+                      </div>
+                    </div>
+                  </app-my-bets>
+                </div>
               </div>
+
+          </div>
+        </div><!---->
+        </div>
+        <div bsmodal="" tabindex="-1" role="dialog" aria-labelledby="dialog-static-name" class="modal fade">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+              <div class="modal-header py-1 mobileBetplaceHeader">
+                <h4 _ngcontent-uhn-c91="" id="dialog-static-name" class="modal-title pull-left">Place Bet</h4>
+                <button _ngcontent-uhn-c91="" type="button" data-dismiss="modal" aria-label="Close" class="close"><i _ngcontent-uhn-c91="" class="fa fa-close"></i></button>
+              </div>
+              <div class="modal-body p-0"><app-bet-slip _ngcontent-uhn-c91="" _nghost-uhn-c87="">
+                  <form action="{{route('cricket-bet-place')}}" method="POST">
+                    @csrf
+                    <div class="betting-table lay-bt" style="position: relative;">
+                      <h2 _ngcontent-uhn-c87="" class="mrkname"> place bet </h2>
+                      <div class="back">
+                        <div class="row align-items-center">
+                          <div class="col col-md-4"> (Bet for) </div>
+                          <div class="col"> Odds </div>
+                          <div class="col"> Stake </div>
+                          <div class="col"> Profit </div>
+                        </div>
+                        <div class="row border-bottom align-items-center">
+                          <div class="col col-md-4 text-left bat_team_place"><a><i _ngcontent-uhn-c87="" class="fa fa-close text-danger"></i></a> Sunrisers
+                            Hyderabad </div>
+                          <div class="col">
+                            <input type="text" name="bet_odds" id="bet_input" readonly="true" min="1.01" max="999.99" class="form-control ng-untouched ng-pristine ng-valid">
+                            <input type="hidden" name="bet_input_stake" id="bet_input_stake">
+                          </div>
+                          <div class="col"><input type="number" name="bet_stake" id="add_input" placeholder="Amount" class="form-control ng-untouched ng-pristine ng-valid"></div>
+                          <div class="col profit_div"> 0 </div>
+                          <input type="hidden" name="back_lay" id="back_lay">
+                          <input type="hidden" name="match_id" id="match_id">
+                          <input type="hidden" name="bet_profit" id="bet_profit">
+                          <input type="hidden" name="bet_team_name" id="bet_team_name">
+
+                        </div>
+                        <div class="stakes" style="width: 100%;">
+                          <div class="btn-group">
+                            <button type="button" class="add_bet">100</button>
+                            <button type="button" class="add_bet">500</button><button type="button" class="add_bet">1000</button><button type="button" class="add_bet">5000</button><button type="button" class="add_bet">10000</button><button type="button" class="add_bet">25000</button>
+                          </div>
+                        </div>
+                        <div class="row align-items-center">
+                          <div class="col"><button type="button" class="btn cancel-btn" id="reset_btn">reset</button></div>
+                          <div class="col"><button class="btn betplace-btn" disabled="">submit</button></div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </app-bet-slip></div>
             </div>
-          </div><!----><!---->
+          </div>
+        </div><!----><!---->
         </div>
         </app-sport-detail><!----></div>
         </div>
@@ -9778,7 +9805,9 @@
     @endif
     $(".bet_text").click(function() {
       $(".show_bet").show();
-$('html, body').animate({scrollTop: 0}, 800);
+      $('html, body').animate({
+        scrollTop: 0
+      }, 800);
       // $elem = $(this).parent("div");
       $elem = $(this).parents('.mainScore').first();
 
@@ -9848,95 +9877,125 @@ $('html, body').animate({scrollTop: 0}, 800);
     //  $(".my-bet-table").append(nodata);
     //  @endif
   </script>
-    <script>
+  <script>
     $(".remove_bet").click(function() {
       $(".show_bet").hide();
     });
   </script>
-   <script>
+  <script>
     var cricketId = @json($game_single['id']);
 
     document.addEventListener('DOMContentLoaded', function() {
-        var apiUrl = 'https://ujala11games.com/api/cricket/game/scorecard/' + cricketId;
+      var apiUrl = 'https://ujala11games.com/api/cricket/game/scorecard/' + cricketId;
 
-        // Function to fetch and update the scorecard
-        function updateScorecard() {
-            fetch(apiUrl)
-                .then(response => response.json())
-                .then(response => {
-                    // Check if the API call was successful
-                    if (response.status === "Success") {
-                        var data = response.data;
+      // Function to fetch and update the scorecard
+      function updateScorecard() {
+        fetch(apiUrl)
+          .then(response => response.json())
+          .then(response => {
+            // Check if the API call was successful
+            if (response.status === "Success") {
+              var data = response.data;
 
-                        // Extract the required details
-                        var team1 = data.t1;
-                        var team1Score = data.t1score;
-                        var team1Wickets = data.t1wickets;
-                        var team1Overs = data.t1overs;
+              // Extract the required details
+              var team1 = data.t1;
+              var team1Score = data.t1score;
+              var team1Wickets = data.t1wickets;
+              var team1Overs = data.t1overs;
 
-                        var team2 = data.t2;
-                        var team2Score = data.t2score;
-                        var team2Wickets = data.t2wickets;
-                        var team2Overs = data.t2overs;
-                        
-                        var team1Display = `${team1}: ${team1Score}/${team1Wickets} (${team1Overs})`;
-                        var team2Display = `${team2}: ${team2Score}/${team2Wickets} (${team2Overs})`;
-                        var matchStatus = data.status;
+              var team2 = data.t2;
+              var team2Score = data.t2score;
+              var team2Wickets = data.t2wickets;
+              var team2Overs = data.t2overs;
 
-                        // Find the div with class "scoreCard" and update its content
-                        var scoreCardDiv = document.querySelector('.scoreCard_game');
-                        scoreCardDiv.innerHTML = `
+              var team1Display = `${team1}: ${team1Score}/${team1Wickets} (${team1Overs})`;
+              var team2Display = `${team2}: ${team2Score}/${team2Wickets} (${team2Overs})`;
+              var matchStatus = data.status;
+
+              // Find the div with class "scoreCard" and update its content
+              var scoreCardDiv = document.querySelector('.scoreCard_game');
+              scoreCardDiv.innerHTML = `
                             <div>
                                 <p>${team1Display} vs ${team2Display}</p>
                                 <p>Status: ${matchStatus}</p>
                             </div>
                         `;
-                    } else {
-                        console.error('Error:', response.message);
-                    }
-                })
-                .catch(error => {
-                    console.error('Error fetching data:', error);
-                });
-        }
+            } else {
+              console.error('Error:', response.message);
+            }
+          })
+          .catch(error => {
+            console.error('Error fetching data:', error);
+          });
+      }
 
-        // Call the updateScorecard function every 3 seconds
-        setInterval(updateScorecard, 3000);
+      // Call the updateScorecard function every 3 seconds
+      setInterval(updateScorecard, 3000);
 
-        // Initial call to display the scorecard immediately on page load
-        updateScorecard();
+      // Initial call to display the scorecard immediately on page load
+      updateScorecard();
     });
-</script>
-<script>
-  $(document).ready(function() {
-    setInterval(function() {
-      // Loop through each odds box
-      @foreach($response['match_odds'] as $r)
-        var backValue = {{$r['back_value']}};
+  </script>
+  <script>
+    $(document).ready(function() {
+      setInterval(function() {
+        // Loop through each odds box
+        @foreach($response['match_odds'] as $r)
+        var backValue = {
+          {
+            $r['back_value']
+          }
+        };
         var randomValue = Math.floor(100 + Math.random() * 900); // Generate a random 3-digit number
         var newValue = (backValue * randomValue).toFixed(2); // Multiply and keep 2 decimal places
 
         // Update the span with the new value
         $("#back-value-{{$r['id']}}").text(newValue);
-      @endforeach
-    }, 5000); // 5000 milliseconds = 5 seconds
-  });
-</script>
-<script>
-  $(document).ready(function() {
-    setInterval(function() {
-      // Loop through each odds box
-      @foreach($response['match_odds'] as $r)
-        var backValue = {{$r['lay_value']}};
+        @endforeach
+      }, 5000); // 5000 milliseconds = 5 seconds
+    });
+  </script>
+  <script>
+    $(document).ready(function() {
+      setInterval(function() {
+        // Loop through each odds box
+        @foreach($response['match_odds'] as $r)
+        var backValue = {
+          {
+            $r['lay_value']
+          }
+        };
         var randomValue = Math.floor(100 + Math.random() * 900); // Generate a random 3-digit number
         var newValue = (backValue * randomValue).toFixed(2); // Multiply and keep 2 decimal places
 
         // Update the span with the new value
         $("#lay-value-{{$r['id']}}").text(newValue);
-      @endforeach
-    }, 5000); // 5000 milliseconds = 5 seconds
-  });
-</script>
+        @endforeach
+      }, 5000); // 5000 milliseconds = 5 seconds
+    });
+  </script>
+  <script>
+    document.getElementById('liveMatchLink').addEventListener('click', function() {
+
+      var liveTvMatchDiv = document.getElementById('liveTvMatch');
+      var channel_id = $("#channel_id").val();
+    
+    
+      if (liveTvMatchDiv.style.display === 'none' || liveTvMatchDiv.style.display === '') {
+        var iframe = document.createElement('iframe');
+        iframe.src = channel_id;
+        // iframe.src = "https://allinonereborn.in/web/ptv.html";
+        // iframe.src = "https://tveboxlive.blogspot.com/?m=1&autoplay=1";
+        // iframe.src = "https://allinone-tataplay-web-one.vercel.app/player.html?channel=24";
+        liveTvMatchDiv.innerHTML = ''; // Clear any previous content
+        liveTvMatchDiv.appendChild(iframe);
+        liveTvMatchDiv.style.display = 'block'; // Show the div
+        liveTvMatchDiv.style.height = '202px'; // Show the div
+      } else {
+        liveTvMatchDiv.style.display = 'none'; // Hide the div
+      }
+    });
+  </script>
 </body>
 
 </html>

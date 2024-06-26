@@ -5,9 +5,23 @@
 
   /* Style Goes Here */
 </style>
+<style>
+  .liveTvMatch {
+    width: 100%;
+    height: 400px;
+    /* Adjust the height as needed */
+    position: relative;
+  }
+
+  iframe {
+    width: 100% !important;;
+    height: 100% !important;;
+    border: none;
+  }
+</style>
 @endsection
 @section('content')
-
+<input type="hidden" id="channel_id" name="channel_id" value="{{$game_single['channel_id']}}">
 <div class="col-md-10 pxxs-0"><router-outlet></router-outlet><app-sport-detail>
     <div class="wrapper-inner detail_screen">
       <div>
@@ -111,15 +125,20 @@
             </div>
             <div class="col-md-4">
             
-            <?php
-              if ($_SERVER['HTTP_USER_AGENT'] && strpos($_SERVER['HTTP_USER_AGENT'], 'Mobile') !== false) {
-                // If the user agent indicates a mobile device, use mobile styles
-                echo '<div id="rightBarDiv" class="bets_box-main show_bet" style="display:contents;">';
-              } else {
-                // Otherwise, use desktop styles
-                echo '<div id="rightBarDiv" class="bets_box-main show_bet">';
-              }
-              ?>
+            <?php if ($_SERVER['HTTP_USER_AGENT'] && strpos($_SERVER['HTTP_USER_AGENT'], 'Mobile') !== false) { ?>
+
+<!-- // If the user agent indicates a mobile device, use mobile styles -->
+<div id="rightBarDiv" class="bets_box-main " style="display:contents;">
+<?php   } else { ?>
+
+  <!-- // Otherwise, use desktop styles -->
+  <div id="rightBarDiv" class="bets_box-main ">
+  <?php  } ?>
+
+  <div class="betting-table lay-bt" style="position: relative;">
+    <h2 _ngcontent-uhn-c87="" class="mrkname" id="liveMatchLink"> Live Match </h2>
+  </div>
+  <div id="liveTvMatch"></div>
               
                @if(Session::has('message'))
                   <p class="alert alert-success"><strong>{{Session::get('message')}}</strong></p>
@@ -239,7 +258,7 @@
   </app-sport-detail><!----></div>
 @endsection
 @section('script')
-  /* Script Goes Here */
+  
 <script>
 $(function() {
   @if(empty(Session::get('myBets')))
@@ -307,5 +326,28 @@ console.log(profit);
       $(".show_bet").hide();
     });
   </script>
-  /* Script Goes Here */
+ <script>
+  document.getElementById('liveMatchLink').addEventListener('click', function() {
+ 
+    var liveTvMatchDiv = document.getElementById('liveTvMatch');
+    var channel_id = $("#channel_id").val();
+
+
+    if (liveTvMatchDiv.style.display === 'none' || liveTvMatchDiv.style.display === '') {
+      var iframe = document.createElement('iframe');
+      iframe.src = channel_id;
+      // iframe.src = "https://allinonereborn.in/web/ptv.html";
+      // iframe.src = "https://tveboxlive.blogspot.com/?m=1&autoplay=1";
+      // iframe.src = "https://allinone-tataplay-web-one.vercel.app/player.html?channel=24";
+      liveTvMatchDiv.innerHTML = ''; // Clear any previous content
+      liveTvMatchDiv.appendChild(iframe);
+      liveTvMatchDiv.style.display = 'block'; // Show the div
+      liveTvMatchDiv.style.height = '215px'; // Show the div
+      iframe.style.height = '100%'; // Show the div
+      iframe.style.width = '100%'; // Show the div
+    } else {
+      liveTvMatchDiv.style.display = 'none'; // Hide the div
+    }
+  });
+</script>
 @endsection
