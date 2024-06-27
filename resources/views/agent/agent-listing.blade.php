@@ -192,7 +192,8 @@ $available_credit=QueryHelper::total_availablecredit(Auth::guard('agent')->user(
                             Inactive
                             @endif
                           </td>
-                         <td colspan="" class=""><a href="{{route('agent-listing-demoag5',$sc->id)}}" class="font-13 eye-view"><i data-feather="eye"></i></a></td>
+                        <!-- <td colspan="" class=""><a href="{{route('agent-listing-demoag5',$sc->id)}}" class="font-13 eye-view"><i data-feather="eye"></i></a></td> -->
+                        <td colspan="" class=""><a href="javascript:void(0)" class="font-13 eye-view"><i data-feather="eye"></i></a></td>
                           <td colspan="" class="red">0.00</td>
                           <td colspan="" class="green">0.00</td>
                           <td colspan="" class="">{{$sc->credit_limit}}</td>
