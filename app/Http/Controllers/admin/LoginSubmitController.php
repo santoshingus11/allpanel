@@ -20,7 +20,7 @@ use App\Rules\CustomRule;
 class LoginSubmitController extends Controller
 {
     public function new_agent_submit(Request $request){
-    //   dd($request->all());
+     
         $validator = Validator::make($request->all(), [
             'username' => 'required|string',
                       'password' => [
@@ -32,18 +32,19 @@ class LoginSubmitController extends Controller
             'confirm_password' => 'required|string|same:password', // Ensures confirm_password matches password
             'status' => 'required|in:0,1',
             'bet_status' => 'required|in:0,1',
-            'credit_limit' => 'required|numeric',
-            'user_rate' => 'required|numeric',
-            'exposure_limit' => 'nullable|numeric',
-            'message' => 'nullable|string',
-            'agent_password' => 'required|string',
+            // 'credit_limit' => 'required|numeric',
+            // 'user_rate' => 'required|numeric',
+            // 'exposure_limit' => 'nullable|numeric',
+            // 'message' => 'nullable|string',
+            // 'agent_password' => 'required|string',
             'level' => 'required|string',
+            'phone' => 'nullable|unique:admins,phone',
         ]);
-    
+ 
         $validator->sometimes('confirm_password', 'different:password', function ($input) {
             return $input->password !== $input->confirm_password;
         });
-    
+      
         if ($validator->fails()) {
             return redirect()
                 ->back()
@@ -51,7 +52,7 @@ class LoginSubmitController extends Controller
                 ->withInput();
         }
         $existingUser = Admin::where('username', $request->username)->first();
-
+      
         if ($existingUser) {
             return redirect()
                 ->back()
@@ -61,10 +62,11 @@ class LoginSubmitController extends Controller
         
 
         $user = Auth::guard('agent')->user();
-        if (!$user || !Hash::check($request->agent_password, $user->password)) {
-            
-            return redirect()->back()->with('error', 'Authentication failed. Please check your password.')->withInput();
-        }
+       
+        // if (!$user || !Hash::check($request->agent_password, $user->password)) {
+           
+        //     return redirect()->back()->with('error', 'Authentication failed. Please check your password.')->withInput();
+        // }
         if($request->has('id')){
             $newAgent= Admin::where('id', $request->id);
         }else{
@@ -78,15 +80,19 @@ class LoginSubmitController extends Controller
         $newAgent->username = $request->username;
         $newAgent->password = bcrypt($request->password);
         $newAgent->status = $request->status;
-        $newAgent->level_permission = $request->level;
+        $newAgent->level_permission = $request->level; //user
+        // $newAgent->level_permission = 'User';
         $newAgent->bet_status = $request->bet_status;
-        $newAgent->credit_limit = $request->credit_limit;
-        $newAgent->user_rate = $request->user_rate;
-        $newAgent->exposure_limit = $request->exposure_limit;
-        $newAgent->message = $request->message;
+        $newAgent->credit_limit = 0;
+        $newAgent->user_rate = 1;
+        // $newAgent->exposure_limit = $request->exposure_limit;
+        // $newAgent->message = $request->message;
+        $newAgent->phone = $request->phone;
+        //  $newAgent->role_id =$role_id; 
          $newAgent->role_id =$role_id; 
         $newAgent->admin_role = $user->role_id; 
         $newAgent->admin_id = $user->id; 
+      
         $newAgent->save();
 
         // Redirect to the appropriate page after successful form submission

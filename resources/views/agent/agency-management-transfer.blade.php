@@ -69,7 +69,7 @@
                           <th class="">Payment Threshold</th>
                           <th class="">Credit Limit</th>
                           <th class="">Available Balance</th>
-                          <th class="">Transfer</th>
+                          <th class="">Transfer @if(Auth::guard('agent')->user()->role_id == 4) /Withdraw @endif</th>
                         </tr>
                       </thead>
                       <tbody id="searchresult">
@@ -77,7 +77,7 @@
                       </tbody>
                     </table>
 
-                
+
                   </div>
                 </div>
                 @include('layouts.allpagination')
@@ -108,12 +108,18 @@
             @csrf
 
             <input type="hidden" value="" class="form-control" name="id" id="id">
-
+            @if(Auth::guard('agent')->user()->role_id == 4)
+            <div class="mb-0">
+              <label for="TransferAmount" class="form-label">withdraw Amount</label>
+              <input type="number" name="withdraw_amount" value="" class="form-control" id="WidthdrawAmount" placeholder="Transfer Amount" require="required">
+            </div>
+            @endif
             <div class="mb-0">
               <label for="TransferAmount" class="form-label">Transfer Amount</label>
               <input type="number" name="amount" value="" class="form-control" id="TransferAmount" placeholder="Transfer Amount" require="required">
             </div>
             <div class="mb-3 TransferAmount">
+              <label for="TransferAmount" class="form-label">Note</label>
               <textarea class="form-control" name="note" id="exampleFormControlTextarea1" placeholder="Agent Notes" rows="3"></textarea>
             </div>
 

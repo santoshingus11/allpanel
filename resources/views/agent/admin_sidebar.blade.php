@@ -34,7 +34,7 @@
       </div>
     </li>
 
-    <li class="nav-item">
+    <!-- <li class="nav-item">
       <a class="nav-link" data-bs-toggle="collapse" href="#RiskManagement" role="button" aria-expanded="false" aria-controls="RiskManagement">
         <span class="link-title">Risk Management</span>
         <i class="link-arrow" data-feather="chevron-down"></i>
@@ -49,9 +49,9 @@
           </li>
         </ul>
       </div>
-    </li>
+    </li> -->
 
-    <li class="nav-item">
+    <!-- <li class="nav-item">
       <a class="nav-link" data-bs-toggle="collapse" href="#Reports" role="button" aria-expanded="false" aria-controls="Reports">
         <span class="link-title">Reports</span>
         <i class="link-arrow" data-feather="chevron-down"></i>
@@ -107,7 +107,7 @@
           @endif
         </ul>
       </div>
-    </li>
+    </li> -->
 
     <li class="nav-item">
       <a class="nav-link" data-bs-toggle="collapse" href="#AccountManagement" role="button" aria-expanded="false" aria-controls="AccountManagement">
@@ -116,7 +116,7 @@
       </a>
       <div class="collapse" id="AccountManagement">
         <ul class="nav sub-menu">
-          <li class="nav-item">
+          <!-- <li class="nav-item">
            @if(Auth::guard('agent')->user()->role_id==1 || Auth::guard('agent')->user()->role_id==2)
             <a href="{{route('dashboard')}}" class="nav-link">Balance</a>
             @elseif(Auth::guard('agent')->user()->role_id==3 || Auth::guard('agent')->user()->role_id==4)
@@ -126,11 +126,11 @@
           <li class="nav-item">
            @if(Auth::guard('agent')->user()->role_id==1 || Auth::guard('agent')->user()->role_id==2)
            <a href="{{route('account-statement')}}" class="nav-link">Account Statement</a>
-            <!-- <a href="{{route('user-statement-account-statement')}}" class="nav-link">Statement</a> -->
+          <a href="{{route('user-statement-account-statement')}}" class="nav-link">Statement</a>
             @elseif(Auth::guard('agent')->user()->role_id==3 || Auth::guard('agent')->user()->role_id==4)
             <a href="{{route('client-account-statement')}}" class="nav-link">Client Account Statement</a>
             @endif
-          </li>
+          </li> -->
           @if(Auth::guard('agent')->user()->role_id==3 || Auth::guard('agent')->user()->role_id==4)
           <li class="nav-item">
            <a href="{{route('dashboard')}}" class="nav-link">Balance</a>
@@ -140,7 +140,7 @@
       </div>
     </li>
 
-    <li class="nav-item">
+    <!-- <li class="nav-item">
       <a class="nav-link" data-bs-toggle="collapse" href="#UserListing" role="button" aria-expanded="false" aria-controls="UserListing">
         <span class="link-title">Admin Users</span>
         <i class="link-arrow" data-feather="chevron-down"></i>
@@ -171,7 +171,7 @@
        </div>
      </li>
      @endif
-    </li>
+    </li> -->
 
    @if(Auth::guard('agent')->user()->role_id==1)
     <li class="nav-item">

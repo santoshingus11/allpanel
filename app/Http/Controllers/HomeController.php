@@ -19,7 +19,7 @@ use App\Models\BetRecord;
 class HomeController extends Controller
 {
     
-    public function cricket_details($game_id){
+    public function cricket_details(Request $request,$game_id){
         
         //get match list
         $ch = curl_init();
@@ -53,11 +53,17 @@ class HomeController extends Controller
         $game_single=json_decode($res, true);
         
         curl_close($gm);
-
+        if ($request->ajax()) {
+            return response()->json([
+                'response' => $response,
+                'game_single' => $game_single,
+                'game_id' => $game_id,
+            ]);
+          }
 // if ($game_id == 1) {
 //             return view('client.Cricket-details-ipl', compact('response', 'game_single'));
 //         }
-        return view('client.Cricket-details',compact('response','game_single'));
+        return view('client.Cricket-details',compact('response','game_single','game_id'));
     }
     
     public function cricket_bet_place(Request $request){
@@ -153,7 +159,7 @@ class HomeController extends Controller
         
     }
     
-    public function football_details($game_id){
+    public function football_details(Request $request,$game_id){
         
          $ch = curl_init();
         // Disable SSL verification
@@ -193,7 +199,7 @@ class HomeController extends Controller
         $result=curl_exec($ch);
         $response=json_decode($result, true);
         curl_close($ch);
-        
+      
         //get Games list
         $gm = curl_init();
         curl_setopt($gm, CURLOPT_SSL_VERIFYPEER, false);
@@ -203,8 +209,14 @@ class HomeController extends Controller
         $res=curl_exec($gm);
         $game_single=json_decode($res, true);
         curl_close($gm);
-        
-        return view('client.Football-Details',compact('response','game_single','allGames'));
+        if ($request->ajax()) {
+            return response()->json([
+                'response' => $response,
+                'game_single' => $game_single,
+                'game_id' => $game_id,
+            ]);
+          }
+        return view('client.Football-Details',compact('response','game_single','allGames','game_id'));
     }
     
     public function football_bet_place(Request $request){
@@ -214,7 +226,7 @@ class HomeController extends Controller
         }
         
         $user_id =  Auth::guard('client')->user()->id;
-        
+     
         $placeBet = new FootballPlaceBet();
         $placeBet->match_id = $request->match_id;
         $placeBet->bet_odds = $request->bet_odds;
@@ -226,9 +238,13 @@ class HomeController extends Controller
         $placeBet->save();
         
         $user = Admin::findOrFail($user_id);
-        $user->balance = $user->balance - $request->bet_stake;
-        $user->save();
-        
+        $update_balance = [
+                'balance' => $user->balance - $request->bet_stake
+            ];
+       Admin::where('id',$user_id)->update($update_balance);
+        // $user->balance = $user->balance - $request->bet_stake;
+        // $user->save();
+       
         $played_matches = FootballPlaceBet::where('user_id',$user_id)->where('bet_result',null)->orderBy('id','desc')->get();
         
         return redirect()->back()->with(['message'=>'Bet placed successfully','myBets'=>$played_matches]);
@@ -271,7 +287,7 @@ class HomeController extends Controller
         return view('client.Tennis',compact('response','allGames'));
     }
     
-    public function tennis_details($game_id){
+    public function tennis_details(Request $request,$game_id){
          $ch = curl_init();
         // Disable SSL verification
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
@@ -320,8 +336,14 @@ class HomeController extends Controller
         $res=curl_exec($gm);
         $game_single=json_decode($res, true);
         curl_close($gm);
-        
-        return view('client.Tennis-details',compact('response','game_single','allGames'));
+        if ($request->ajax()) {
+            return response()->json([
+                'response' => $response,
+                'game_single' => $game_single,
+                'game_id' => $game_id,
+            ]);
+          }
+        return view('client.Tennis-details',compact('response','game_single','allGames','game_id'));
     }
     
     public function tennis_bet_place(Request $request){
@@ -525,7 +547,8 @@ class HomeController extends Controller
     
     public function account_settlement() {
           $bankingHistories = BankingHistory::where('user_id',Auth::guard('client')->user()->id)->orderBy('banking_history_id','desc')->get();
-        return view('client.account_settlement',compact('bankingHistories'));
+
+          return view('client.account_settlement',compact('bankingHistories'));
     }
     
     function change_pass() {

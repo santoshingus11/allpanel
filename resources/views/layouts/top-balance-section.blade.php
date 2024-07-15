@@ -1,11 +1,18 @@
-
-@php 
+@php
 $netexposure=QueryHelper::total_netexposure(Auth::guard('agent')->user()->id,Auth::guard('agent')->user()->role_id);
 $total_balancedown=QueryHelper::total_balancedown(Auth::guard('agent')->user()->id,Auth::guard('agent')->user()->role_id);
 $total_balanceup=QueryHelper::total_balanceup(Auth::guard('agent')->user()->id,Auth::guard('agent')->user()->role_id);
 $available_credit=QueryHelper::total_availablecredit(Auth::guard('agent')->user()->id,Auth::guard('agent')->user()->role_id);
-@endphp
 
+
+@endphp
+<?php
+
+use App\Models\BankingHistory;
+
+$exposure = BankingHistory::where('parent_id',Auth::guard('agent')->user()->id)->where('type','W')->sum('amount');
+ 
+?>
 <div class="Welcome-to_lotus">
   <marquee class="top-bg py-1 px-2 mb-2">
     <p class="font-14">{{QueryHelper::notification('news')}}</p>
@@ -14,9 +21,13 @@ $available_credit=QueryHelper::total_availablecredit(Auth::guard('agent')->user(
 <div class="d-flex justify-content-between align-items-center flex-wrap mb-3 top-bg px-4">
   <div class="Welcome-to Dashboard">
     <ul class="d-flex justify-content-between Balance_Down">
-      <li>Balance Down: <span class="red" >{{$total_balancedown ?? '0.00'}}</span></li>
-      <li>Balance Up: <span class="green" >{{$total_balanceup ?? '0.00'}}</span></li>
-      <li>Net Exposure: <span @if($netexposure>0) class="green" @else class="red" @endif >{{$netexposure ?? '0.00'}}</span></li>
+      <li>Balance Down: <span class="red">{{$total_balancedown ?? '0.00'}}</span></li>
+      <li>Balance Up: <span class="green">
+          <?php if (!empty($total_balanceup)) { ?>
+            <?php echo $total_balanceup - $total_balancedown ?? "" ?>
+          <?php } ?>
+        </span></li>
+      <li>Net Exposure: <span @if($exposure>0) class="green" @else class="red" @endif >{{$exposure ?? '0.00'}}</span></li>
       <li>Available Credit: <span @if($available_credit>0) class="green" @else class="red" @endif>{{$available_credit ?? '0.00'}}</span></li>
     </ul>
   </div>

@@ -13,7 +13,11 @@ use App\Models\SiteNotification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
-
+use App\Models\CricketPlaceBet;
+use App\Models\FootballPlaceBet;
+use App\Models\GreyhoundRacingPlaceBet;
+use App\Models\HorseRacingPlaceBet;
+use App\Models\TennisPlaceBet;
 class QueryHelper
 {
     public static function total_balanceup($id,$role_id)
@@ -49,15 +53,19 @@ class QueryHelper
       //   }else{
       //       $adminids=Admin::where('admin_id',$id)->where('role_id',$role_id+1)->pluck('id')->toArray();
       //   }
-       
-        $date=date('Y-m-d');
-        $amount=BetHistory::where('client_id',$id)->sum('bet_placed');
-         if(!empty($amount)){
-         $data = $amount;      
-         }else{
-         $data = '0.00';
-         }
-         return $data;
+      $deposit = BankingHistory::where('parent_id',Auth::guard('agent')->user()->id)->where('type','D')->sum('amount');
+      $withdraw = BankingHistory::where('parent_id',Auth::guard('agent')->user()->id)->where('type','W')->sum('amount');
+      
+     
+      return $deposit - $withdraw;
+      //   $date=date('Y-m-d');
+      //   $amount=BetHistory::where('client_id',$id)->sum('bet_placed');
+      //    if(!empty($amount)){
+      //    $data = $amount;      
+      //    }else{
+      //    $data = '0.00';
+      //    }
+      //    return $data;
        
     }  
 
@@ -77,6 +85,17 @@ class QueryHelper
             return $data;
 
        
+    }  
+    public static function total_bets($id)
+    {
+       
+      $GreyhoundRacingPlaceBet = GreyhoundRacingPlaceBet::where('user_id',$id)->where('bet_result',Null)->sum('bet_stake');
+      $HorseRacingPlaceBet = HorseRacingPlaceBet::where('user_id',$id)->where('bet_result',Null)->sum('bet_stake');
+      $TennisPlaceBet = TennisPlaceBet::where('user_id',$id)->where('bet_result',Null)->sum('bet_stake');
+      $FootballPlaceBet = FootballPlaceBet::where('user_id',$id)->where('bet_result',Null)->sum('bet_stake');
+      $CricketPlaceBet = CricketPlaceBet::where('user_id',$id)->where('bet_result',Null)->sum('bet_stake');
+
+       return $CricketPlaceBet + $FootballPlaceBet + $TennisPlaceBet + $HorseRacingPlaceBet + $GreyhoundRacingPlaceBet;
     }  
 
     public static function admin_access_id()
