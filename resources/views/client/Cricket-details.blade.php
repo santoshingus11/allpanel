@@ -10068,5 +10068,19 @@
       loadCricketDetails();
     });
   </script>
+  <script>
+      function updateProfit(amnt) {
+        var odds = parseFloat($("#bet_input_stake").val()) || 1;
+        var profit = amnt * odds;
+        $(".profit_div").text(profit.toFixed(2)); // Format profit to 2 decimal places
+        $("#bet_profit").val(profit);
+        $('.betplace-btn').prop("disabled", false);
+    }
+    $("#add_input").on('input', function() {
+     
+        var amnt = parseFloat($(this).val()) || 0;
+        updateProfit(amnt);
+    });
+</script>
 </body>
 </html>
