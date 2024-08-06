@@ -23,7 +23,7 @@
 </style>
 @endsection
 @section('content')
-<input type="hidden" id="channel_id" name="channel_id" value="{{$game_single['channel_id']}}">
+<input type="hidden" id="channel_id" name="channel_id" value="{{$game_single['channel_id'] ?? ''}}">
 <div class="col-md-10 pxxs-0">
   <app-sport-detail>
 
@@ -40,7 +40,80 @@
             </div>
             <div id="liveTvMatch"></div>
           <?php } ?>
-          <h2 class="event-title">{{$game_single['game_title']}}</h2>
+
+          <style>
+              .container {
+                background-color: #2a2a3c;
+                padding: 20px;
+                border-radius: 10px;
+                text-align: center;
+                color: white;
+              }
+
+              .header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 20px;
+              }
+
+              .header .title {
+                font-size: 18px;
+              }
+
+              .header .date {
+                font-size: 14px;
+                color: #bfbfbf;
+              }
+
+              .score {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              }
+
+              .team {
+                display: flex;
+                align-items: center;
+              }
+
+              .team img {
+                width: 30px;
+                height: 30px;
+                margin-right: 10px;
+              }
+
+              .team .name {
+                font-size: 16px;
+              }
+
+              .goal {
+                font-size: 14px;
+                color: #bfbfbf;
+              }
+
+              .result {
+                font-size: 24px;
+                font-weight: bold;
+              }
+
+              .half-time {
+                font-size: 12px;
+                color: #bfbfbf;
+                margin-top: 10px;
+              }
+            </style>
+          <?php if (!empty($game_single['channel_id'])) { ?>
+            <div class="container">
+                <div class="header">
+                  <div class="title">{{$game_single['game_title'] ?? ""}}</div>
+                  <div class="date">{{$game_single['run_date_time'] ?? ""}}</div>
+                </div>
+               <hr>
+                <div id="scoreboard"></div>
+              </div>
+          <?php } ?>
+          <h2 class="event-title">{{$game_single['game_title'] ?? ""}}</h2>
           <div id="scoreCard" class="multi-collapse">
             <div class="col-12 px-0"><app-score-card><!----></app-score-card></div>
           </div><!---->
@@ -55,11 +128,11 @@
                     <div class="Lay_oddsbox bhav_box">Lay</div>
                   </div>
                 </div>
-            
+
                 <div class="randerScore mainScore " id="matchoddclass">
-                
+
                 </div>
-            
+
               </div><!----><!----><!----><!---->
             </div>
             <div><!----><!----><!----><!----></div><!----><!---->
@@ -320,6 +393,32 @@
           console.error('Error fetching cricket details:', error);
         }
       });
+
+      $.ajax({
+        url: game_id, // Update with your actual route
+        method: 'GET',
+        success: function(data) {
+          console.log(data);
+          var score = `
+              <div class="score">
+                  <div class="team">
+                   <img src="https://allpanel.art/public/highlight.b1ac6c3e.png" alt="Al Mokawloon">
+                    <div class="name">${data.score.tennis.team_name_a}</div>
+                  </div>
+                  <div class="result"><span></span> ${data.score.tennis.score_a} : ${data.score.tennis.score_b}</div>
+                  <div class="team">
+                  <img src="https://allpanel.art/public/highlight.b1ac6c3e.png" alt="Al Mokawloon">
+                    <div class="name">${data.score.tennis.team_name_b}</div>
+                   </div>
+                </div>
+          `;
+          $('#scoreboard').html(score);
+        },
+        error: function(xhr, status, error) {
+          console.error('Error fetching cricket details:', error);
+        }
+      });
+
     }
 
 
@@ -330,18 +429,19 @@
     loadCricketDetails();
   });
 </script>
+
 <script>
-      function updateProfit(amnt) {
-        var odds = parseFloat($("#bet_input_stake").val()) || 1;
-        var profit = amnt * odds;
-        $(".profit_div").text(profit.toFixed(2)); // Format profit to 2 decimal places
-        $("#bet_profit").val(profit);
-        $('.betplace-btn').prop("disabled", false);
-    }
-    $("#add_input").on('input', function() {
-     
-        var amnt = parseFloat($(this).val()) || 0;
-        updateProfit(amnt);
-    });
+  function updateProfit(amnt) {
+    var odds = parseFloat($("#bet_input_stake").val()) || 1;
+    var profit = amnt * odds;
+    $(".profit_div").text(profit.toFixed(2)); // Format profit to 2 decimal places
+    $("#bet_profit").val(profit);
+    $('.betplace-btn').prop("disabled", false);
+  }
+  $("#add_input").on('input', function() {
+
+    var amnt = parseFloat($(this).val()) || 0;
+    updateProfit(amnt);
+  });
 </script>
 @endsection

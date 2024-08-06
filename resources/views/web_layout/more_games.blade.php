@@ -1,4 +1,4 @@
- <?php 
+<?php 
  if(empty($allGames)){
   $ch = curl_init();
         // Disable SSL verification
@@ -33,7 +33,7 @@
  
  <div class="w-100 d-flex flex-nowrap overflow-auto gap-2 pt-1 pb-1 top-nav-event d-md-none">
     
-  
+              @if(!empty($allGames['crickets']))
               @foreach($allGames['crickets'] as $c)
             <a href="{{route('Cricket-details',$c['id'])}}">
      <span class="text-nowrap d-flex flex-nowrap gap-2 justify-content-between align-items-center text-white bg-dark p-2 rounded">
@@ -45,6 +45,8 @@
                 </span>
                 </a>
                  @endforeach
+                 @endif
+                 @if(!empty($allGames['footballs']))
               @foreach($allGames['footballs'] as $c)
             <a href="{{route('Football-Details',$c['id'])}}">
      <span class="text-nowrap d-flex flex-nowrap gap-2 justify-content-between align-items-center text-white bg-dark p-2 rounded">
@@ -56,6 +58,8 @@
                 </span>
                 </a>
                  @endforeach
+                 @endif
+                 @if(!empty($allGames['tennises']))
               @foreach($allGames['tennises'] as $c)
             <a href="{{route('tenis_detail',$c['id'])}}">
      <span class="text-nowrap d-flex flex-nowrap gap-2 justify-content-between align-items-center text-white bg-dark p-2 rounded">
@@ -67,5 +71,5 @@
                 </span>
                 </a>
                  @endforeach
-               
+                 @endif
               </div>

@@ -81,6 +81,26 @@ class ClientController extends Controller
 
     public function client()
     {
+        // $ch = curl_init();
+        // curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        // curl_setopt($ch, CURLOPT_URL, "https://ujala11games.com/api/cricket/game-list");
+        // curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+        
+        // $retry = 3;
+        // $success = false;
+        // $response = null;
+        // while ($retry > 0 && !$success) {
+        //     $result = curl_exec($ch);
+        //     if ($result === false) {
+        //         $retry--;
+        //     } else {
+        //         $success = true;
+        //         $response = json_decode($result, true);
+        //     }
+        // }
+        // curl_close($ch);
+
 
         $ch = curl_init();
         // Disable SSL verification
@@ -89,10 +109,23 @@ class ClientController extends Controller
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         // Set the url
         curl_setopt($ch, CURLOPT_URL, "https://ujala11games.com/api/cricket/game-list");
+       
+        $retry = 3;
+        $success = false;
+        $response = null;
+        while ($retry > 0 && !$success) {
+            $result = curl_exec($ch);
+            if ($result === false) {
+                $retry--;
+            } else {
+                $success = true;
+                $response = json_decode($result, true);
+            }
+        }
         // Execute
-        $result = curl_exec($ch);
-        // Will dump a beauty json <3
-        $response = json_decode($result, true);
+        // $result = curl_exec($ch);
+        // // Will dump a beauty json <3
+        // $response = json_decode($result, true);
 
         curl_close($ch);
 
@@ -104,10 +137,24 @@ class ClientController extends Controller
         curl_setopt($chr, CURLOPT_RETURNTRANSFER, true);
         // Set the url
         curl_setopt($chr, CURLOPT_URL, "https://ujala11games.com/api/get-all-games-list");
-        // Execute
-        $allGameresult = curl_exec($chr);
-        // Will dump a beauty json <3
-        $allGames = json_decode($allGameresult, true);
+      
+      
+        $retry1 = 3;
+        $success1 = false;
+        $allGames = null;
+        while ($retry1 > 0 && !$success1) {
+            $allGameresult = curl_exec($chr);
+            if ($allGameresult === false) {
+                $retry1--;
+            } else {
+                $success1 = true;
+                $allGames = json_decode($allGameresult, true);
+            }
+        }
+        // // Execute
+        // $allGameresult = curl_exec($chr);
+        // // Will dump a beauty json <3
+        // $allGames = json_decode($allGameresult, true);
 
         curl_close($chr);
 
@@ -403,5 +450,33 @@ class ClientController extends Controller
         $greyhoundBets = GreyhoundRacingPlaceBet::where('user_id', $user_id)->orderBy('id', 'desc')->get();
 
         return view('client.bet_history_client', compact('betRecords', 'cricketBets', 'footballBets', 'tennisBets', 'horseBets', 'greyhoundBets'));
+    }
+
+    public function games_score()
+    {
+
+        $ch = curl_init();
+        // Disable SSL verification
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        // Will return the response, if false it print the response
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        // Set the url
+        curl_setopt($ch, CURLOPT_URL, "https://ujala11games.com/api/cricket/game-list");
+        // Execute
+        $result = curl_exec($ch);
+        // Will dump a beauty json <3
+        $response = json_decode($result, true);
+
+        curl_close($ch);
+
+        $data = [
+            'labels' => $gameData->content->gameLabels,
+            'games' => $gameData->content->gameList,
+            'liveGames' => $liveEvolutionLobbyGames,
+            // 'sportBetGames' => $sportBetGames
+        ];
+
+
+        return view('client.home', compact('response', 'allGames'))->with('data', $data);
     }
 }

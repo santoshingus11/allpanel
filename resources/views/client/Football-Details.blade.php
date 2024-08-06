@@ -21,10 +21,11 @@
     border: none;
   }
 </style>
+
 @endsection
 @section('content')
 
-<input type="hidden" id="channel_id" name="channel_id" value="{{$game_single['channel_id']}}">
+<input type="hidden" id="channel_id" name="channel_id" value="{{$game_single['channel_id'] ?? ''}}">
 <div class="col-md-10 pxxs-0"><router-outlet></router-outlet><app-sport-detail>
     <div class="wrapper-inner detail_screen">
       <div>
@@ -78,7 +79,80 @@
               </div>
               <div id="liveTvMatch"></div>
             <?php } ?>
-            <h2 class="event-title">{{$game_single['game_title']}}</h2>
+            <style>
+              .container {
+                background-color: #2a2a3c;
+                padding: 20px;
+                border-radius: 10px;
+                text-align: center;
+                color: white;
+              }
+
+              .header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 20px;
+              }
+
+              .header .title {
+                font-size: 18px;
+              }
+
+              .header .date {
+                font-size: 14px;
+                color: #bfbfbf;
+              }
+
+              .score {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              }
+
+              .team {
+                display: flex;
+                align-items: center;
+              }
+
+              .team img {
+                width: 30px;
+                height: 30px;
+                margin-right: 10px;
+              }
+
+              .team .name {
+                font-size: 16px;
+              }
+
+              .goal {
+                font-size: 14px;
+                color: #bfbfbf;
+              }
+
+              .result {
+                font-size: 24px;
+                font-weight: bold;
+              }
+
+              .half-time {
+                font-size: 12px;
+                color: #bfbfbf;
+                margin-top: 10px;
+              }
+            </style>
+            <?php if (!empty($game_single['channel_id'])) { ?>
+              <div class="container">
+                <div class="header">
+                  <div class="title">{{$game_single['game_title'] ?? ""}}</div>
+                  <div class="date">{{$game_single['run_date_time'] ?? ""}}</div>
+                </div>
+               <hr>
+                <div id="scoreboard"></div>
+                <div id="timer" style="text-align:center;font-weight: bold;font-size: 25px;"></div>
+              </div>
+            <?php } ?>
+            <h2 class="event-title">{{$game_single['game_title'] ?? ""}}</h2>
             <div id="scoreCard" class="multi-collapse">
               <div class="col-12 px-0"><app-score-card class="scoreCard_game"><!----></app-score-card></div>
             </div><!---->
@@ -93,12 +167,12 @@
                       <div class="Lay_oddsbox bhav_box">Lay</div>
                     </div>
                   </div>
-                
+
                   <div class="randerScore mainScore matchoddclass">
-                  
+
                   </div><!---->
                 </div>
-                
+
               </div><!----><!----><!----><!---->
             </div>
             <div class="col-md-12">
@@ -111,11 +185,11 @@
                     <div class="Lay_oddsbox bhav_box">Lay</div>
                   </div>
                 </div>
-               
+
                 <div class="randerScore mainScore " id="over_0_goals">
-                 
+
                 </div>
-              
+
               </div><!----><!----><!----><!---->
             </div>
             <div class="col-md-12">
@@ -128,11 +202,11 @@
                     <div class="Lay_oddsbox bhav_box">Lay</div>
                   </div>
                 </div>
-               
+
                 <div class="randerScore mainScore " id="over_under_1_point_5_goals">
-               
+
                 </div>
-             
+
               </div><!----><!----><!----><!---->
             </div>
             <div class="col-md-12">
@@ -145,11 +219,11 @@
                     <div class="Lay_oddsbox bhav_box">Lay</div>
                   </div>
                 </div>
-               
+
                 <div class="randerScore mainScore over_under_2_point_5_goals">
-                 
+
                 </div>
-              
+
               </div><!----><!----><!----><!---->
             </div>
             <div class="col-md-12">
@@ -162,11 +236,11 @@
                     <div class="Lay_oddsbox bhav_box">Lay</div>
                   </div>
                 </div>
-               
+
                 <div class="randerScore mainScore over_under_3_point_5_goals">
-                 
+
                 </div>
-              
+
               </div><!----><!----><!----><!---->
             </div>
             <div><!----><!----><!----><!----></div><!----><!---->
@@ -409,56 +483,7 @@
     $(".show_bet").hide();
   });
 </script>
-<!-- <script>
-    var cricketId = @json($game_single['id']);
 
-    document.addEventListener('DOMContentLoaded', function() {
-        var apiUrl = 'https://ujala11games.com/api/football/game/scorecard/' + cricketId;
-
-        // Function to fetch and update the scorecard
-        function updateScorecard() {
-            fetch(apiUrl)
-                .then(response => response.json())
-                .then(response => {
-                    // Check if the API call was successful
-                    if (response.status === "Success") {
-                        var data = response.data;
-
-                        // Extract the required details
-                        var team1 = data.t1;
-                       
-
-                        var team2 = data.t2;
-                        
-                        var result = data.results;
-                       
-                        var matchStatus = data.status;
-
-                        // Find the div with class "scoreCard" and update its content
-                        var scoreCardDiv = document.querySelector('.scoreCard_game');
-                        scoreCardDiv.innerHTML = `
-                            <div>
-                                <p>${team1} vs ${team2}</p>
-                                <p>${result}</p>
-                                <p>Status: ${matchStatus}</p>
-                            </div>
-                        `;
-                    } else {
-                        console.error('Error:', response.message);
-                    }
-                })
-                .catch(error => {
-                    console.error('Error fetching data:', error);
-                });
-        }
-
-        // Call the updateScorecard function every 3 seconds
-        setInterval(updateScorecard, 3000);
-
-        // Initial call to display the scorecard immediately on page load
-        updateScorecard();
-    });
-</script> -->
 <script>
   $(document).ready(function() {
     function loadCricketDetails() {
@@ -470,15 +495,43 @@
         // url: '/newsilvergit/football-details/' + game_id, // Update with your actual route
         method: 'GET',
         success: function(data) {
-          console.log(data.response);
+
           updateCricketDetails(data);
         },
         error: function(xhr, status, error) {
           console.error('Error fetching cricket details:', error);
         }
       });
-    }
 
+      $.ajax({
+        url: game_id, // Update with your actual route
+        method: 'GET',
+        success: function(data) {
+
+          console.log(data);
+          var score = `
+
+          <div class="score">
+                  <div class="team">
+                   <img src="https://allpanel.art/public/highlight.b1ac6c3e.png" alt="Al Mokawloon">
+                    <div class="name">${data.score.football.team_name_a}</div>
+                  </div>
+                  <div class="result"><span></span> ${data.score.football.score_a} : ${data.score.football.score_b}</div>
+                  <div class="team">
+                  <img src="https://allpanel.art/public/highlight.b1ac6c3e.png" alt="Al Mokawloon">
+                    <div class="name">${data.score.football.team_name_b}</div>
+                   </div>
+                </div>
+          `;
+          $('#scoreboard').html(score);
+        },
+        error: function(xhr, status, error) {
+          console.error('Error fetching cricket details:', error);
+        }
+      });
+
+    }
+ 
     function updateCricketDetails(data) {
 
       // // Update the HTML with new data (example below, adapt as needed)
@@ -747,6 +800,8 @@
 
       $('.over_under_3_point_5_goals').html(over_under_3_point_5_goals);
 
+
+
     }
 
 
@@ -756,20 +811,72 @@
 
     // // Initial load
     loadCricketDetails();
+
+  });
+</script>
+
+<script>
+  function updateProfit(amnt) {
+    var odds = parseFloat($("#bet_input_stake").val()) || 1;
+    var profit = amnt * odds;
+    $(".profit_div").text(profit.toFixed(2)); // Format profit to 2 decimal places
+    $("#bet_profit").val(profit);
+    $('.betplace-btn').prop("disabled", false);
+  }
+  $("#add_input").on('input', function() {
+
+    var amnt = parseFloat($(this).val()) || 0;
+    updateProfit(amnt);
   });
 </script>
 <script>
-      function updateProfit(amnt) {
-        var odds = parseFloat($("#bet_input_stake").val()) || 1;
-        var profit = amnt * odds;
-        $(".profit_div").text(profit.toFixed(2)); // Format profit to 2 decimal places
-        $("#bet_profit").val(profit);
-        $('.betplace-btn').prop("disabled", false);
-    }
-    $("#add_input").on('input', function() {
-     
-        var amnt = parseFloat($(this).val()) || 0;
-        updateProfit(amnt);
+  $(document).ready(function() {
+    var game_id = "{{ $game_id }}";
+    $.ajax({
+      url: game_id, // Update with your actual route
+      method: 'GET',
+      success: function(data) {
+        // Example hardcoded times
+        // var end = "2024-07-31T12:52:00";
+
+        var end = data.score.football.end_time; // Uncomment when using dynamic data
+        // var start = "2024-07-31T10:52:00";
+        var start = data.score.football.start_time; // Uncomment when using dynamic data
+
+        // Set the start and end times
+        const startTime = new Date(start).getTime();
+        const endTime = new Date(end).getTime(); // For example, a 2-hour match
+
+        // Function to update the timer
+        function updateTimer() {
+          const now = new Date().getTime();
+          const timerElement = document.getElementById('timer');
+
+          if (now < startTime) {
+            timerElement.innerHTML = "Match hasn't started yet.";
+          } else if (now >= startTime && now <= endTime) {
+            const elapsedTime = now - startTime;
+            const totalSeconds = Math.floor(elapsedTime / 1000);
+            const hours = Math.floor(totalSeconds / 3600);
+            const minutes = Math.floor((totalSeconds % 3600) / 60);
+            const seconds = totalSeconds % 60;
+
+            timerElement.innerHTML = `${hours}:${minutes}:${seconds}`;
+          } else {
+            timerElement.innerHTML = "Match has ended.";
+            clearInterval(timerInterval); // Stop the timer
+          }
+        }
+
+        // Update the timer every second
+        const timerInterval = setInterval(updateTimer, 1000);
+
+      },
+      error: function(xhr, status, error) {
+        console.error('Error fetching cricket details:', error);
+      }
     });
+
+  });
 </script>
 @endsection

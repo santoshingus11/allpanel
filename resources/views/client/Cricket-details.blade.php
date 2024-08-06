@@ -5,13 +5,13 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>CRICKET247BUZZ</title>
+  <title>ALLPANEL</title>
   <!--<base href="/">-->
   <base href=".">
   <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
   <meta content="" name="description">
   <meta content="" name="keywords">
-  <link rel="icon" type="image/x-icon" href="https://crickekbuz.art/assets/favicon.ico">
+  <link rel="icon" type="image/x-icon" href="https://allpanel.art/assets/favicon.ico">
   <!-- Favicons -->
   <!-- <link href="assets/img/favicon.png" rel="icon"> -->
   <style>
@@ -484,12 +484,12 @@
       }
     }
   </style>
-  <link href="https://crickekbuz.art/public/assets/bootstrap.min.css" rel="stylesheet" media="all" onload="this.media=&#39;all&#39;">
+  <link href="https://allpanel.art/public/assets/bootstrap.min.css" rel="stylesheet" media="all" onload="this.media=&#39;all&#39;">
   <noscript>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   </noscript>
-  <link rel="stylesheet" href="https://crickekbuz.art/public/assets/bs-datepicker.css">
-  <link href="https://crickekbuz.art/public/assets/card-characters" rel="stylesheet">
+  <link rel="stylesheet" href="https://allpanel.art/public/assets/bs-datepicker.css">
+  <link href="https://allpanel.art/public/assets/card-characters" rel="stylesheet">
 
   <style>
     @import url('https://fonts.cdnfonts.com/css/card-characters');
@@ -513,7 +513,7 @@
 
 
   <!-- Template Main CSS File -->
-  <link rel="stylesheet" href="https://crickekbuz.art/public/assets/theme.css" media="all" onload="this.media=&#39;all&#39;">
+  <link rel="stylesheet" href="https://allpanel.art/public/assets/theme.css" media="all" onload="this.media=&#39;all&#39;">
   <noscript>
     <link rel="stylesheet" href="assets/css/theme.css">
   </noscript>
@@ -527,11 +527,11 @@
 
     @media (max-width: 767px) {}
   </style>
-  <link href="https://crickekbuz.art/public/assets/style.css" rel="stylesheet" media="all" onload="this.media=&#39;all&#39;">
+  <link href="https://allpanel.art/public/assets/style.css" rel="stylesheet" media="all" onload="this.media=&#39;all&#39;">
   <noscript>
     <link rel="stylesheet" href="assets/css/style.css">
   </noscript>
-  <link href="https://crickekbuz.art/public/assets/casinos.css" rel="stylesheet" media="all" onload="this.media=&#39;all&#39;">
+  <link href="https://allpanel.art/public/assets/casinos.css" rel="stylesheet" media="all" onload="this.media=&#39;all&#39;">
   <noscript>
     <link rel="stylesheet" href="assets/css/casinos.css">
   </noscript>
@@ -543,7 +543,7 @@
       color: #272829;
     }
   </style>
-  <link href="https://crickekbuz.art/public/assets/login.css" rel="stylesheet" media="all" onload="this.media=&#39;all&#39;">
+  <link href="https://allpanel.art/public/assets/login.css" rel="stylesheet" media="all" onload="this.media=&#39;all&#39;">
   <noscript>
     <link rel="stylesheet" href="assets/css/login.css">
   </noscript>
@@ -571,12 +571,12 @@
     }
   </script>
 
-  <script src="https://crickekbuz.art/public/assets/jquery-3.5.1.min.js.download"></script>
+  <script src="https://allpanel.art/public/assets/jquery-3.5.1.min.js.download"></script>
 
-  <script src="https://crickekbuz.art/public/assets/jquery.min.js.download"></script>
-  <script src="https://crickekbuz.art/public/assets/bootstrap.bundle.min.js.download"></script>
-  <script type="text/javascript" src="https://crickekbuz.art/public/assets/jquery.dataTables.min.js.download"></script>
-  <script type="text/javascript" src="https://crickekbuz.art/public/assets/dataTables.bootstrap4.min.js.download"></script>
+  <script src="https://allpanel.art/public/assets/jquery.min.js.download"></script>
+  <script src="https://allpanel.art/public/assets/bootstrap.bundle.min.js.download"></script>
+  <script type="text/javascript" src="https://allpanel.art/public/assets/jquery.dataTables.min.js.download"></script>
+  <script type="text/javascript" src="https://allpanel.art/public/assets/dataTables.bootstrap4.min.js.download"></script>
   <style>
     @charset "UTF-8";
 
@@ -674,7 +674,7 @@
       -webkit-tap-highlight-color: transparent;
     }
   </style>
-  <link rel="stylesheet" href="https://crickekbuz.art/public/assets/styles.1f3b1d3fc8356a080acf.css" media="all" onload="this.media=&#39;all&#39;"><noscript>
+  <link rel="stylesheet" href="https://allpanel.art/public/assets/styles.1f3b1d3fc8356a080acf.css" media="all" onload="this.media=&#39;all&#39;"><noscript>
     <link rel="stylesheet" href="styles.1f3b1d3fc8356a080acf.css">
   </noscript>
   <style type="text/css">
@@ -758,8 +758,8 @@
   <style></style>
   <style>
     :root {
-      --primary: #2d3387;
-      --secondary: #092844;
+      --primary: #08c;
+      --secondary: #2d3e50;
       --third: #2b329bE6;
       --forth: #092844D9;
       --fifth: #fff;
@@ -1373,13 +1373,74 @@
       src: url('chrome-extension://liecbddmkiiihnedobmlmillhodjkdmb/fonts/CircularXXWeb-Bold.woff2') format('woff2');
     }
   </style>
+
+  <style>
+    .scoreboard {
+      background-color: #004080;
+      /* Dark blue background */
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+
+    .background {
+      background-image: url('{{url("/public/scorecard-bg.png")}}');
+      /* Replace with your background image URL */
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      padding: 20px;
+      border-radius: 5px;
+    }
+
+    .match-info,
+    .score-info,
+    .target-info,
+    .commentary-info {
+      background-color: rgba(0, 0, 0, 0.5);
+      /* Semi-transparent black */
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+    }
+
+    .badge-custom {
+      padding: 10px;
+      font-size: 1.2rem;
+    }
+
+    .badge-4 {
+      background-color: blue;
+    }
+
+    .badge-1 {
+      background-color: green;
+    }
+
+    .badge-0 {
+      background-color: grey;
+    }
+
+    .content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .commentary-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  </style>
 </head>
 
 <body class="main-content-pages">
   @if(Session::has('message'))
   <p class="alert alert-success">{{ Session::get('message') }}</p>
   @endif
-  <input type="hidden" id="channel_id" name="channel_id" value="{{$game_single['channel_id']}}">
+  <input type="hidden" id="channel_id" name="channel_id" value="{{$game_single['channel_id'] ?? ''}}">
   <app-root _nghost-uhn-c12="" ng-version="12.1.5"><router-outlet _ngcontent-uhn-c12=""></router-outlet><app-layout _nghost-uhn-c75=""><app-topnav _nghost-uhn-c72="">
         <div class="topbar">
           <div class="container-fluid">
@@ -1519,20 +1580,41 @@
                     }
                     ?>
 
-                    @php
 
-                    $dateTime = new DateTime($game_single['datetimeGMT'] , new DateTimeZone('GMT'));
-                    $dateTime->setTimezone(new DateTimeZone('Asia/Kolkata'));
-                    $istTime = $dateTime->format('Y-m-d H:i:s');
-                    @endphp
                     <?php if ($_SERVER['HTTP_USER_AGENT'] && strpos($_SERVER['HTTP_USER_AGENT'], 'Mobile') !== false) { ?>
-                      <!--<h2 class="event-title text-center"><a href="https://allinone-tataplay-web-one.vercel.app/player.html?channel={{$game_single['channel_id']}}" target="_blank"> Live Match </a></h2>-->
+
                       <div class="betting-table lay-bt" style="position: relative;">
                         <h2 _ngcontent-uhn-c87="" class="mrkname" id="liveMatchLink"> Live Match </h2>
                       </div>
                       <div id="liveTvMatch"> </div>
                     <?php } ?>
-                    <h2 _ngcontent-uhn-c91="" class="event-title"><span _ngcontent-uhn-c91=""> {{$game_single['game_title']}} </span><span _ngcontent-uhn-c91="">{{$game_single['datetimeGMT']}}
+                    <?php if (!empty($game_single['channel_id'])) { ?>
+                      <div class="scoreboard">
+                        <div class="background">
+                          <div class="content">
+                            <h2><span> {{$game_single['game_title'] ?? ""}} </span><span>{{$game_single['datetimeGMT'] ?? ""}}
+                              </span>
+                            </h2>
+                          </div>
+                          <div class="commentary-info">
+                            <div>Target:</div>
+                            <div id="target">
+
+                            </div>
+                          </div>
+                          <div class="commentary-info">
+                            <div>Score board :</div>
+                            <div id="nowscore"></div>
+                          </div>
+                          <div class="commentary-info">
+                            <div>Ball By Ball Score : <span id="playing_team"></span></div>
+                            <div id="score_data"></div>
+                          </div>
+
+                        </div>
+                      </div>
+                    <?php } ?>
+                    <h2 _ngcontent-uhn-c91="" class="event-title"><span _ngcontent-uhn-c91=""> {{$game_single['game_title'] ?? ""}} </span><span _ngcontent-uhn-c91="">{{$game_single['datetimeGMT'] ?? ""}}
                       </span></h2>
 
                     <div id="scoreCard" class="multi-collapse">
@@ -1551,11 +1633,11 @@
                           </div>
 
 
-                       
+
                           <div class="randerScore mainScore " id="matchoddclass">
-                           
+
                           </div>
-                       
+
 
                         </div>
                       </div>
@@ -1570,11 +1652,11 @@
                                 <div class="Lay_oddsbox bhav_box">Lay</div>
                               </div>
                             </div>
-                           
+
                             <div class="randerScore mainScore " id="matchOddsbookmark">
-                             
+
                             </div>
-                           
+
                           </div>
 
                           <div class="col-md-4">
@@ -1587,11 +1669,11 @@
                               </div>
                             </div>
 
-                          
+
                             <div class="randerScore mainScore " id="to_win_the_toss">
-                           
+
                             </div>
-                           
+
                           </div>
                         </div>
                       </div>
@@ -1606,11 +1688,11 @@
                             </div>
                           </div>
                           <div>
-                          
+
                             <div class="randerScore mainScore " id="htmlStringmatch_fancyd">
-                           
+
                             </div>
-                         
+
                           </div>
                         </div>
                       </div>
@@ -1625,11 +1707,11 @@
                             </div>
                           </div>
                           <div>
-                         
+
                             <div class="randerScore mainScore " id="run_bhav">
-                            
+
                             </div>
-                            
+
                           </div>
                         </div>
                       </div>
@@ -1644,11 +1726,11 @@
                             </div>
                           </div>
                           <div>
-                           
+
                             <div class="randerScore mainScore " id="over_by_over_session_market">
-                            
+
                             </div>
-                          
+
                           </div>
                         </div>
                       </div>
@@ -1663,11 +1745,11 @@
                             </div>
                           </div>
                           <div>
-                           
+
                             <div class="randerScore mainScore " id="ball_by_ball_session_market">
-                            
+
                             </div>
-                          
+
                           </div>
                         </div>
                       </div>
@@ -1683,11 +1765,11 @@
                               <div class="Lay_oddsbox bhav_box">Lay</div>
                             </div>
                           </div>
-                        
+
                           <div class="randerScore mainScore " id="tied_match">
-                           
+
                           </div>
-                        
+
                         </div>
                       </div>
                       <div>
@@ -9649,7 +9731,7 @@
           url: game_id, // Update with your actual route
           method: 'GET',
           success: function(data) {
-            console.log(data);
+
             var matchOddsHtml = '';
             $.each(data.response.match_odds, function(index, r) {
               //matchOddsHtml
@@ -10059,6 +10141,50 @@
             console.error('Error fetching cricket details:', error);
           }
         });
+
+        $.ajax({
+          url: game_id, // Update with your actual route
+          method: 'GET',
+          success: function(data) {
+            console.log(data);
+            var target = data.score.cricket_detail.target;
+            var teamNameA = data.score.cricket_detail.team_name_a;
+
+            var displayText = target === null || target === undefined ? 'Yet To Bat' : target;
+
+            var target = '';
+            target = `
+    <span class="badge badge-custom badge-0">${teamNameA} : ${displayText}</span>
+`;
+
+            $('#target').html(target);
+
+            var nowscore = '';
+            nowscore = `
+  <span class="badge badge-custom badge-1"> Score </span>  <span class="badge badge-custom badge-0">${data.score.cricket_detail.play_score} / ${data.score.cricket_detail.play_wicket}</span> <span class="badge badge-custom badge-1"> Over Completed </span> <span class="badge badge-custom badge-0"> ${data.score.cricket_detail.play_over} </span>
+`;
+
+            $('#nowscore').html(nowscore);
+
+            var score = '';
+            var playing_team = '';
+            $.each(data.score.cricket, function(index, r) {
+
+              score += `
+                    <span class="badge badge-custom badge-0">${r.score}</span>
+            `;
+              playing_team = `
+                    <span class="badge badge-custom badge-1">${r.team_name}</span>
+            `;
+            });
+            $('#score_data').html(score);
+            $('#playing_team').html(playing_team);
+
+          },
+          error: function(xhr, status, error) {
+            console.error('Error fetching cricket details:', error);
+          }
+        });
       }
 
       // Load cricket details every 5 seconds
@@ -10068,19 +10194,22 @@
       loadCricketDetails();
     });
   </script>
+
+
   <script>
-      function updateProfit(amnt) {
-        var odds = parseFloat($("#bet_input_stake").val()) || 1;
-        var profit = amnt * odds;
-        $(".profit_div").text(profit.toFixed(2)); // Format profit to 2 decimal places
-        $("#bet_profit").val(profit);
-        $('.betplace-btn').prop("disabled", false);
+    function updateProfit(amnt) {
+      var odds = parseFloat($("#bet_input_stake").val()) || 1;
+      var profit = amnt * odds;
+      $(".profit_div").text(profit.toFixed(2)); // Format profit to 2 decimal places
+      $("#bet_profit").val(profit);
+      $('.betplace-btn').prop("disabled", false);
     }
     $("#add_input").on('input', function() {
-     
-        var amnt = parseFloat($(this).val()) || 0;
-        updateProfit(amnt);
+
+      var amnt = parseFloat($(this).val()) || 0;
+      updateProfit(amnt);
     });
-</script>
+  </script>
 </body>
+
 </html>
