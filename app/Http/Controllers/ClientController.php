@@ -109,7 +109,9 @@ class ClientController extends Controller
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         // Set the url
         curl_setopt($ch, CURLOPT_URL, "https://ujala11games.com/api/cricket/game-list");
-       
+// Further increase timeout settings
+curl_setopt($ch, CURLOPT_TIMEOUT, 60); // Wait up to 60 seconds for a response
+curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30); // Wait up to 30 seconds to connect
         $retry = 3;
         $success = false;
         $response = null;
@@ -138,7 +140,9 @@ class ClientController extends Controller
         // Set the url
         curl_setopt($chr, CURLOPT_URL, "https://ujala11games.com/api/get-all-games-list");
       
-      
+      // Further increase timeout settings
+curl_setopt($chr, CURLOPT_TIMEOUT, 60); // Wait up to 60 seconds for a response
+curl_setopt($chr, CURLOPT_CONNECTTIMEOUT, 30); // Wait up to 30 seconds to connect
         $retry1 = 3;
         $success1 = false;
         $allGames = null;
@@ -224,8 +228,7 @@ class ClientController extends Controller
             // 'sportBetGames' => $sportBetGames
         ];
 
-
-        return view('client.home', compact('response', 'allGames'))->with('data', $data);
+        return view('client.home', compact('response', 'allGames','data'));
     }
 
     public function our_casino()
@@ -239,6 +242,9 @@ class ClientController extends Controller
         // Set the url
         curl_setopt($ch, CURLOPT_URL, "https://ujala11games.com/api/cricket/game-list");
         // Execute
+              // Further increase timeout settings
+curl_setopt($ch, CURLOPT_TIMEOUT, 60); // Wait up to 60 seconds for a response
+curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30); // Wait up to 30 seconds to connect
         $result = curl_exec($ch);
         // Will dump a beauty json <3
         $response = json_decode($result, true);

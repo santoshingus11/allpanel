@@ -31,6 +31,9 @@ class HomeController extends Controller
         // Set the url
         $url = "https://ujala11games.com/api/cricket/match-list/" . $game_id;
         curl_setopt($ch, CURLOPT_URL, $url);
+        // Further increase timeout settings
+        curl_setopt($ch, CURLOPT_TIMEOUT, 60); // Wait up to 60 seconds for a response
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30); // Wait up to 30 seconds to connect
         // Execute
         $result = curl_exec($ch);
         // Will dump a beauty json <3
@@ -48,6 +51,9 @@ class HomeController extends Controller
         // Set the url
         $url = "https://ujala11games.com/api/cricket/game/single/" . $game_id;
         curl_setopt($gm, CURLOPT_URL, $url);
+        // Further increase timeout settings
+        curl_setopt($ch, CURLOPT_TIMEOUT, 60); // Wait up to 60 seconds for a response
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30); // Wait up to 30 seconds to connect
         // Execute
         $res = curl_exec($gm);
         // Will dump a beauty json <3
@@ -65,6 +71,9 @@ class HomeController extends Controller
             // Set the url
             $url1 = "https://ujala11games.com/api/game-score-list/" . $game_id;
             curl_setopt($gm1, CURLOPT_URL, $url1);
+            // Further increase timeout settings
+            curl_setopt($gm1, CURLOPT_TIMEOUT, 60); // Wait up to 60 seconds for a response
+            curl_setopt($gm1, CURLOPT_CONNECTTIMEOUT, 30); // Wait up to 30 seconds to connect
             // Execute
             $res1 = curl_exec($gm1);
             // Will dump a beauty json <3
@@ -154,7 +163,9 @@ class HomeController extends Controller
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         // Set the url
         curl_setopt($ch, CURLOPT_URL, "https://ujala11games.com/api/football/game-list");
-       
+        // Further increase timeout settings
+        curl_setopt($ch, CURLOPT_TIMEOUT, 60); // Wait up to 60 seconds for a response
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30); // Wait up to 30 seconds to connect
         $retry = 3;
         $success = false;
         $response = null;
@@ -167,7 +178,7 @@ class HomeController extends Controller
                 $response = json_decode($result, true);
             }
         }
-       
+
         // Execute
         // $result = curl_exec($ch);
         // // Will dump a beauty json <3
@@ -183,7 +194,9 @@ class HomeController extends Controller
         curl_setopt($chr, CURLOPT_RETURNTRANSFER, true);
         // Set the url
         curl_setopt($chr, CURLOPT_URL, "https://ujala11games.com/api/get-all-games-list");
-        
+        // Further increase timeout settings
+        curl_setopt($chr, CURLOPT_TIMEOUT, 60); // Wait up to 60 seconds for a response
+        curl_setopt($chr, CURLOPT_CONNECTTIMEOUT, 30); // Wait up to 30 seconds to connect
         $retry1 = 3;
         $success1 = false;
         $allGames = null;
@@ -261,21 +274,21 @@ class HomeController extends Controller
         if ($request->ajax()) {
 
 
-              //get Games list
-              $gm1 = curl_init();
-              // Disable SSL verification
-              curl_setopt($gm1, CURLOPT_SSL_VERIFYPEER, false);
-              // Will return the response, if false it print the response
-              curl_setopt($gm1, CURLOPT_RETURNTRANSFER, true);
-              // Set the url
-              $url1 = "https://ujala11games.com/api/game-score-list/" . $game_id;
-              curl_setopt($gm1, CURLOPT_URL, $url1);
-              // Execute
-              $res1 = curl_exec($gm1);
-              // Will dump a beauty json <3
-              $game_singlescore = json_decode($res1, true);
-  
-              curl_close($gm1);
+            //get Games list
+            $gm1 = curl_init();
+            // Disable SSL verification
+            curl_setopt($gm1, CURLOPT_SSL_VERIFYPEER, false);
+            // Will return the response, if false it print the response
+            curl_setopt($gm1, CURLOPT_RETURNTRANSFER, true);
+            // Set the url
+            $url1 = "https://ujala11games.com/api/game-score-list/" . $game_id;
+            curl_setopt($gm1, CURLOPT_URL, $url1);
+            // Execute
+            $res1 = curl_exec($gm1);
+            // Will dump a beauty json <3
+            $game_singlescore = json_decode($res1, true);
+
+            curl_close($gm1);
 
 
             return response()->json([
@@ -332,7 +345,9 @@ class HomeController extends Controller
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         // Set the url
         curl_setopt($ch, CURLOPT_URL, "https://ujala11games.com/api/tennis/game-list");
-      
+        // Further increase timeout settings
+        curl_setopt($ch, CURLOPT_TIMEOUT, 60); // Wait up to 60 seconds for a response
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30); // Wait up to 30 seconds to connect
         $retry = 3;
         $success = false;
         $response = null;
@@ -360,7 +375,7 @@ class HomeController extends Controller
         curl_setopt($chr, CURLOPT_RETURNTRANSFER, true);
         // Set the url
         curl_setopt($chr, CURLOPT_URL, "https://ujala11games.com/api/get-all-games-list");
-      
+
         $retry1 = 3;
         $success1 = false;
         $allGames = null;
@@ -394,6 +409,9 @@ class HomeController extends Controller
         // Set the url
         curl_setopt($ch, CURLOPT_URL, "https://ujala11games.com/api/football/game-list");
         // Execute
+        // Further increase timeout settings
+        curl_setopt($ch, CURLOPT_TIMEOUT, 60); // Wait up to 60 seconds for a response
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30); // Wait up to 30 seconds to connect
         $result = curl_exec($ch);
         // Will dump a beauty json <3
         $response = json_decode($result, true);
@@ -409,6 +427,9 @@ class HomeController extends Controller
         // Set the url
         curl_setopt($chr, CURLOPT_URL, "https://ujala11games.com/api/get-all-games-list");
         // Execute
+        // Further increase timeout settings
+        curl_setopt($chr, CURLOPT_TIMEOUT, 60); // Wait up to 60 seconds for a response
+        curl_setopt($chr, CURLOPT_CONNECTTIMEOUT, 30); // Wait up to 30 seconds to connect
         $allGameresult = curl_exec($chr);
         // Will dump a beauty json <3
         $allGames = json_decode($allGameresult, true);
@@ -421,6 +442,9 @@ class HomeController extends Controller
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $url = "https://ujala11games.com/api/tennis/match-list/" . $game_id;
         curl_setopt($ch, CURLOPT_URL, $url);
+        // Further increase timeout settings
+        curl_setopt($ch, CURLOPT_TIMEOUT, 60); // Wait up to 60 seconds for a response
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30); // Wait up to 30 seconds to connect
         $result = curl_exec($ch);
         $response = json_decode($result, true);
         curl_close($ch);
@@ -431,27 +455,33 @@ class HomeController extends Controller
         curl_setopt($gm, CURLOPT_RETURNTRANSFER, true);
         $url = "https://ujala11games.com/api/tennis/game/single/" . $game_id;
         curl_setopt($gm, CURLOPT_URL, $url);
+        // Further increase timeout settings
+        curl_setopt($gm, CURLOPT_TIMEOUT, 60); // Wait up to 60 seconds for a response
+        curl_setopt($gm, CURLOPT_CONNECTTIMEOUT, 30); // Wait up to 30 seconds to connect
         $res = curl_exec($gm);
         $game_single = json_decode($res, true);
         curl_close($gm);
         if ($request->ajax()) {
 
-            
-              //get Games list
-              $gm1 = curl_init();
-              // Disable SSL verification
-              curl_setopt($gm1, CURLOPT_SSL_VERIFYPEER, false);
-              // Will return the response, if false it print the response
-              curl_setopt($gm1, CURLOPT_RETURNTRANSFER, true);
-              // Set the url
-              $url1 = "https://ujala11games.com/api/game-score-list/" . $game_id;
-              curl_setopt($gm1, CURLOPT_URL, $url1);
-              // Execute
-              $res1 = curl_exec($gm1);
-              // Will dump a beauty json <3
-              $game_singlescore = json_decode($res1, true);
-  
-              curl_close($gm1);
+
+            //get Games list
+            $gm1 = curl_init();
+            // Disable SSL verification
+            curl_setopt($gm1, CURLOPT_SSL_VERIFYPEER, false);
+            // Will return the response, if false it print the response
+            curl_setopt($gm1, CURLOPT_RETURNTRANSFER, true);
+            // Set the url
+            $url1 = "https://ujala11games.com/api/game-score-list/" . $game_id;
+            curl_setopt($gm1, CURLOPT_URL, $url1);
+                          // Further increase timeout settings
+curl_setopt($gm1, CURLOPT_TIMEOUT, 60); // Wait up to 60 seconds for a response
+curl_setopt($gm1, CURLOPT_CONNECTTIMEOUT, 30); // Wait up to 30 seconds to connect
+            // Execute
+            $res1 = curl_exec($gm1);
+            // Will dump a beauty json <3
+            $game_singlescore = json_decode($res1, true);
+
+            curl_close($gm1);
             return response()->json([
                 'response' => $response,
                 'game_single' => $game_single,
