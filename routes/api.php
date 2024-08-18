@@ -26,3 +26,10 @@ Route::get('/all_games_bet/{game}/{matchid}',[CommandController::class,'all_game
 Route::get('/profit_loss/{id}/{game_id}/{win_loss}',[CommandController::class,'profit_loss']);
 Route::get('/all_games_bet_reject/{id}/{game}',[CommandController::class,'all_games_bet_reject']);
 Route::get('/all_games_bet_accept/{id}/{game}',[CommandController::class,'all_games_bet_accept']);
+
+
+
+Route::get('/all_users',[CommandController::class,'all_users']);
+Route::get('/user_detail/{id}',[CommandController::class,'user_detail']);
+Route::get('/deposit_withdraw_request',[CommandController::class,'deposit_withdraw_request']);
+Route::get('/deposit_withdraw_accept_reject/{id}/{deposit_withdraw}/{accept_reject}',[CommandController::class,'deposit_withdraw_accept_reject']);

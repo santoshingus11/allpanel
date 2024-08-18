@@ -12,7 +12,9 @@ use App\Models\FootballPlaceBet;
 use App\Models\GreyhoundRacingPlaceBet;
 use App\Models\HorseRacingPlaceBet;
 use App\Models\TennisPlaceBet;
-
+use App\Models\BankingHistory;
+use App\Models\Deposit;
+use App\Models\Withdraw;
 class CommandController extends Controller
 {
     public function index(Request $request)
@@ -498,5 +500,98 @@ class CommandController extends Controller
         return [
             'status' => 'success',
         ];
+    }
+    //////////////////////////////////////////////////// PAnnel//////////////////////////////////////////////
+
+    function all_users() {
+        $data = Admin::where('role_id', 5)->get() ?? [];
+   $datas = [
+       'data' => $data
+       ];
+        return response()->json($datas);
+    }
+      public function user_detail($id)
+    {
+      
+        $user_data = Admin::where('id', $id)->first();
+
+
+        $cricket_played_matches = CricketPlaceBet::where('user_id', $id)->where('bet_result', null)->orderBy('id', 'desc')->get();
+        $football_played_matches = FootballPlaceBet::where('user_id', $id)->where('bet_result', null)->orderBy('id', 'desc')->get();
+        $tennis_played_matches = TennisPlaceBet::where('user_id', $id)->where('bet_result', null)->orderBy('id', 'desc')->get();
+        $HorseRacingPlaceBet = HorseRacingPlaceBet::where('user_id', $id)->where('bet_result', null)->orderBy('id', 'desc')->get();
+        $GreyhoundRacingPlaceBet = GreyhoundRacingPlaceBet::where('user_id', $id)->where('bet_result', null)->orderBy('id', 'desc')->get();
+        $merged_played_matches = $cricket_played_matches
+            ->merge($football_played_matches)
+            ->merge($HorseRacingPlaceBet)
+            ->merge($tennis_played_matches)
+            ->merge($GreyhoundRacingPlaceBet);
+
+        // Sort the merged collection by 'id' in descending order
+        $sorted_merged_played_matches = $merged_played_matches->sortByDesc('id');
+
+        // If you need it as an array
+        $sorted_merged_played_matches_array = $sorted_merged_played_matches->values()->all();
+        //2
+        $bankingHistories = BankingHistory::where('user_id', $id)->orderBy('banking_history_id', 'desc')->get();
+        //3
+        $betRecords = BetRecord::where('admin_id', $id)->orderBy('id', 'desc')->get();
+        $cricketBets = CricketPlaceBet::where('user_id', $id)->orderBy('id', 'desc')->get();
+        $footballBets = FootballPlaceBet::where('user_id', $id)->orderBy('id', 'desc')->get();
+        $tennisBets = TennisPlaceBet::where('user_id', $id)->orderBy('id', 'desc')->get();
+        $horseBets = HorseRacingPlaceBet::where('user_id', $id)->orderBy('id', 'desc')->get();
+        $greyhoundBets = GreyhoundRacingPlaceBet::where('user_id', $id)->orderBy('id', 'desc')->get();
+
+        return response()->json(get_defined_vars());
+    }
+  function deposit_withdraw_request()
+    {
+        $deposit = Deposit::with('user')->where('status', 'pending')->get();
+        $depositcount = Deposit::with('user')->where('status', 'pending')->count();
+        $withdraw = Withdraw::where('status', 'pending')->get();
+        $withdrawcount = Withdraw::where('status', 'pending')->count();
+        $data = [
+            'deposit' => $deposit,
+            'depositcount' => $depositcount,
+            'withdraw' => $withdraw,
+            'withdrawcount' => $withdrawcount
+        ];
+        return response()->json($data);
+    }
+      function deposit_withdraw_accept_reject($id, $deposit_withdraw, $accept_reject)
+    {
+
+        if ($deposit_withdraw == "deposit") {
+
+            if ($accept_reject == "accept") {
+               
+                $deposit = Deposit::where('id', $id)->first();
+                $admin = Admin::where('id', $deposit->user_id)->first();
+                $amount = $admin->balance + $deposit->amount;
+                // Update 
+                Admin::where('id', $deposit->user_id)->update(['balance'=>$amount]);
+                Deposit::where('id', $id)->update(['status'=>'approved']);
+             
+            } else {
+                Deposit::where('id', $id)->update(['status'=>'rejected']);
+            }
+
+        } else {
+            if ($accept_reject == "accept") {
+               
+                $deposit = Withdraw::where('id', $id)->first();
+               
+                $admin = Admin::where('id', $deposit->user_id)->first();
+                $amount = $admin->balance - $deposit->amount;
+            
+                // Update 
+                Admin::where('id', $deposit->user_id)->update(['balance'=>$amount]);
+                Withdraw::where('id', $id)->update(['status'=>'approved']);
+           
+            } else {
+                Withdraw::where('id', $id)->update(['status'=>'rejected']);
+            }
+        }
+        return response()->json('done');
     }
 }

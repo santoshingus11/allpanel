@@ -17,8 +17,8 @@
                                     <a class="dropdown-item" href="{{route('account_settlement')}}"> account statement </a>
                                     <a class="dropdown-item" href="{{route('profit_loss_report')}}"> profit loss report </a>
                                     <a class="dropdown-item" href="{{route('bet_history_client')}}"> bet history </a>
-                                    <!--<a class="dropdown-item" href="{{route('unsettle_bet')}}"> unsettled bet </a>-->
-                                    <!--<a class="dropdown-item" href="{{route('setbutton')}}"> set button values </a>-->
+                                    <a class="dropdown-item" href="{{route('withdraw.create')}}"> Withdraw </a>
+                                    <a class="dropdown-item" href="{{route('deposit.create')}}"> Deposit </a>
                                     <a class="dropdown-item" href="{{route('change_pass')}}"> change password </a>
                                     <a class="dropdown-item d-sm-none d-block" href=""> rules </a>
                                     <div class="dropdown-divider"></div><a href="{{route('client-logout')}}" class="dropdown-item"> SignOut </a>
