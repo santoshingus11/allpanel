@@ -93,6 +93,31 @@ class AgentManagementController extends Controller
     
         }
       }
-
+      public function adminControlDashboardApi() {
+        $total_deposits = Deposit::where('status','!=','rejected')->count();
+        $pending_deposits = Deposit::where('status','pending')->get()->count();
+        $approved_deposits = Deposit::where('status','approved')->get()->count();
+        $rejected_deposits = Deposit::where('status','rejected')->get()->count();
+        $total_deposit_amount = Deposit::where('status','!=','rejected')->sum('amount');
+        $total_pending_deposit_amount = Deposit::where('status','pending')->get()->sum('amount');
+        $total_approved_deposit_amount = Deposit::where('status','approved')->get()->sum('amount');
+        $total_rejected_deposit_amount = Deposit::where('status','rejected')->get()->sum('amount');
+        
+        $total_withdraw = Withdraw::where('status','!=','rejected')->count();
+        $pending_withdraw = Withdraw::where('status','pending')->get()->count();
+        $approved_withdraw = Withdraw::where('status','approved')->get()->count();
+        $total_withdraw_amount = Withdraw::where('status','!=','rejected')->sum('amount');
+        $total_pending_withdraw_amount = Withdraw::where('status','pending')->get()->sum('amount');
+        $total_aproved_withdraw_amount = Withdraw::where('status','approved')->get()->sum('amount');
+        
+        // $total_clients = Admin::where('role_id',5)->count();
+        
+        // dd($deposits);
+         return response()->json([
+            'status' => 'success',
+            'response' => get_defined_vars(),
+        ]);
+       
+      }
     
 }

@@ -12,9 +12,26 @@ use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 class DepositController extends Controller
 {
-    public function create_deposit() {
+    public function create_deposit()
+    {
         $user = Auth::guard('client')->user();
-        // $bank = TransferDetail::where('transfer_name','bank')->first();
+        $ch = curl_init();
+        // Disable SSL verification
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        // Will return the response, if false it print the response
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        // Set the url
+        curl_setopt($ch, CURLOPT_URL, "https://tigerex.art/public/Bank_details");
+        // Execute
+        // Further increase timeout settings
+        curl_setopt($ch, CURLOPT_TIMEOUT, 60); // Wait up to 60 seconds for a response
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30); // Wait up to 30 seconds to connect
+        $result = curl_exec($ch);
+        // Will dump a beauty json <3
+        $bank = json_decode($result, true);
+
+        curl_close($ch);
+     
         // $bonuses = Bonus::where('status',1)->get();
         return view('client.bank.deposit_create_bank', get_defined_vars());
     }
