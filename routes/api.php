@@ -33,3 +33,6 @@ Route::get('/all_users',[CommandController::class,'all_users']);
 Route::get('/user_detail/{id}',[CommandController::class,'user_detail']);
 Route::get('/deposit_withdraw_request',[CommandController::class,'deposit_withdraw_request']);
 Route::get('/deposit_withdraw_accept_reject/{id}/{deposit_withdraw}/{accept_reject}',[CommandController::class,'deposit_withdraw_accept_reject']);
+
+
+Route::get('adminControlDashboardApi', [CommandController::class, 'adminControlDashboardApi']);

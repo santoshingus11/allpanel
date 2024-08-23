@@ -15,6 +15,7 @@ use App\Models\TennisPlaceBet;
 use App\Models\BankingHistory;
 use App\Models\Deposit;
 use App\Models\Withdraw;
+
 class CommandController extends Controller
 {
     public function index(Request $request)
@@ -416,7 +417,7 @@ class CommandController extends Controller
 
         $GreyhoundRacingPlaceBetcount = GreyhoundRacingPlaceBet::where('bet_result', null)->count();
         $GreyhoundRacingPlaceBetcountnew = GreyhoundRacingPlaceBet::where('bet_result', null)->where('status', 0)->count();
-        
+
         $total = $CricketPlaceBetcount + $FootballPlaceBetcount + $TennisPlaceBetcount + $HorseRacingPlaceBetcount + $GreyhoundRacingPlaceBetcount;
         $data = [
             'total' =>   $total,
@@ -481,7 +482,7 @@ class CommandController extends Controller
     }
     public function all_games_bet_accept($id, $game)
     {
-       
+
         if ($game == "Cricket") {
             CricketPlaceBet::where('id', $id)->update(['status' => '1']);
         }
@@ -503,16 +504,17 @@ class CommandController extends Controller
     }
     //////////////////////////////////////////////////// PAnnel//////////////////////////////////////////////
 
-    function all_users() {
+    function all_users()
+    {
         $data = Admin::where('role_id', 5)->get() ?? [];
-   $datas = [
-       'data' => $data
-       ];
+        $datas = [
+            'data' => $data
+        ];
         return response()->json($datas);
     }
-      public function user_detail($id)
+    public function user_detail($id)
     {
-      
+
         $user_data = Admin::where('id', $id)->first();
 
 
@@ -544,7 +546,7 @@ class CommandController extends Controller
 
         return response()->json(get_defined_vars());
     }
-  function deposit_withdraw_request()
+    function deposit_withdraw_request()
     {
         $deposit = Deposit::with('user')->where('status', 'pending')->get();
         $depositcount = Deposit::with('user')->where('status', 'pending')->count();
@@ -558,40 +560,74 @@ class CommandController extends Controller
         ];
         return response()->json($data);
     }
-      function deposit_withdraw_accept_reject($id, $deposit_withdraw, $accept_reject)
+    function deposit_withdraw_accept_reject($id, $deposit_withdraw, $accept_reject)
     {
 
         if ($deposit_withdraw == "deposit") {
 
             if ($accept_reject == "accept") {
-               
+
                 $deposit = Deposit::where('id', $id)->first();
                 $admin = Admin::where('id', $deposit->user_id)->first();
                 $amount = $admin->balance + $deposit->amount;
                 // Update 
-                Admin::where('id', $deposit->user_id)->update(['balance'=>$amount]);
-                Deposit::where('id', $id)->update(['status'=>'approved']);
-             
+                Admin::where('id', $deposit->user_id)->update(['balance' => $amount]);
+                Deposit::where('id', $id)->update(['status' => 'approved']);
             } else {
-                Deposit::where('id', $id)->update(['status'=>'rejected']);
+                Deposit::where('id', $id)->update(['status' => 'rejected']);
             }
-
         } else {
             if ($accept_reject == "accept") {
-               
+
                 $deposit = Withdraw::where('id', $id)->first();
-               
+
                 $admin = Admin::where('id', $deposit->user_id)->first();
                 $amount = $admin->balance - $deposit->amount;
-            
+
                 // Update 
-                Admin::where('id', $deposit->user_id)->update(['balance'=>$amount]);
-                Withdraw::where('id', $id)->update(['status'=>'approved']);
-           
+                Admin::where('id', $deposit->user_id)->update(['balance' => $amount]);
+                Withdraw::where('id', $id)->update(['status' => 'approved']);
             } else {
-                Withdraw::where('id', $id)->update(['status'=>'rejected']);
+                Withdraw::where('id', $id)->update(['status' => 'rejected']);
             }
         }
         return response()->json('done');
+    }
+
+
+    public function new_agent_submit(Request $request)
+    {
+        $existingUser = Admin::where('username', $request->username)->first();
+        if ($existingUser) {
+            return response()->json('Username already exists. Please try with a new username.');
+        }
+        if ($request->has('id')) {
+            $newAgent = Admin::where('id', $request->id);
+        } else {
+            $newAgent = new Admin();
+        }
+        $newAgent->username = $request->username;
+        $newAgent->password = bcrypt($request->password);
+        $newAgent->status = $request->status;
+        $newAgent->level_permission = $request->level; //user
+        $newAgent->bet_status = $request->bet_status;
+        $newAgent->credit_limit = 0;
+        $newAgent->user_rate = 1;
+        $newAgent->phone = $request->phone;
+        $newAgent->role_id = 5;
+        $newAgent->admin_role = 4;
+        $newAgent->admin_id = 4;
+        $newAgent->save();
+        return response()->json('done');
+    }
+
+    public function adminControlDashboardApi()
+    {
+        $pending_deposits = Deposit::where('status', 'pending')->get()->count();
+        $pending_withdraw = Withdraw::where('status', 'pending')->get()->count();
+        return response()->json([
+            'status' => 'success',
+            'response' => get_defined_vars(),
+        ]);
     }
 }
