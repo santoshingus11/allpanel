@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-
+use App\Helpers\QueryHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use App\Models\BetRecord;
