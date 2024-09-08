@@ -1191,4 +1191,160 @@ curl_setopt($gm1, CURLOPT_CONNECTTIMEOUT, 30); // Wait up to 30 seconds to conne
     {
         return view('client.roullete');
     }
+    public function cricker_games_api(Request $request )
+    {
+           $ch = curl_init();
+        // Disable SSL verification
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        // Will return the response, if false it print the response
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        // Set the url
+        curl_setopt($ch, CURLOPT_URL, "https://ujala11games.com/api/cricket/game-list");
+        // Further increase timeout settings
+        curl_setopt($ch, CURLOPT_TIMEOUT, 60); // Wait up to 60 seconds for a response
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30); // Wait up to 30 seconds to connect
+          $result = curl_exec($ch);
+         $response = json_decode($result, true);
+     
+
+        // Execute
+        // $result = curl_exec($ch);
+        // // Will dump a beauty json <3
+        // $response = json_decode($result, true);
+
+        curl_close($ch);
+
+        //get all games list
+        $chr = curl_init();
+        // Disable SSL verification
+        curl_setopt($chr, CURLOPT_SSL_VERIFYPEER, false);
+        // Will return the response, if false it print the response
+        curl_setopt($chr, CURLOPT_RETURNTRANSFER, true);
+        // Set the url
+        curl_setopt($chr, CURLOPT_URL, "https://ujala11games.com/api/get-all-games-list");
+        // Further increase timeout settings
+        curl_setopt($chr, CURLOPT_TIMEOUT, 60); // Wait up to 60 seconds for a response
+        curl_setopt($chr, CURLOPT_CONNECTTIMEOUT, 30); // Wait up to 30 seconds to connect
+       
+           $allGameresult = curl_exec($chr);
+             $allGames = json_decode($allGameresult, true);
+
+        // Execute
+        // $allGameresult = curl_exec($chr);
+        // // Will dump a beauty json <3
+        // $allGames = json_decode($allGameresult, true);
+
+        curl_close($chr);
+        // dd($response);
+        if ($request->ajax()) {
+            return response()->json([
+                'response' => $response,
+                'allGames' => $allGames,
+            ]);
+        }
+    }
+    public function football_games_api(Request $request )
+    {
+           $ch = curl_init();
+        // Disable SSL verification
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        // Will return the response, if false it print the response
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        // Set the url
+        curl_setopt($ch, CURLOPT_URL, "https://ujala11games.com/api/football/game-list");
+        // Further increase timeout settings
+        curl_setopt($ch, CURLOPT_TIMEOUT, 60); // Wait up to 60 seconds for a response
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30); // Wait up to 30 seconds to connect
+          $result = curl_exec($ch);
+         $response = json_decode($result, true);
+     
+
+        // Execute
+        // $result = curl_exec($ch);
+        // // Will dump a beauty json <3
+        // $response = json_decode($result, true);
+
+        curl_close($ch);
+
+        //get all games list
+        $chr = curl_init();
+        // Disable SSL verification
+        curl_setopt($chr, CURLOPT_SSL_VERIFYPEER, false);
+        // Will return the response, if false it print the response
+        curl_setopt($chr, CURLOPT_RETURNTRANSFER, true);
+        // Set the url
+        curl_setopt($chr, CURLOPT_URL, "https://ujala11games.com/api/get-all-games-list");
+        // Further increase timeout settings
+        curl_setopt($chr, CURLOPT_TIMEOUT, 60); // Wait up to 60 seconds for a response
+        curl_setopt($chr, CURLOPT_CONNECTTIMEOUT, 30); // Wait up to 30 seconds to connect
+       
+           $allGameresult = curl_exec($chr);
+             $allGames = json_decode($allGameresult, true);
+
+        // Execute
+        // $allGameresult = curl_exec($chr);
+        // // Will dump a beauty json <3
+        // $allGames = json_decode($allGameresult, true);
+
+        curl_close($chr);
+        // dd($response);
+        if ($request->ajax()) {
+            return response()->json([
+                'response' => $response,
+                'allGames' => $allGames,
+            ]);
+        }
+    }
+    public function tennis_games_api(Request $request )
+    {
+       $ch = curl_init();
+        // Disable SSL verification
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        // Will return the response, if false it print the response
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        // Set the url
+        curl_setopt($ch, CURLOPT_URL, "https://ujala11games.com/api/tennis/game-list");
+        // Further increase timeout settings
+        curl_setopt($ch, CURLOPT_TIMEOUT, 60); // Wait up to 60 seconds for a response
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30); // Wait up to 30 seconds to connect
+  
+            $result = curl_exec($ch);
+          
+                $response = json_decode($result, true);
+            
+        
+        // Execute
+        // $result = curl_exec($ch);
+        // // Will dump a beauty json <3
+        // $response = json_decode($result, true);
+
+        curl_close($ch);
+
+        //get all games list
+        $chr = curl_init();
+        // Disable SSL verification
+        curl_setopt($chr, CURLOPT_SSL_VERIFYPEER, false);
+        // Will return the response, if false it print the response
+        curl_setopt($chr, CURLOPT_RETURNTRANSFER, true);
+        // Set the url
+        curl_setopt($chr, CURLOPT_URL, "https://ujala11games.com/api/get-all-games-list");
+
+            $allGameresult = curl_exec($chr);
+         
+                $allGames = json_decode($allGameresult, true);
+          
+        // Execute
+        // $allGameresult = curl_exec($chr);
+        // // Will dump a beauty json <3
+        // $allGames = json_decode($allGameresult, true);
+
+        curl_close($chr);
+        if ($request->ajax()) {
+            return response()->json([
+                'response' => $response,
+                'allGames' => $allGames,
+                // 'data' => $data,
+            ]);
+        }
+    }
 }

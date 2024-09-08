@@ -75,59 +75,7 @@
 
 
             <!-- Content -->
-
-            @if(isset($response))
-            @foreach($response as $r)
-            <div class="tab-content">
-              <tab href="javascript:void(0)" role="tabpanel" aria-labelledby="" class="tab-pane active"><!---->
-                <div href="javascript:void(0)">
-                  <div href="javascript:void(0)" class="row th-head">
-                    <div href="javascript:void(0)" class="col-lg-7 col-md-5 col-6">
-                      <p href="javascript:void(0)">games</p>
-                    </div>
-                    <div href="javascript:void(0)" class="col-lg-5 col-md-7 col-12 text-center px-xl-0"><span href="javascript:void(0)">1</span><span href="javascript:void(0)">X</span><span href="javascript:void(0)">2</span></div><!---->
-                  </div>
-                  @php
-                  $dateTime = new DateTime($r['run_date_time'], new DateTimeZone('America/New_York'));
-                  $dateTime->setTimezone(new DateTimeZone('Asia/Kolkata'));
-                  $istTime = $dateTime->format('Y-m-d H:i:s');
-                  @endphp
-                  <div href="javascript:void(0)" class="row td-body" tabindex="0">
-
-                    <div href="javascript:void(0)" class="col-md-4 col-lg-5 col-6 cursor"><a href="{{route('Football-Details',$r['id'])}}">
-                        <p href="javascript:void(0)"> {{$r['game_title']}}<span href="javascript:void(0)">&nbsp;/&nbsp;</span><b href="javascript:void(0)">{{$r['run_date_time']}} </b></p>
-                      </a><!----></div>
-
-                    <div href="javascript:void(0)" class="col-md-1 col-lg-2 col-6 px-lg-0">
-                      <div href="javascript:void(0)" class="game-icons"><span href="javascript:void(0)" class="game-icon"><span href="javascript:void(0)" @if($r['status']==1) class="active" @endif></span><!----></span><span href="javascript:void(0)" class="game-icon"><i href="javascript:void(0)" class="fa fa-tv v-m icon-tv cursor"></i><!----></span><span href="javascript:void(0)" class="game-icon"><!----></span><span href="javascript:void(0)" class="game-icon"><!----></span></div><!---->
-                    </div>
-                    <div href="javascript:void(0)" class="col-md-4 col-12 d-sm-none d-block th-head text-center"><span href="javascript:void(0)">1</span><span href="javascript:void(0)">X</span><span href="javascript:void(0)">2</span></div><!---->
-                    <div href="javascript:void(0)" class="col-md-7 col-lg-5 col-12 pr-xl-0">
-
-                      @if($r['status']==1)
-                      <a href="{{ route('Football-Details',$r['id']) }}">
-                        <div href="javascript:void(0)" class="list-event-odds">
-                          <div href="javascript:void(0)" class="btn-grp-cs"><button href="javascript:void(0)" class="back"><span href="javascript:void(0)" class="odd">-</span></button><button href="javascript:void(0)" class="lay"><span href="javascript:void(0)" class="odd">1.01</span></button><!----></div>
-                          <div href="javascript:void(0)" class="btn-grp-cs"><button href="javascript:void(0)" class="back"><span href="javascript:void(0)" class="odd">1000</span></button><button href="javascript:void(0)" class="lay"><span href="javascript:void(0)" class="odd">-</span></button><!----></div>
-                          <div href="javascript:void(0)" class="btn-grp-cs"><button href="javascript:void(0)" class="back"><span href="javascript:void(0)" class="odd">1000</span></button><button href="javascript:void(0)" class="lay"><span href="javascript:void(0)" class="odd">-</span></button><!----></div><!---->
-                        </div><!---->
-                      </a>
-                      @else
-                      <div href="javascript:void(0)" class="list-event-odds">
-                        <div href="javascript:void(0)" class="btn-grp-cs"><button href="javascript:void(0)" class="back"><span href="javascript:void(0)" class="odd">-</span></button><button href="javascript:void(0)" class="lay"><span href="javascript:void(0)" class="odd">1.01</span></button><!----></div>
-                        <div href="javascript:void(0)" class="btn-grp-cs"><button href="javascript:void(0)" class="back"><span href="javascript:void(0)" class="odd">1000</span></button><button href="javascript:void(0)" class="lay"><span href="javascript:void(0)" class="odd">-</span></button><!----></div>
-                        <div href="javascript:void(0)" class="btn-grp-cs"><button href="javascript:void(0)" class="back"><span href="javascript:void(0)" class="odd">1000</span></button><button href="javascript:void(0)" class="lay"><span href="javascript:void(0)" class="odd">-</span></button><!----></div><!---->
-                      </div><!---->
-                      @endif
-
-                    </div>
-                  </div>
-
-                </div><!----><!----><!---->
-              </tab>
-            </div>
-            @endforeach
-            @endif
+            <div id="game-list-container"></div>
 
             <!-- Content -->
 
@@ -146,11 +94,135 @@
     </div><!---->
 
   </app-sport-list><!----></div>
-
+  <div id="loader" style="position: fixed; left: 0; top: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.8); z-index: 9999; display: flex; align-items: center; justify-content: center;">
+    <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
 @endsection
 @section('script')
 <script>
   /* Script Goes Here */
+  $(document).ready(function() {
+     $('#loader').show();
+    function fetchGameData() {
+      $.ajax({
+        url: "{{ route('football_games_api') }}", // Your route here
+        type: 'GET',
+        dataType: 'json',
+        success: function(data) {
+          // Clear the container before appending new data
+         
+
+          // Iterate over the response data and append HTML
+          if (data.response && data.response.length > 0) {
+               $('#game-list-container').empty();
+            data.response.forEach(function(r) {
+              // Build the HTML structure
+            let gameHtml = `
+  <div class="tab-content">
+    <tab role="tabpanel" class="tab-pane active">
+      <div>
+        <div class="row th-head">
+          <div class="col-lg-7 col-md-5 col-6">
+            <p>games</p>
+          </div>
+          <div class="col-lg-5 col-md-7 col-12 text-center px-xl-0">
+            <span>1</span><span>X</span><span>2</span>
+          </div>
+        </div>
+
+        <div class="row td-body" tabindex="0">
+          <div class="col-md-4 col-lg-5 col-6 cursor">
+            <a href="{{ route('Football-Details', '') }}/${r.id}">
+              <p>${r.game_title}<span>&nbsp;/&nbsp;</span><b>${r.run_date_time}</b></p>
+            </a>
+          </div>
+
+          <div class="col-md-1 col-lg-2 col-6 px-lg-0">
+            <div class="game-icons">
+              <span class="game-icon">
+                <span class="${r.status == 1 ? 'active' : ''}"></span>
+              </span>
+              <span class="game-icon">
+                <i class="fa fa-tv v-m icon-tv cursor"></i>
+              </span>
+              <span class="game-icon"></span>
+              <span class="game-icon"></span>
+            </div>
+          </div>
+
+          <div class="col-md-4 col-12 d-sm-none d-block th-head text-center">
+            <span>1</span><span>X</span><span>2</span>
+          </div>
+
+          <div class="col-md-7 col-lg-5 col-12 pr-xl-0">
+            ${r.status == 1 ? `
+            <a href="{{ route('Football-Details', '') }}/${r.id}">
+              <div class="list-event-odds">
+                <div class="btn-grp-cs">
+                  <button class="back"><span class="odd">-</span></button>
+                  <button class="lay"><span class="odd">1.01</span></button>
+                </div>
+                <div class="btn-grp-cs">
+                  <button class="back"><span class="odd">1000</span></button>
+                  <button class="lay"><span class="odd">-</span></button>
+                </div>
+                <div class="btn-grp-cs">
+                  <button class="back"><span class="odd">1000</span></button>
+                  <button class="lay"><span class="odd">-</span></button>
+                </div>
+              </div>
+            </a>
+            ` : `
+            <div class="list-event-odds">
+              <div class="btn-grp-cs">
+                <button class="back"><span class="odd">-</span></button>
+                <button class="lay"><span class="odd">1.01</span></button>
+              </div>
+              <div class="btn-grp-cs">
+                <button class="back"><span class="odd">1000</span></button>
+                <button class="lay"><span class="odd">-</span></button>
+              </div>
+              <div class="btn-grp-cs">
+                <button class="back"><span class="odd">1000</span></button>
+                <button class="lay"><span class="odd">-</span></button>
+              </div>
+            </div>
+            `}
+          </div>
+        </div>
+      </div>
+    </tab>
+  </div>
+`;
+
+              // Append each game HTML to the container
+              $('#game-list-container').append(gameHtml);
+            });
+          }
+           $('#loader').fadeOut();
+          
+        },
+        error: function() {
+          console.error('Failed to fetch game data.');
+        }
+      });
+    }
+
+    // Convert date from GMT to IST
+    function convertToIST(gmtDate) {
+      let date = new Date(gmtDate + 'Z'); // Append 'Z' to make it UTC
+      return date.toLocaleString('en-IN', {
+        timeZone: 'Asia/Kolkata',
+        hour12: false
+      });
+    }
+
+    // Fetch data when the document is ready
+    fetchGameData();
+    setInterval(fetchGameData, 2000);
+  });
 
   /* Script Goes Here */
 </script>

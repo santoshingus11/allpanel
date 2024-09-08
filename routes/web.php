@@ -64,6 +64,10 @@ Route::get('/coc', function () {
 Route::get('/', [ClientController::class, 'client_login'])->name('login');
 // Route::get('/slot-games',[ClientController::class,'slotgames'])->name('slot_games.home');
 
+Route::get('cricker_games_api', [HomeController::class, 'cricker_games_api'])->name('cricker_games_api');
+Route::get('football_games_api', [HomeController::class, 'football_games_api'])->name('football_games_api');
+Route::get('tennis_games_api', [HomeController::class, 'tennis_games_api'])->name('tennis_games_api');
+
 Route::post('client-submit', [ClientController::class, 'login_submit'])->name('login_submit');
 Route::middleware('client.login.check')->group(function () {
     
