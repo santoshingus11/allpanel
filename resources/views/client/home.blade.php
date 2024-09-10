@@ -148,6 +148,15 @@
 @section('script')
 
 <script>
+
+
+</script>
+<script>
+  /* Script Goes Here */
+
+  /* Script Goes Here */
+</script>
+<script>
   /* Script Goes Here */
   $(document).ready(function() {
        $('#loader').show();
@@ -160,11 +169,11 @@
         success: function(data) {
           // Clear the container before appending new data
          
-
+console.log(data);
           // Iterate over the response data and append HTML
-          if (data.response && data.response.length > 0) {
+          if (data && data.length > 0) {
                $('#game-list-container').empty();
-            data.response.forEach(function(r) {
+            data.forEach(function(r) {
               // Build the HTML structure
               let gameHtml = `
                             <div class="tab-content">
@@ -248,7 +257,7 @@
 
     // Fetch data when the document is ready
     fetchGameData();
-    setInterval(fetchGameData, 2000);
+    setInterval(fetchGameData, 3000);
   });
 
   /* Script Goes Here */

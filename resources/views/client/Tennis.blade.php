@@ -102,6 +102,11 @@
 @section('script')
 <script>
   /* Script Goes Here */
+
+  /* Script Goes Here */
+</script>
+<script>
+  /* Script Goes Here */
   $(document).ready(function() {
     // Function to fetch data
     function fetchGameData() {
@@ -113,11 +118,10 @@
           // Clear the container before appending new data
           gameHtml='';
          
-console.log(data.allGames['tennises']);
           // Iterate over the response data and append HTML
-          if (data.allGames['tennises'] && data.allGames['tennises'].length > 0) {
+          if (data.tennises && data.tennises.length > 0) {
                $('#game-list-container').empty();
-            data.allGames['tennises'].forEach(function(r) {
+            data.tennises.forEach(function(r) {
               // Build the HTML structure
                gameHtml += `
       <div class="tab-content">
@@ -224,7 +228,7 @@ console.log(data.allGames['tennises']);
 
     // Fetch data when the document is ready
     fetchGameData();
-    setInterval(fetchGameData, 2000);
+    setInterval(fetchGameData, 3000);
   });
 
   /* Script Goes Here */
