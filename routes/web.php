@@ -335,6 +335,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('update-status',[AdminUserController::class,'update_whitelevel_status'])->name('update-whitelevel-status');
     Route::get('update-user-password',[AdminUserController::class,'update_user_password'])->name('update-user-password');
     Route::post('logout-all',[AdminController::class,'logout_all'])->name('logout-all-user');
+    Route::get('delete_balance_master/{id}', [AdminController::class, 'delete_balance_master'])->name('delete_balance_master');
+
 });
 
 });

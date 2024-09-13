@@ -27,7 +27,7 @@ use App\Models\HorseRacingPlaceBet;
 use App\Models\GreyhoundRacingPlaceBet;
 use App\Models\CricketPlaceBet;
 use App\Models\FootballPlaceBet;
-
+use App\Models\BalanceLog;
 class AdminController extends Controller
 {
 
@@ -840,5 +840,10 @@ class AdminController extends Controller
         $admin = Admin::create($data);
 
         return redirect()->route('super-master-listing')->with('success', 'Successfully Created');
+    }
+    function delete_balance_master($id) {
+        BalanceLog::where('balance_given_by',$id)->delete();
+        BalanceLog::where('balance_given_to',$id)->delete();
+      return redirect()->back();
     }
 }

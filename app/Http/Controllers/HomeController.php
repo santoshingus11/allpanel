@@ -714,8 +714,8 @@ curl_setopt($gm1, CURLOPT_CONNECTTIMEOUT, 30); // Wait up to 30 seconds to conne
     public function account_settlement()
     {
         $bankingHistories = BankingHistory::where('user_id', Auth::guard('client')->user()->id)->orderBy('banking_history_id', 'desc')->get();
-        $deposits = Deposit::all();
-        $withdraw = Withdraw::all();
+        $deposits = Deposit::where('user_id', Auth::guard('client')->user()->id)->get();
+        $withdraw = Withdraw::where('user_id', Auth::guard('client')->user()->id)->get();
         return view('client.account_settlement', get_defined_vars());
     }
 
